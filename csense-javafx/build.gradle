@@ -1,0 +1,24 @@
+apply plugin: "kotlin"
+group 'csense'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "csense.kotlin:csense-kotlin-jvm:$csensekotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
+    
+    testImplementation "csense.kotlin:csense-kotlin-test-jvm:$csensekotlinVersion"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions {
+        freeCompilerArgs = ["-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
+                            "-Xuse-experimental=kotlin.Experimental"]
+    }
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
