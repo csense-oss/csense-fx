@@ -1,7 +1,6 @@
 package csense.javafx
 
 import csense.javafx.views.base.BaseView
-import csense.javafx.views.base.BaseViewCoroutineScopeImpl
 import javafx.application.Application
 import javafx.scene.Parent
 import javafx.scene.Scene

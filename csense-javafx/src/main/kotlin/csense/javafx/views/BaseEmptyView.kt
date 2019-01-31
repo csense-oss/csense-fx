@@ -3,9 +3,9 @@
 package csense.javafx.views
 
 import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.InUiUpdateEmpty
 import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.OnViewSetup
-import csense.javafx.views.base.InUiUpdateEmpty
 import javafx.scene.Parent
 
 

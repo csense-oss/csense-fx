@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package csense.javafx.viewdsl
 
 import javafx.scene.Group
@@ -64,6 +66,10 @@ inline fun button(
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
     return Button(text).apply(action)
+}
+
+inline fun button(text: String): Button {
+    return Button(text)
 }
 
 

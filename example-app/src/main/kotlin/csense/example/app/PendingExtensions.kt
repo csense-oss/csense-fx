@@ -16,7 +16,7 @@ fun <ViewBinding : LoadViewAble<out Parent>,
         Dout> BaseView<*, ViewBinding>.presentView(
     viewToShow: ViewToShow,
     uiAction: InUiUpdateInputScope<ViewBinding, Dout?>
-): Job where ViewToShow : BaseView<*, LoadViewAble<out Parent>>, ViewToShow : OutputViewAble<Dout> =
+): Job where ViewToShow : BaseView<*, out LoadViewAble<out Parent>>, ViewToShow : OutputViewAble<Dout> =
     backgroundToUi(computeAction = {
         suspendCancellableCoroutine<Deferred<Dout?>> { continuation ->
             viewToShow.start()

@@ -3,8 +3,8 @@ package csense.example.app
 import csense.javafx.viewdsl.button
 import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseViewInOutput
-import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.InUiUpdateInput
+import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.OnViewSetup
 import javafx.scene.Parent
 import javafx.scene.control.Button

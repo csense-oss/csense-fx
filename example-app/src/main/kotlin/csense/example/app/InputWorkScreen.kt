@@ -1,26 +1,18 @@
 package csense.example.app
 
 import csense.javafx.viewdsl.button
-import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseViewInput
 import csense.javafx.views.base.InUiUpdateInput
 import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.OnViewSetup
 import csense.kotlin.extensions.coroutines.asyncDefault
 import javafx.scene.control.Button
-import javafx.scene.layout.VBox
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 
-//import csense.javafx.views.OnViewSetup
-
-//
-///*Input screen */
 
 class InputWorkScreenView(onViewSetup: OnViewSetup) : LoadViewAble<Button>(onViewSetup) {
-    override val root: Button = button("loading...") {
-
-    }
+    override val root: Button = button("loading...")
 }
 
 class InputWorkScreen(input: String) : BaseViewInput<Unit, InputWorkScreenView, String, Int>(

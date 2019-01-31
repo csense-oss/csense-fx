@@ -9,7 +9,6 @@ import csense.kotlin.logger.L
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.layout.Pane
-import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.Window
 import kotlinx.coroutines.Deferred

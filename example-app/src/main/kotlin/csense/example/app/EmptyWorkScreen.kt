@@ -3,9 +3,8 @@ package csense.example.app
 import csense.javafx.viewdsl.button
 import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseEmptyView
-import csense.javafx.views.base.LoadViewAble
-import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.InUiUpdateEmpty
+import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.OnViewSetup
 import javafx.scene.control.Button
 import javafx.scene.layout.VBox
@@ -42,18 +41,17 @@ class EmptyWorkScreen : BaseEmptyView<Unit, EmptyWorkScreenView>(
 
     override fun InUiUpdateEmpty<EmptyWorkScreenView>.onReady() {
         binding.showInputOutput.setOnAction {
-
-            //            presentView(InOutWorkScreen("123")) {
-//                binding.showInputOutput.text = "= \"$input\"))"
-//            }
+            presentView(InOutWorkScreen("123")) {
+                binding.showInputOutput.text = "= \"$input\"))"
+            }
         }
         binding.showInput.setOnAction {
             InputWorkScreen("").presentModal()
         }
         binding.showOutput.setOnAction {
-            //            presentView(OutputWorkScreen()) {
-//                binding.showOutput.text = "output (got \"$input\" back))"
-//            }
+            presentView(OutputWorkScreen()) {
+                binding.showOutput.text = "output (got \"$input\" back))"
+            }
         }
     }
 
