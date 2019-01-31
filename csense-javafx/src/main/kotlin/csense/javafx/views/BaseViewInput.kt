@@ -1,7 +1,6 @@
 package csense.javafx.views
 
-import csense.javafx.views.data.InUiUpdateInput
-import csense.javafx.views.data.ToBackground
+import csense.javafx.views.base.*
 import csense.kotlin.AsyncFunction1
 import javafx.scene.Parent
 import kotlinx.coroutines.CoroutineScope
@@ -11,10 +10,11 @@ import kotlinx.coroutines.Deferred
  * Conceptualize a view with only input, no output
  * typical a view  / readonly view
  */
-abstract class BaseViewInput<ViewLoad, ViewBinding : Parent, Din, DinTransformed>(
-    private val input: Din
+abstract class BaseViewInput<ViewLoad, ViewBinding : LoadViewAble<out Parent>, Din, DinTransformed>(
+    private val input: Din,
+    viewLoader: (ViewLoad, OnViewSetup) -> ViewBinding
 ) :
-    BaseView<ViewLoad, ViewBinding>() {
+    BaseView<ViewLoad, ViewBinding>(viewLoader) {
 
     val inputDataLoader: Deferred<DinTransformed>
         get () = startDataFlowLoader.startDataFlow.result
@@ -43,7 +43,7 @@ class DelegatedInputDataFlow<Din, DinTransformed>(
     override suspend fun transformInput(input: Din): DinTransformed = transformFunction(input)
 }
 
-class InputDataLoader<Din, DinTransformed, ViewBinding : Parent>(
+class InputDataLoader<Din, DinTransformed, ViewBinding : LoadViewAble<out Parent>>(
     val onView: ToBackground<ViewBinding>,
     input: Din,
     coroutineScope: CoroutineScope,

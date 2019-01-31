@@ -1,4 +1,4 @@
-package csense.javafx.views.data
+package csense.javafx.views.base
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +17,7 @@ class BaseViewCoroutineScopeImpl : BaseViewCoroutineScope {
         job.cancel()
     }
 
-    override  val coroutineContext: CoroutineContext
+    override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
 }

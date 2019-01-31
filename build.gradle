@@ -13,7 +13,7 @@ buildscript {
 
     //version deps
     ext.csensekotlinVersion = "0.0.10"
-    ext.coroutinesVersion = "1.1.0"
+    ext.coroutinesVersion = "1.1.1"
     ext.dokkaVersion = "0.9.17"
     ext.kotlin_version = "1.3.20"
 

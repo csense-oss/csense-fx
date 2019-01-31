@@ -63,6 +63,10 @@ inline fun Pane.borderPane(
     }
 }
 
+
+@UseExperimental(ExperimentalContracts::class)
+inline fun Pane.button(text: String): Button = createAndAddLast { Button(text) }
+
 /**
  * Like the general constructor DSL, but also adds the newly created button to the children (at the end)
  * @receiver Pane

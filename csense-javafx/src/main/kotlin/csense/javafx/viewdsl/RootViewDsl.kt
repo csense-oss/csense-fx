@@ -520,7 +520,7 @@ inline fun <T> treeView(
 
 @UseExperimental(ExperimentalContracts::class)
 inline fun vBox(
-    crossinline action: @InViewDsl ScopedViewDsl<VBox>
+    crossinline action: ScopedViewDsl<VBox>
 ): VBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)

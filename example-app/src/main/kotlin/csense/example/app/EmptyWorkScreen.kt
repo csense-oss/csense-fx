@@ -1,19 +1,23 @@
 package csense.example.app
 
 import csense.javafx.viewdsl.button
-import csense.javafx.views.BaseView
-import csense.javafx.views.OnViewSetup
+import csense.javafx.viewdsl.vBox
+import csense.javafx.views.BaseEmptyView
+import csense.javafx.views.base.LoadViewAble
+import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.InUiUpdateEmpty
+import csense.javafx.views.base.OnViewSetup
 import javafx.scene.control.Button
 import javafx.scene.layout.VBox
 
 
-class EmptyWorkScreenView : VBox() {
+class EmptyWorkScreenView(onViewSetup: OnViewSetup) : LoadViewAble<VBox>(onViewSetup) {
 
     val showInputOutput: Button
     val showInput: Button
     val showOutput: Button
 
-    init {
+    override val root: VBox = vBox {
         showInputOutput = button("input output") {
 
         }
@@ -24,34 +28,53 @@ class EmptyWorkScreenView : VBox() {
         showOutput = button("out") {
 
         }
-//        }
     }
 }
 
 
 // NO IO
-class EmptyWorkScreen : BaseView<EmptyWorkScreenView, EmptyWorkScreenView>() {
-    override suspend fun loadView(onViewSetup: OnViewSetup): EmptyWorkScreenView {
-        return EmptyWorkScreenView()
-    }
+class EmptyWorkScreen : BaseEmptyView<Unit, EmptyWorkScreenView>(
+    { _: Unit, onViewSetup: OnViewSetup -> EmptyWorkScreenView(onViewSetup) }
+) {
 
-    override fun bindView(loaded: EmptyWorkScreenView): EmptyWorkScreenView {
-        loaded.showInputOutput.setOnAction {
-            presentView(InOutWorkScreen("123")) {
-                binding.showInputOutput.text = "= \"$input\"))"
-            }
+
+    override suspend fun loadView() = Unit
+
+    override fun InUiUpdateEmpty<EmptyWorkScreenView>.onReady() {
+        binding.showInputOutput.setOnAction {
+
+            //            presentView(InOutWorkScreen("123")) {
+//                binding.showInputOutput.text = "= \"$input\"))"
+//            }
         }
-        loaded.showInput.setOnAction {
-
+        binding.showInput.setOnAction {
             InputWorkScreen("").presentModal()
         }
-        loaded.showOutput.setOnAction {
-            presentView(OutputWorkScreen()) {
-                binding.showOutput.text = "output (got \"$input\" back))"
-            }
+        binding.showOutput.setOnAction {
+            //            presentView(OutputWorkScreen()) {
+//                binding.showOutput.text = "output (got \"$input\" back))"
+//            }
         }
-        return loaded
     }
+
+
+//    override fun bindView(loaded: EmptyWorkScreenView): EmptyWorkScreenView {
+//        loaded.showInputOutput.setOnAction {
+//            presentView(InOutWorkScreen("123")) {
+//                binding.showInputOutput.text = "= \"$input\"))"
+//            }
+//        }
+//        loaded.showInput.setOnAction {
+//
+//            InputWorkScreen("").presentModal()
+//        }
+//        loaded.showOutput.setOnAction {
+//            presentView(OutputWorkScreen()) {
+//                binding.showOutput.text = "output (got \"$input\" back))"
+//            }
+//        }
+//        return loaded
+//    }
 }
 
 

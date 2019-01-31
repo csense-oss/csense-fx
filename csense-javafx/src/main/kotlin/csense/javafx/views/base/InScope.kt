@@ -1,6 +1,5 @@
-package csense.javafx.views.data
+package csense.javafx.views.base
 
-import csense.javafx.views.*
 import javafx.scene.Parent
 import javafx.stage.Stage
 import javafx.stage.Window
@@ -23,7 +22,7 @@ annotation class InScope
  * @property binding ViewBinding
  * @constructor
  */
-open class InUiUpdateEmpty<ViewBinding : Parent>(
+open class InUiUpdateEmpty<ViewBinding : LoadViewAble<out Parent>>(
     val currentWindow: Window?,
     val currentStage: Stage?,
     val binding: ViewBinding,
@@ -39,7 +38,7 @@ open class InUiUpdateEmpty<ViewBinding : Parent>(
  * @property input Input
  * @constructor
  */
-open class InUiUpdateInput<ViewBinding : Parent, Input>(
+open class InUiUpdateInput<ViewBinding : LoadViewAble<out Parent>, Input>(
     currentWindow: Window?,
     currentStage: Stage?,
     val input: Input,
@@ -65,14 +64,14 @@ interface ProhibitedBinding<ViewBinding> {
 }
 
 //region InBackground states
-class InBackgroundEmpty<ViewBinding : Parent>(
+class InBackgroundEmpty<ViewBinding : LoadViewAble<out Parent>>(
     private val toUI: ToUi<ViewBinding>,
     val scope: CoroutineScope
 
 ) : ToUi<ViewBinding> by toUI,
     ProhibitedBinding<ViewBinding>
 
-class InBackgroundInput<ViewBinding : Parent, Input>(
+class InBackgroundInput<ViewBinding : LoadViewAble<out Parent>, Input>(
     val input: Input,
     private val toUI: ToUi<ViewBinding>
 ) :
@@ -88,7 +87,7 @@ class InBackgroundInput<ViewBinding : Parent, Input>(
  * All to UI state transfers
  * @param ViewBinding
  */
-interface ToUi<ViewBinding : Parent> {
+interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
     /**
      * When you want to do something with the ui with no input (could be a simple side effect)
      * @param action FunctionUnit<InUiUpdateEmpty<ViewBinding>>
@@ -128,7 +127,7 @@ interface ToUi<ViewBinding : Parent> {
  * All to background state transfers
  * @param ViewBinding
  */
-interface ToBackground<ViewBinding : Parent> {
+interface ToBackground<ViewBinding : LoadViewAble<out Parent>> {
     /**
      * Useful for doing a side effect but nothing "computing" like taking or retrieving anything
      * @param action FunctionUnit<InBackgroundEmpty>

@@ -1,8 +1,9 @@
 package csense.example.app
 
-import csense.javafx.views.BaseView
-import csense.javafx.views.InUiUpdateInputScope
 import csense.javafx.views.OutputViewAble
+import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.InUiUpdateInputScope
+import csense.javafx.views.base.LoadViewAble
 import javafx.scene.Parent
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
@@ -10,10 +11,12 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
 
-fun <ViewBinding : Parent, ViewToShow, Dout> BaseView<*, ViewBinding>.presentView(
+fun <ViewBinding : LoadViewAble<out Parent>,
+        ViewToShow,
+        Dout> BaseView<*, ViewBinding>.presentView(
     viewToShow: ViewToShow,
     uiAction: InUiUpdateInputScope<ViewBinding, Dout?>
-): Job where ViewToShow : BaseView<*, out Parent>, ViewToShow : OutputViewAble<Dout> =
+): Job where ViewToShow : BaseView<*, LoadViewAble<out Parent>>, ViewToShow : OutputViewAble<Dout> =
     backgroundToUi(computeAction = {
         suspendCancellableCoroutine<Deferred<Dout?>> { continuation ->
             viewToShow.start()

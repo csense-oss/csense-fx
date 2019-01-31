@@ -1,16 +1,15 @@
 package csense.javafx.views.base
 
-import csense.javafx.extensions.asyncDefault
-import csense.javafx.extensions.asyncMain
-import csense.javafx.extensions.launchDefault
-import csense.javafx.extensions.launchMain
 import csense.javafx.extensions.parent.addToBack
-import csense.javafx.views.*
-import csense.javafx.views.data.*
+import csense.kotlin.extensions.coroutines.asyncDefault
+import csense.kotlin.extensions.coroutines.asyncMain
+import csense.kotlin.extensions.coroutines.launchDefault
+import csense.kotlin.extensions.coroutines.launchMain
 import csense.kotlin.logger.L
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.layout.Pane
+import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.Window
 import kotlinx.coroutines.Deferred
@@ -18,7 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
 
 
-abstract class AbstractBaseView<ViewBinding : Parent> :
+abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
     ToUi<ViewBinding>,
     ToBackground<ViewBinding> {
 
@@ -31,7 +30,14 @@ abstract class AbstractBaseView<ViewBinding : Parent> :
 
     //region inUi state transfer
     override fun inUi(action: InUiUpdateEmptyScope<ViewBinding>): Job = coroutineScope.launchMain {
-        action(InUiUpdateEmpty(currentWindow, currentStage, getViewAsync().await(), this@AbstractBaseView))
+        action(
+            InUiUpdateEmpty(
+                currentWindow,
+                currentStage,
+                getViewAsync().await(),
+                this@AbstractBaseView
+            )
+        )
     }
 
     final override fun <T> inUi(
@@ -41,7 +47,15 @@ abstract class AbstractBaseView<ViewBinding : Parent> :
         println("loading view ${this@AbstractBaseView}")
         val view = getViewAsync().await()
         println("got view ${this@AbstractBaseView}")
-        action(InUiUpdateInput(currentWindow, currentStage, input, view, this@AbstractBaseView))
+        action(
+            InUiUpdateInput(
+                currentWindow,
+                currentStage,
+                input,
+                view,
+                this@AbstractBaseView
+            )
+        )
     }
 
     final override fun <Output> inUiAsync(
@@ -56,7 +70,15 @@ abstract class AbstractBaseView<ViewBinding : Parent> :
         action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output> = coroutineScope.asyncMain {
         val view = getViewAsync().await()
-        action(InUiUpdateInput(currentWindow, currentStage, input, view, this@AbstractBaseView))
+        action(
+            InUiUpdateInput(
+                currentWindow,
+                currentStage,
+                input,
+                view,
+                this@AbstractBaseView
+            )
+        )
     }
     //endregion
 
@@ -94,9 +116,9 @@ abstract class AbstractBaseView<ViewBinding : Parent> :
             action(InBackgroundInput(input, this@AbstractBaseView))
         }
 
-    open fun presentModal(ownerWindow: Window? = null) = inUi(ownerWindow) {
+    open fun presentModal(ownerWindow: Window? = null): Job = inUi(ownerWindow) {
         val newStage = Stage().apply {
-            scene = Scene(this@inUi.binding)
+            scene = Scene(this@inUi.binding.root)
         }
         newStage.show()
         this@AbstractBaseView.currentStage = newStage
@@ -104,10 +126,17 @@ abstract class AbstractBaseView<ViewBinding : Parent> :
         start()
     }
 
-    open fun addToView(toPlaceIn: Pane) = inUi(toPlaceIn) {
-        input.addToBack(binding)
+    open fun addToView(toPlaceIn: Pane): Job = inUi(toPlaceIn) {
+        input.addToBack(binding.root)
         this@AbstractBaseView.currentWindow = input.scene?.window
         this@AbstractBaseView.currentStage = this@AbstractBaseView.currentWindow as? Stage
+        start()
+    }
+
+    open fun addToScene(toPlaceIn: Scene): Job = inUi(toPlaceIn) {
+        input.root = binding.root
+        this@AbstractBaseView.currentWindow = input.window
+        this@AbstractBaseView.currentStage = input.window as? Stage
         start()
     }
 

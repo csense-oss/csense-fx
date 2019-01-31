@@ -1,43 +1,52 @@
 package csense.example.app
 
-import csense.javafx.extensions.asyncDefault
+import csense.javafx.viewdsl.button
+import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseViewInput
-import csense.javafx.views.OnViewSetup
-import csense.javafx.views.data.InUiUpdateInput
+import csense.javafx.views.base.InUiUpdateInput
+import csense.javafx.views.base.LoadViewAble
+import csense.javafx.views.base.OnViewSetup
+import csense.kotlin.extensions.coroutines.asyncDefault
 import javafx.scene.control.Button
+import javafx.scene.layout.VBox
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
-import java.lang.RuntimeException
 
+//import csense.javafx.views.OnViewSetup
 
-/*Input screen */
-class InputWorkScreen(input: String) : BaseViewInput<Button, Button, String, Int>(input) {
-    override suspend fun loadView(onViewSetup: OnViewSetup): Button {
-        return Button()
+//
+///*Input screen */
+
+class InputWorkScreenView(onViewSetup: OnViewSetup) : LoadViewAble<Button>(onViewSetup) {
+    override val root: Button = button("loading...") {
+
     }
+}
+
+class InputWorkScreen(input: String) : BaseViewInput<Unit, InputWorkScreenView, String, Int>(
+    input,
+    { _: Unit, onViewSetup: OnViewSetup -> InputWorkScreenView(onViewSetup) }
+) {
+
+
+    override suspend fun loadView() {}
 
 
     //initial data concept (bad)
     val loadFile = inBackgroundAsync {
-        delay(5000)
+        delay(500)
         "some content"
     }
 
     override suspend fun transformInput(input: String): Int {
-        delay(2000)
+        delay(200)
         return input.toIntOrNull() ?: -1
     }
 
 
-    override fun bindView(loaded: Button): Button {
-        loaded.text = "is loading data"
-        return loaded
-    }
-
-
-    override fun InUiUpdateInput<Button, Int>.onStartData() {
-        binding.text = "value is = $input"
-        binding.setOnAction {
+    override fun InUiUpdateInput<InputWorkScreenView, Int>.onStartData() {
+        binding.root.text = "value is = $input"
+        binding.root.setOnAction {
             onButtonClicked()
         }
     }
@@ -47,8 +56,8 @@ class InputWorkScreen(input: String) : BaseViewInput<Button, Button, String, Int
             loadFile.await()
         },
         uiAction = {
-            binding.text = "file content = $input"
-            binding.setOnAction {
+            binding.root.text = "file content = $input"
+            binding.root.setOnAction {
                 onButtonBadClicked()
             }
         })
@@ -79,7 +88,7 @@ class InputWorkScreen(input: String) : BaseViewInput<Button, Button, String, Int
         listOf(a, b, c).joinAll()
         "${a.await() + b.await() + c.await()}"
     }, {
-        binding.text = "result = $input"
+        binding.root.text = "result = $input"
         throw Exception("should crash application")
     })
 }
