@@ -1,5 +1,6 @@
 package csense.example.app
 
+import csense.javafx.presentView
 import csense.javafx.viewdsl.button
 import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseEmptyView
@@ -37,16 +38,19 @@ class EmptyWorkScreen : BaseEmptyView<Unit, EmptyWorkScreenView>(
 ) {
 
 
-    override suspend fun loadView() = Unit
+    override suspend fun loadView(): Unit = Unit
 
     override fun InUiUpdateEmpty<EmptyWorkScreenView>.onReady() {
         binding.showInputOutput.setOnAction {
-            presentView(InOutWorkScreen("123")) {
+            presentView(InOutWorkScreen("123"), {
+                it.width = 500.0
+                it.height = 600.0
+            }) {
                 binding.showInputOutput.text = "= \"$input\"))"
             }
         }
         binding.showInput.setOnAction {
-            InputWorkScreen("").presentModal()
+            InputWorkScreen("").presentModal(configureStage = { it.height = 500.0; it.width = 400.0 })
         }
         binding.showOutput.setOnAction {
             presentView(OutputWorkScreen()) {
@@ -54,25 +58,6 @@ class EmptyWorkScreen : BaseEmptyView<Unit, EmptyWorkScreenView>(
             }
         }
     }
-
-
-//    override fun bindView(loaded: EmptyWorkScreenView): EmptyWorkScreenView {
-//        loaded.showInputOutput.setOnAction {
-//            presentView(InOutWorkScreen("123")) {
-//                binding.showInputOutput.text = "= \"$input\"))"
-//            }
-//        }
-//        loaded.showInput.setOnAction {
-//
-//            InputWorkScreen("").presentModal()
-//        }
-//        loaded.showOutput.setOnAction {
-//            presentView(OutputWorkScreen()) {
-//                binding.showOutput.text = "output (got \"$input\" back))"
-//            }
-//        }
-//        return loaded
-//    }
 }
 
 

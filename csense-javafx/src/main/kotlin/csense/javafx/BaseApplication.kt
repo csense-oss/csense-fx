@@ -8,11 +8,16 @@ import javafx.stage.Stage
 import kotlin.system.measureTimeMillis
 
 abstract class BaseApplication : Application() {
+
+    abstract val startingHeight: Double
+
+    abstract val startingWidth: Double
+
     override fun start(primaryStage: Stage?) {
         if (primaryStage == null) {
             return
         }
-        val newScene = Scene(createSplashScreen())
+        val newScene = Scene(createSplashScreen(), startingWidth, startingHeight)
         val startSplashTime = measureTimeMillis {
             primaryStage.scene = newScene
             primaryStage.show()
@@ -22,6 +27,7 @@ abstract class BaseApplication : Application() {
         view.addToScene(newScene)
 
     }
+
 
     abstract fun createView(): BaseView<*, *>
 

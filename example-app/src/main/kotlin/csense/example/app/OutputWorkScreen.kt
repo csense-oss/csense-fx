@@ -34,6 +34,8 @@ class OutputWorkScreenView(
 class OutputWorkScreen : BaseViewOutput<OutputWorkScreen, OutputWorkScreenView, String>(
     { item: OutputWorkScreen, onViewSetup: OnViewSetup -> OutputWorkScreenView(item::ontest, onViewSetup) }
 ) {
+
+
     override fun InUiUpdateEmpty<OutputWorkScreenView>.onReady() {
         binding.a.text = "swag"
     }

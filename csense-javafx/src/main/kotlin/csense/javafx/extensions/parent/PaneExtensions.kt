@@ -11,7 +11,12 @@ import javafx.scene.layout.Pane
  * @receiver Pane
  * @param node Node
  */
-fun Pane.addToBack(node: Node) = children.add(0, node).toUnit()
+inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
+
+/**
+ *
+ */
+inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
 
 inline fun <T : Pane> T.addChildFluent(child: Node): T = this.apply {
     children.add(child)

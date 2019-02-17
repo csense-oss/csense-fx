@@ -1,11 +1,14 @@
 package csense.javafx.views.base
 
+import csense.javafx.extensions.StageExtensions.stageWith
 import csense.javafx.extensions.parent.addToBack
+import csense.javafx.extensions.showFluent
+import csense.kotlin.FunctionUnit
 import csense.kotlin.extensions.coroutines.asyncDefault
 import csense.kotlin.extensions.coroutines.asyncMain
 import csense.kotlin.extensions.coroutines.launchDefault
 import csense.kotlin.extensions.coroutines.launchMain
-import csense.kotlin.logger.L
+import csense.kotlin.extensions.tryAndLog
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.layout.Pane
@@ -13,9 +16,17 @@ import javafx.stage.Stage
 import javafx.stage.Window
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.coroutineScope
 
 
+/**
+ *
+ *This Guy will contain all the necessary low level stuff;
+ *
+ *
+ *
+ * This includes the "bouncing" feature of "threading" / coroutines;
+ * The point of Bouncing can be seen in the Bouncing.md file
+ */
 abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
     ToUi<ViewBinding>,
     ToBackground<ViewBinding> {
@@ -43,9 +54,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
         input: T,
         action: InUiUpdateInputScope<ViewBinding, T>
     ): Job = coroutineScope.launchMain {
-        println("loading view ${this@AbstractBaseView}")
         val view = getViewAsync().await()
-        println("got view ${this@AbstractBaseView}")
         action(
             InUiUpdateInput(
                 currentWindow,
@@ -83,64 +92,67 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
 
 
     //region OnBackground
-    final override fun inBackground(action: InBackgroundEmptyScope<ViewBinding>): Job =
-        coroutineScope.launchDefault {
-            coroutineScope {
-                try {
-                    action(InBackgroundEmpty(this@AbstractBaseView, this))
-                } catch (e: Exception) {
-                    L.error("tag", "test", e)
-                }
-            }
+    final override fun inBackground(
+        action: InBackgroundEmptyScope<ViewBinding>
+    ): Job = coroutineScope.launchDefault {
+        tryAndLog {
+            action(InBackgroundEmpty(this@AbstractBaseView, this))
         }
+    }
 
     final override fun <Input> inBackground(
         input: Input,
         action: InBackgroundInputScope<ViewBinding, Input>
-    ): Job =
-        coroutineScope.launchDefault {
+    ): Job = coroutineScope.launchDefault {
+        action(InBackgroundInput(input, this@AbstractBaseView))
+    }
 
-        }
-
-    final override fun <Output> inBackgroundAsync(action: InBackgroundOutputScope<ViewBinding, Output>): Deferred<Output> =
-        coroutineScope.asyncDefault {
-            action(InBackgroundEmpty(this@AbstractBaseView, coroutineScope))
-        }
+    final override fun <Output> inBackgroundAsync(
+        action: InBackgroundOutputScope<ViewBinding, Output>
+    ): Deferred<Output> = coroutineScope.asyncDefault {
+        action(InBackgroundEmpty(this@AbstractBaseView, coroutineScope))
+    }
 
     final override fun <Input, Output> inBackgroundAsync(
         input: Input,
         action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
-    ): Deferred<Output> =
-        coroutineScope.asyncDefault {
-            action(InBackgroundInput(input, this@AbstractBaseView))
-        }
+    ): Deferred<Output> = coroutineScope.asyncDefault {
+        action(InBackgroundInput(input, this@AbstractBaseView))
+    }
 
-    open fun presentModal(ownerWindow: Window? = null): Job = inUi(ownerWindow) {
-        val newStage = Stage().apply {
-            scene = Scene(this@inUi.binding.root)
-        }
-        newStage.show()
-        this@AbstractBaseView.currentStage = newStage
-        this@AbstractBaseView.currentWindow = newStage
+    open fun presentModal(
+        ownerWindow: Window? = null,
+        configureStage: FunctionUnit<Stage>? = null
+    ): Job = inUi(ownerWindow) {
+        val newStage = stageWith(binding.root, configureStage).showFluent()
+        updateWindowAndStage(newStage, newStage)
         start()
     }
 
     open fun addToView(toPlaceIn: Pane): Job = inUi(toPlaceIn) {
         input.addToBack(binding.root)
-        this@AbstractBaseView.currentWindow = input.scene?.window
-        this@AbstractBaseView.currentStage = this@AbstractBaseView.currentWindow as? Stage
+        updateWindowAndStage(
+            input.scene?.window,
+            input.scene?.window as? Stage
+        )
         start()
     }
 
     open fun addToScene(toPlaceIn: Scene): Job = inUi(toPlaceIn) {
         input.root = binding.root
-        this@AbstractBaseView.currentWindow = input.window
-        this@AbstractBaseView.currentStage = input.window as? Stage
+        updateWindowAndStage(input.window, input.window as? Stage)
         start()
     }
 
-    open fun start() {
-
+    /**
+     *
+     */
+    internal open fun start() {
     }
 
+    private fun updateWindowAndStage(scene: Window?, stage: Stage?) {
+        currentStage = stage
+        currentWindow = scene
+    }
 }
+

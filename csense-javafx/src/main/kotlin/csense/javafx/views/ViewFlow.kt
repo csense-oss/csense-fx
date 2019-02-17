@@ -1,9 +1,9 @@
 package csense.javafx.views
 
-import csense.javafx.extensions.asyncIO
 import csense.javafx.views.base.OnViewSetup
 import csense.kotlin.AsyncFunction0
 import csense.kotlin.extensions.coroutines.asyncDefault
+import csense.kotlin.extensions.coroutines.asyncIO
 import kotlinx.coroutines.*
 
 

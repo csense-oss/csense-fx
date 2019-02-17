@@ -17,7 +17,7 @@ inline fun Pane.button(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAddLast {
+    return createAndAdd {
         Button(text).apply {
             setOnAction { onAction() }
             action(this)

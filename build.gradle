@@ -2,7 +2,7 @@ buildscript {
     //library setup
     ext.commonsenseUserOrg = "csense-oss"
     ext.commonsenseRepoName = "csense-javafx"
-    ext.commonsenseGroupId = "csense.kotlin"
+    ext.commonsenseGroupId = "csense.javafx"
     ext.commonsenseVersionName = "0.0.1"
     ext.commonsenseGithub = "csense-oss/csense-javafx"
     ext.commonsenseLicense = ["MIT"]
@@ -12,10 +12,10 @@ buildscript {
 
 
     //version deps
-    ext.csensekotlinVersion = "0.0.10"
+    ext.csensekotlinVersion = "0.0.14"
     ext.coroutinesVersion = "1.1.1"
     ext.dokkaVersion = "0.9.17"
-    ext.kotlin_version = "1.3.20"
+    ext.kotlin_version = "1.3.21"
 
 
     repositories {
