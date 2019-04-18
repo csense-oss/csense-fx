@@ -7,11 +7,11 @@ import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
 
 class TransparentScene : Scene {
-    constructor(root: Parent?) : super(root)
-    constructor(root: Parent?, width: Double, height: Double) : super(root, width, height)
-    constructor(root: Parent?, fill: Paint?) : super(root, fill)
-    constructor(root: Parent?, width: Double, height: Double, fill: Paint?) : super(root, width, height, fill)
-    constructor(root: Parent?, width: Double, height: Double, depthBuffer: Boolean) : super(
+    constructor(root: Parent) : super(root)
+    constructor(root: Parent, width: Double, height: Double) : super(root, width, height)
+    constructor(root: Parent, fill: Paint?) : super(root, fill)
+    constructor(root: Parent, width: Double, height: Double, fill: Paint?) : super(root, width, height, fill)
+    constructor(root: Parent, width: Double, height: Double, depthBuffer: Boolean) : super(
         root,
         width,
         height,
@@ -19,7 +19,7 @@ class TransparentScene : Scene {
     )
 
     constructor(
-        root: Parent?,
+        root: Parent,
         width: Double,
         height: Double,
         depthBuffer: Boolean,

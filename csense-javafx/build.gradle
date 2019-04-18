@@ -5,11 +5,11 @@ version '1.0-SNAPSHOT'
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "csense.kotlin:csense-kotlin-jvm:$csensekotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     
-    testImplementation "csense.kotlin:csense-kotlin-test-jvm:$csensekotlinVersion"
+    testImplementation "csense.kotlin:csense-kotlin-test-jvm:$csenseKotlinVersion"
 }
 
 compileKotlin {

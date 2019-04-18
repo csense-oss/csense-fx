@@ -1,6 +1,5 @@
 package csense.example.app
 
-//import csense.javafx.views.BaseView
 import csense.javafx.BaseApplication
 import csense.javafx.viewdsl.hBox
 import csense.javafx.viewdsl.label
@@ -20,18 +19,6 @@ import javafx.stage.Stage
 import kotlinx.coroutines.MainScope
 
 fun main(args: Array<String>) {
-    //try the resouce compiler.
-//    val str = Strings.main.mainUiTitle
-//    Strings.main.locale = Locale.GERMANY
-//    val str2 = Strings.main.langaugeName
-//    println(str + "- " + str2)
-
-
-//    for (i in 0 until 50_000) {
-//        println("i$i = $i")
-//    }
-
-
     SystemScaling.fixTextScaling()
     Application.launch(FxApplicationWrapper::class.java, *args)
 }
@@ -55,6 +42,7 @@ class LoginView(onViewSetup: OnViewSetup) : LoadViewAble<Parent>(onViewSetup) {
     val UsernameField: Node
 
     val UserPasswordField: Node
+
     override val root = vBox {
         label { text = "Enter %name" }
         UsernameField = textField {}
@@ -75,7 +63,7 @@ class LoginViewController : BaseEmptyView<Unit, LoginView>(
 ) {
     override fun InUiUpdateEmpty<LoginView>.onReady() {
 
-        Toast.showQuickNotificationToast()
+        Toast.showQuickNotificationToast("")
         (binding.UserPasswordField.scene?.window as? Stage)?.close()
     }
 
@@ -84,8 +72,14 @@ class LoginViewController : BaseEmptyView<Unit, LoginView>(
 }
 
 
+/**
+ *
+ */
 object SystemScaling {
-    var haveFixed = false
+    private var haveFixed = false
+    /**
+     * Fixes windows text scaling issues.
+     */
     fun fixTextScaling() {
         if (haveFixed) {
             return
