@@ -17,9 +17,9 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun accordion(
-    crossinline action: @InViewDsl ScopedViewDsl<Accordion>
+        crossinline action: @InViewDsl ScopedViewDsl<Accordion>
 ): Accordion {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -28,9 +28,9 @@ inline fun accordion(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun anchorPane(
-    crossinline action: @InViewDsl ScopedViewDsl<AnchorPane>
+        crossinline action: @InViewDsl ScopedViewDsl<AnchorPane>
 ): AnchorPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -39,9 +39,9 @@ inline fun anchorPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun borderPane(
-    crossinline action: @InViewDsl ScopedViewDsl<BorderPane>
+        crossinline action: @InViewDsl ScopedViewDsl<BorderPane>
 ): BorderPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -57,10 +57,10 @@ inline fun borderPane(
  * @param action Button.() -> Unit
  * @return Button
  */
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun button(
-    text: String,
-    crossinline action: @InViewDsl ScopedViewDsl<Button>
+        text: String,
+        crossinline action: @InViewDsl ScopedViewDsl<Button>
 ): Button {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -73,9 +73,9 @@ inline fun button(text: String): Button {
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun buttonBar(
-    crossinline action: @InViewDsl ScopedViewDsl<ButtonBar>
+        crossinline action: @InViewDsl ScopedViewDsl<ButtonBar>
 ): ButtonBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -84,9 +84,9 @@ inline fun buttonBar(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun checkBox(
-    crossinline action: @InViewDsl ScopedViewDsl<CheckBox>
+        crossinline action: @InViewDsl ScopedViewDsl<CheckBox>
 ): CheckBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -95,9 +95,9 @@ inline fun checkBox(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> choiceBox(
-    crossinline action: @InViewDsl ScopedViewDsl<ChoiceBox<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<ChoiceBox<T>>
 ): ChoiceBox<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -106,9 +106,9 @@ inline fun <T> choiceBox(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun colorPicker(
-    crossinline action: @InViewDsl ScopedViewDsl<ColorPicker>
+        crossinline action: @InViewDsl ScopedViewDsl<ColorPicker>
 ): ColorPicker {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -117,9 +117,9 @@ inline fun colorPicker(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> comboBox(
-    crossinline action: @InViewDsl ScopedViewDsl<ComboBox<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<ComboBox<T>>
 ): ComboBox<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -128,9 +128,9 @@ inline fun <T> comboBox(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun datePicker(
-    crossinline action: @InViewDsl ScopedViewDsl<DatePicker>
+        crossinline action: @InViewDsl ScopedViewDsl<DatePicker>
 ): DatePicker {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -139,9 +139,9 @@ inline fun datePicker(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun flowPane(
-    crossinline action: @InViewDsl ScopedViewDsl<FlowPane>
+        crossinline action: @InViewDsl ScopedViewDsl<FlowPane>
 ): FlowPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -150,9 +150,9 @@ inline fun flowPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun gridPane(
-    crossinline action: @InViewDsl ScopedViewDsl<GridPane>
+        crossinline action: @InViewDsl ScopedViewDsl<GridPane>
 ): GridPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -161,9 +161,9 @@ inline fun gridPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun group(
-    crossinline action: @InViewDsl ScopedViewDsl<Group>
+        crossinline action: @InViewDsl ScopedViewDsl<Group>
 ): Group {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -172,9 +172,9 @@ inline fun group(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun hBox(
-    crossinline action: @InViewDsl ScopedViewDsl<HBox>
+        crossinline action: @InViewDsl ScopedViewDsl<HBox>
 ): HBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -183,9 +183,9 @@ inline fun hBox(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun htmlEditor(
-    crossinline action: @InViewDsl ScopedViewDsl<HTMLEditor>
+        crossinline action: @InViewDsl ScopedViewDsl<HTMLEditor>
 ): HTMLEditor {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -194,9 +194,9 @@ inline fun htmlEditor(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun hyperlink(
-    crossinline action: @InViewDsl ScopedViewDsl<Hyperlink>
+        crossinline action: @InViewDsl ScopedViewDsl<Hyperlink>
 ): Hyperlink {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -205,9 +205,9 @@ inline fun hyperlink(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun imageView(
-    crossinline action: @InViewDsl ScopedViewDsl<ImageView>
+        crossinline action: @InViewDsl ScopedViewDsl<ImageView>
 ): ImageView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -216,9 +216,9 @@ inline fun imageView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun label(
-    crossinline action: @InViewDsl ScopedViewDsl<Label>
+        crossinline action: @InViewDsl ScopedViewDsl<Label>
 ): Label {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -227,9 +227,9 @@ inline fun label(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> listView(
-    crossinline action: @InViewDsl ScopedViewDsl<ListView<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<ListView<T>>
 ): ListView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -238,9 +238,9 @@ inline fun <T> listView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun mediaView(
-    crossinline action: @InViewDsl ScopedViewDsl<MediaView>
+        crossinline action: @InViewDsl ScopedViewDsl<MediaView>
 ): MediaView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -249,9 +249,9 @@ inline fun mediaView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun menuBar(
-    crossinline action: @InViewDsl ScopedViewDsl<MenuBar>
+        crossinline action: @InViewDsl ScopedViewDsl<MenuBar>
 ): MenuBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -260,9 +260,9 @@ inline fun menuBar(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun meshView(
-    crossinline action: @InViewDsl ScopedViewDsl<MeshView>
+        crossinline action: @InViewDsl ScopedViewDsl<MeshView>
 ): MeshView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -271,9 +271,9 @@ inline fun meshView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun pagination(
-    crossinline action: @InViewDsl ScopedViewDsl<Pagination>
+        crossinline action: @InViewDsl ScopedViewDsl<Pagination>
 ): Pagination {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -282,9 +282,9 @@ inline fun pagination(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun passwordField(
-    crossinline action: @InViewDsl ScopedViewDsl<PasswordField>
+        crossinline action: @InViewDsl ScopedViewDsl<PasswordField>
 ): PasswordField {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -293,9 +293,9 @@ inline fun passwordField(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun progressBar(
-    crossinline action: @InViewDsl ScopedViewDsl<ProgressBar>
+        crossinline action: @InViewDsl ScopedViewDsl<ProgressBar>
 ): ProgressBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -304,9 +304,9 @@ inline fun progressBar(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun progressIndicator(
-    crossinline action: @InViewDsl ScopedViewDsl<ProgressIndicator>
+        crossinline action: @InViewDsl ScopedViewDsl<ProgressIndicator>
 ): ProgressIndicator {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -315,9 +315,9 @@ inline fun progressIndicator(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun radioButton(
-    crossinline action: @InViewDsl ScopedViewDsl<RadioButton>
+        crossinline action: @InViewDsl ScopedViewDsl<RadioButton>
 ): RadioButton {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -326,9 +326,9 @@ inline fun radioButton(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun scrollPane(
-    crossinline action: @InViewDsl ScopedViewDsl<ScrollPane>
+        crossinline action: @InViewDsl ScopedViewDsl<ScrollPane>
 ): ScrollPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -337,9 +337,9 @@ inline fun scrollPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun separator(
-    crossinline action: @InViewDsl ScopedViewDsl<Separator>
+        crossinline action: @InViewDsl ScopedViewDsl<Separator>
 ): Separator {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -348,9 +348,9 @@ inline fun separator(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun slider(
-    crossinline action: @InViewDsl ScopedViewDsl<Slider>
+        crossinline action: @InViewDsl ScopedViewDsl<Slider>
 ): Slider {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -359,9 +359,9 @@ inline fun slider(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> spinner(
-    crossinline action: @InViewDsl ScopedViewDsl<Spinner<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<Spinner<T>>
 ): Spinner<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -370,9 +370,9 @@ inline fun <T> spinner(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun splitPane(
-    crossinline action: @InViewDsl ScopedViewDsl<SplitPane>
+        crossinline action: @InViewDsl ScopedViewDsl<SplitPane>
 ): SplitPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -381,9 +381,9 @@ inline fun splitPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun stackPane(
-    crossinline action: @InViewDsl ScopedViewDsl<StackPane>
+        crossinline action: @InViewDsl ScopedViewDsl<StackPane>
 ): StackPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -392,9 +392,9 @@ inline fun stackPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> tableView(
-    crossinline action: @InViewDsl ScopedViewDsl<TableView<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<TableView<T>>
 ): TableView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -403,9 +403,9 @@ inline fun <T> tableView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun tabPane(
-    crossinline action: @InViewDsl ScopedViewDsl<TabPane>
+        crossinline action: @InViewDsl ScopedViewDsl<TabPane>
 ): TabPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -414,9 +414,9 @@ inline fun tabPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun text(
-    crossinline action: @InViewDsl ScopedViewDsl<Text>
+        crossinline action: @InViewDsl ScopedViewDsl<Text>
 ): Text {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -425,9 +425,9 @@ inline fun text(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun textArea(
-    crossinline action: @InViewDsl ScopedViewDsl<TextArea>
+        crossinline action: @InViewDsl ScopedViewDsl<TextArea>
 ): TextArea {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -436,9 +436,9 @@ inline fun textArea(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun textField(
-    crossinline action: @InViewDsl ScopedViewDsl<TextField>
+        crossinline action: @InViewDsl ScopedViewDsl<TextField>
 ): TextField {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -447,9 +447,9 @@ inline fun textField(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun textFlow(
-    crossinline action: @InViewDsl ScopedViewDsl<TextFlow>
+        crossinline action: @InViewDsl ScopedViewDsl<TextFlow>
 ): TextFlow {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -458,9 +458,9 @@ inline fun textFlow(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun tilePane(
-    crossinline action: @InViewDsl ScopedViewDsl<TilePane>
+        crossinline action: @InViewDsl ScopedViewDsl<TilePane>
 ): TilePane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -469,9 +469,9 @@ inline fun tilePane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun titledPane(
-    crossinline action: @InViewDsl ScopedViewDsl<TitledPane>
+        crossinline action: @InViewDsl ScopedViewDsl<TitledPane>
 ): TitledPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -480,9 +480,9 @@ inline fun titledPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun toggleButton(
-    crossinline action: @InViewDsl ScopedViewDsl<ToggleButton>
+        crossinline action: @InViewDsl ScopedViewDsl<ToggleButton>
 ): ToggleButton {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -491,9 +491,9 @@ inline fun toggleButton(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun toolBar(
-    crossinline action: @InViewDsl ScopedViewDsl<ToolBar>
+        crossinline action: @InViewDsl ScopedViewDsl<ToolBar>
 ): ToolBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -502,9 +502,9 @@ inline fun toolBar(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> treeTableView(
-    crossinline action: @InViewDsl ScopedViewDsl<TreeTableView<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<TreeTableView<T>>
 ): TreeTableView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -513,9 +513,9 @@ inline fun <T> treeTableView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> treeView(
-    crossinline action: @InViewDsl ScopedViewDsl<TreeView<T>>
+        crossinline action: @InViewDsl ScopedViewDsl<TreeView<T>>
 ): TreeView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -524,9 +524,20 @@ inline fun <T> treeView(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun vBox(
-    crossinline action: ScopedViewDsl<VBox>
+        crossinline action: ScopedViewDsl<VBox>
+): VBox {
+    contract {
+        callsInPlace(action, InvocationKind.EXACTLY_ONCE)
+    }
+    return VBox().apply(action)
+}
+
+//TODO consider this.
+
+inline fun vBoxNew(
+        crossinline action: ScopedViewDsl<VBox>
 ): VBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -535,14 +546,13 @@ inline fun vBox(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun webView(
-    crossinline action: @InViewDsl ScopedViewDsl<WebView>
+        crossinline action: @InViewDsl ScopedViewDsl<WebView>
 ): WebView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
     return WebView().apply(action)
 }
-
 

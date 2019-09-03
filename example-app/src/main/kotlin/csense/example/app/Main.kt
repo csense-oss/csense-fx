@@ -11,7 +11,10 @@ import csense.javafx.views.base.InUiUpdateEmpty
 import csense.javafx.views.base.LoadViewAble
 import csense.javafx.views.base.OnViewSetup
 import csense.javafx.widgets.Toast
+import csense.kotlin.logger.L
+import csense.kotlin.logger.usePrintAsLoggers
 import javafx.application.Application
+import javafx.geometry.Insets
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.control.Label
@@ -19,6 +22,7 @@ import javafx.stage.Stage
 import kotlinx.coroutines.MainScope
 
 fun main(args: Array<String>) {
+    L.usePrintAsLoggers()
     SystemScaling.fixTextScaling()
     Application.launch(FxApplicationWrapper::class.java, *args)
 }
@@ -34,7 +38,12 @@ class FxApplicationWrapper : BaseApplication() {
     }
 
     override fun createSplashScreen(): Parent {
-        return Label("Loading")
+        return vBox {
+            padding = Insets(50.0)
+            label {
+                text = "Loading"
+            }
+        }
     }
 }
 
@@ -44,7 +53,7 @@ class LoginView(onViewSetup: OnViewSetup) : LoadViewAble<Parent>(onViewSetup) {
     val UserPasswordField: Node
 
     override val root = vBox {
-        label { text = "Enter %name" }
+        label { text = "Enter name" }
         UsernameField = textField {}
         label { text = "Enter password" }
         UserPasswordField = textField {}
@@ -63,8 +72,8 @@ class LoginViewController : BaseEmptyView<Unit, LoginView>(
 ) {
     override fun InUiUpdateEmpty<LoginView>.onReady() {
 
-        Toast.showQuickNotificationToast("")
-        (binding.UserPasswordField.scene?.window as? Stage)?.close()
+        //Toast.showQuickNotificationToast("")
+//        (binding.UserPasswordField.scene?.window as? Stage)?.close()
     }
 
     override suspend fun loadView(): Unit = Unit

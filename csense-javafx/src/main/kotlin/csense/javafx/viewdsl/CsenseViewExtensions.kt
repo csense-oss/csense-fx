@@ -8,7 +8,7 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.button(
     text: String,
     crossinline onAction: EmptyFunction,

@@ -1,10 +1,11 @@
-package csense.javafx.integration
+package csense.javafx.tools.fps
 
+import csense.javafx.animations.*;
 import com.sun.javafx.perf.PerformanceTracker
-import csense.javafx.animations.AnimationTimerForCallback
 import csense.kotlin.logger.logClassWarning
 import javafx.scene.Scene
 import java.security.AccessControlException
+
 
 /**
  *
@@ -50,7 +51,7 @@ fun Scene.logFps(): AnimationTimerForCallback {
         if (avg <= 0.1) {
             return@AnimationTimerForCallback
         }
-        println("Current fps is: $avg")
+        kotlin.io.println("Current fps is: $avg")
     }.apply {
         start()
     }

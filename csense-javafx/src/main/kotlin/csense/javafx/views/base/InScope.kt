@@ -60,6 +60,7 @@ interface ProhibitedBinding<ViewBinding> {
         replaceWith = ReplaceWith("inUi{ binding }", "csense.javafx.views")
     )
     val binding: ViewBinding
+        @Throws(Exception::class)
         get() = throw Exception("Not allowed.")
 }
 
@@ -121,6 +122,15 @@ interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
     fun <Output> inUiAsync(
         action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<Output>
+
+    /**
+     * Unlike the closely related functions this unpacks the "inner" await of a given deferred statement, such as the result of a BaseViewOutput.createResult.
+     * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.views.base.InScope] InUiUpdateEmpty<ViewBinding>, Output>
+     * @return Deferred<T>
+     */
+    fun <T, Output : Deferred<T>> inUiDeferredAsync(
+            action: InUiUpdateOutputScope<ViewBinding, Output>
+    ): Deferred<T>
 }
 
 /**

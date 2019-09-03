@@ -2,7 +2,10 @@
 
 package csense.javafx.viewdsl
 
+import csense.javafx.controller.ControllerAdapter
 import csense.javafx.extensions.parent.addToFront
+import csense.javafx.views.base.BaseView
+import csense.javafx.widgets.*
 import csense.kotlin.EmptyFunctionResult
 import javafx.scene.Group
 import javafx.scene.Node
@@ -19,7 +22,7 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T : Node> Pane.createAndAdd(create: EmptyFunctionResult<T>): T {
     contract {
         callsInPlace(create, InvocationKind.EXACTLY_ONCE)
@@ -27,7 +30,7 @@ inline fun <T : Node> Pane.createAndAdd(create: EmptyFunctionResult<T>): T {
     return create().apply(::addToFront)
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.accordion(
     crossinline action: ScopedViewDsl<Accordion>
 ): Accordion {
@@ -39,7 +42,7 @@ inline fun Pane.accordion(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.anchorPane(
     crossinline action: ScopedViewDsl<AnchorPane>
 ): AnchorPane {
@@ -51,7 +54,7 @@ inline fun Pane.anchorPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.borderPane(
     crossinline action: ScopedViewDsl<BorderPane>
 ): BorderPane {
@@ -64,7 +67,7 @@ inline fun Pane.borderPane(
 }
 
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.button(text: String): Button = createAndAdd { Button(text) }
 
 /**
@@ -74,7 +77,7 @@ inline fun Pane.button(text: String): Button = createAndAdd { Button(text) }
  * @param action Button.() -> Unit
  * @return Button
  */
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.button(
     text: String,
     crossinline action: ScopedViewDsl<Button>
@@ -85,7 +88,7 @@ inline fun Pane.button(
     return createAndAdd { Button(text).apply(action) }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.buttonBar(
     crossinline action: ScopedViewDsl<ButtonBar>
 ): ButtonBar {
@@ -97,7 +100,7 @@ inline fun Pane.buttonBar(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.checkBox(
     crossinline action: ScopedViewDsl<CheckBox>
 ): CheckBox {
@@ -109,7 +112,7 @@ inline fun Pane.checkBox(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.choiceBox(
     crossinline action: ScopedViewDsl<ChoiceBox<T>>
 ): ChoiceBox<T> {
@@ -121,7 +124,7 @@ inline fun <T> Pane.choiceBox(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.colorPicker(
     crossinline action: ScopedViewDsl<ColorPicker>
 ): ColorPicker {
@@ -133,7 +136,7 @@ inline fun Pane.colorPicker(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.comboBox(
     crossinline action: ScopedViewDsl<ComboBox<T>>
 ): ComboBox<T> {
@@ -145,7 +148,7 @@ inline fun <T> Pane.comboBox(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.datePicker(
     crossinline action: ScopedViewDsl<DatePicker>
 ): DatePicker {
@@ -157,7 +160,7 @@ inline fun Pane.datePicker(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.flowPane(
     crossinline action: ScopedViewDsl<FlowPane>
 ): FlowPane {
@@ -169,7 +172,7 @@ inline fun Pane.flowPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.gridPane(
     crossinline action: ScopedViewDsl<GridPane>
 ): GridPane {
@@ -181,7 +184,7 @@ inline fun Pane.gridPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.group(
     crossinline action: ScopedViewDsl<Group>
 ): Group {
@@ -193,7 +196,7 @@ inline fun Pane.group(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.hBox(
     crossinline action: ScopedViewDsl<HBox>
 ): HBox {
@@ -205,7 +208,7 @@ inline fun Pane.hBox(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.htmlEditor(
     crossinline action: ScopedViewDsl<HTMLEditor>
 ): HTMLEditor {
@@ -217,7 +220,7 @@ inline fun Pane.htmlEditor(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.hyperlink(
     crossinline action: ScopedViewDsl<Hyperlink>
 ): Hyperlink {
@@ -229,7 +232,7 @@ inline fun Pane.hyperlink(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.imageView(
     crossinline action: ScopedViewDsl<ImageView>
 ): ImageView {
@@ -241,7 +244,7 @@ inline fun Pane.imageView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.label(
     crossinline action: ScopedViewDsl<Label>
 ): Label {
@@ -253,7 +256,7 @@ inline fun Pane.label(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.listView(
     crossinline action: ScopedViewDsl<ListView<T>>
 ): ListView<T> {
@@ -265,7 +268,7 @@ inline fun <T> Pane.listView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.mediaView(
     crossinline action: ScopedViewDsl<MediaView>
 ): MediaView {
@@ -277,7 +280,7 @@ inline fun Pane.mediaView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.menuBar(
     crossinline action: ScopedViewDsl<MenuBar>
 ): MenuBar {
@@ -289,7 +292,7 @@ inline fun Pane.menuBar(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.meshView(
     crossinline action: ScopedViewDsl<MeshView>
 ): MeshView {
@@ -301,7 +304,7 @@ inline fun Pane.meshView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.pagination(
     crossinline action: ScopedViewDsl<Pagination>
 ): Pagination {
@@ -313,7 +316,7 @@ inline fun Pane.pagination(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.passwordField(
     crossinline action: ScopedViewDsl<PasswordField>
 ): PasswordField {
@@ -325,7 +328,7 @@ inline fun Pane.passwordField(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.progressBar(
     crossinline action: ScopedViewDsl<ProgressBar>
 ): ProgressBar {
@@ -337,7 +340,7 @@ inline fun Pane.progressBar(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.progressIndicator(
     crossinline action: ScopedViewDsl<ProgressIndicator>
 ): ProgressIndicator {
@@ -349,7 +352,7 @@ inline fun Pane.progressIndicator(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.radioButton(
     crossinline action: ScopedViewDsl<RadioButton>
 ): RadioButton {
@@ -361,7 +364,7 @@ inline fun Pane.radioButton(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.scrollPane(
     crossinline action: ScopedViewDsl<ScrollPane>
 ): ScrollPane {
@@ -373,7 +376,7 @@ inline fun Pane.scrollPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.separator(
     crossinline action: ScopedViewDsl<Separator>
 ): Separator {
@@ -385,7 +388,7 @@ inline fun Pane.separator(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.slider(
     crossinline action: ScopedViewDsl<Slider>
 ): Slider {
@@ -397,7 +400,7 @@ inline fun Pane.slider(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.spinner(
     crossinline action: ScopedViewDsl<Spinner<T>>
 ): Spinner<T> {
@@ -409,7 +412,7 @@ inline fun <T> Pane.spinner(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.splitPane(
     crossinline action: ScopedViewDsl<SplitPane>
 ): SplitPane {
@@ -421,7 +424,7 @@ inline fun Pane.splitPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.stackPane(
     crossinline action: ScopedViewDsl<StackPane>
 ): StackPane {
@@ -433,7 +436,7 @@ inline fun Pane.stackPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.tableView(
     crossinline action: ScopedViewDsl<TableView<T>>
 ): TableView<T> {
@@ -445,7 +448,7 @@ inline fun <T> Pane.tableView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.tabPane(
     crossinline action: ScopedViewDsl<TabPane>
 ): TabPane {
@@ -457,7 +460,7 @@ inline fun Pane.tabPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.text(
     crossinline action: ScopedViewDsl<Text>
 ): Text {
@@ -469,7 +472,7 @@ inline fun Pane.text(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.textArea(
     crossinline action: ScopedViewDsl<TextArea>
 ): TextArea {
@@ -481,7 +484,7 @@ inline fun Pane.textArea(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.textField(
     crossinline action: ScopedViewDsl<TextField>
 ): TextField {
@@ -493,7 +496,7 @@ inline fun Pane.textField(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.textFlow(
     crossinline action: ScopedViewDsl<TextFlow>
 ): TextFlow {
@@ -505,7 +508,7 @@ inline fun Pane.textFlow(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.tilePane(
     crossinline action: ScopedViewDsl<TilePane>
 ): TilePane {
@@ -517,7 +520,7 @@ inline fun Pane.tilePane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.titledPane(
     crossinline action: ScopedViewDsl<TitledPane>
 ): TitledPane {
@@ -529,7 +532,7 @@ inline fun Pane.titledPane(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.toggleButton(
     crossinline action: ScopedViewDsl<ToggleButton>
 ): ToggleButton {
@@ -541,7 +544,7 @@ inline fun Pane.toggleButton(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.toolBar(
     crossinline action: ScopedViewDsl<ToolBar>
 ): ToolBar {
@@ -553,7 +556,7 @@ inline fun Pane.toolBar(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.treeTableView(
     crossinline action: ScopedViewDsl<TreeTableView<T>>
 ): TreeTableView<T> {
@@ -565,7 +568,7 @@ inline fun <T> Pane.treeTableView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun <T> Pane.treeView(
     crossinline action: ScopedViewDsl<TreeView<T>>
 ): TreeView<T> {
@@ -577,7 +580,7 @@ inline fun <T> Pane.treeView(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.vBox(
     crossinline action: ScopedViewDsl<VBox>
 ): VBox {
@@ -589,7 +592,7 @@ inline fun Pane.vBox(
     }
 }
 
-@UseExperimental(ExperimentalContracts::class)
+
 inline fun Pane.webView(
     crossinline action: ScopedViewDsl<WebView>
 ): WebView {
@@ -601,3 +604,27 @@ inline fun Pane.webView(
     }
 }
 
+
+inline fun Pane.space(
+    spacing: Double
+) {
+    addToFront(SpaceView(spacing))
+}
+
+/**
+ *
+ * @receiver Pane
+ * @param controller BaseView<*, *>
+ */
+
+inline fun <T : BaseView<*, *>> Pane.useController(
+    controller: T,
+    crossinline action: ScopedViewDsl<T> = {}
+): T {
+    contract {
+        callsInPlace(action, InvocationKind.EXACTLY_ONCE)
+    }
+    ControllerAdapter(controller, this)
+    action(controller)
+    return controller
+}

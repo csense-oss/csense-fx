@@ -28,3 +28,4 @@ out/
 csense-javafx/build/
 example-app/build/
 !gradle/*
+csense-javafx-tools/build/

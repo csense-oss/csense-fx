@@ -1,9 +1,11 @@
 package csense.javafx.extensions
 
 import csense.kotlin.FunctionUnit
+import csense.kotlin.extensions.*
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.stage.Stage
+import kotlin.also
 
 object StageExtensions {
     /**
@@ -26,13 +28,11 @@ object StageExtensions {
  * @receiver Stage
  * @param configureStage FunctionUnit<Stage>?
  */
-fun Stage.configure(configureStage: FunctionUnit<Stage>? = null) {
-    if (configureStage != null) {//todo use runIfNotNull instead
-        run(configureStage)
-    }
-}
+fun Stage.configure(configureStage: FunctionUnit<Stage>? = null): Unit =
+    runIfNotNull(configureStage) ?: Unit
+
 
 /**
  * Shows this stage and returns this
  */
-fun Stage.showFluent(): Stage = apply { show() }//todo use also from csense
+fun Stage.showFluent(): Stage = also { it.show() }

@@ -50,7 +50,7 @@ class EmptyWorkScreen : BaseEmptyView<Unit, EmptyWorkScreenView>(
             }
         }
         binding.showInput.setOnAction {
-            InputWorkScreen("").presentModal(configureStage = { it.height = 500.0; it.width = 400.0 })
+            InputWorkScreen("").presentThisAsModal(configureStage = { it.height = 500.0; it.width = 400.0 })
         }
         binding.showOutput.setOnAction {
             presentView(OutputWorkScreen()) {

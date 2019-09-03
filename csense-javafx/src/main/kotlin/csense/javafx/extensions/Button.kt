@@ -9,7 +9,6 @@ import javafx.scene.*
 import javafx.scene.input.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
-import sun.invoke.empty.Empty
 
 inline fun Node.setOnClickAsync(noinline action: AsyncFunctionUnit<MouseEvent>) {
 

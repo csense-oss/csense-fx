@@ -1,6 +1,8 @@
 package csense.javafx
 
 import csense.javafx.views.base.BaseView
+import csense.kotlin.logger.L
+import csense.kotlin.logger.debug
 import javafx.application.Application
 import javafx.scene.Parent
 import javafx.scene.Scene
@@ -25,7 +27,7 @@ abstract class BaseApplication : Application() {
 
         val view = createView()
         view.addToScene(newScene)
-
+        L.debug(this::class, "splash took $startSplashTime ms to show")
     }
 
 

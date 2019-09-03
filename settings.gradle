@@ -1,3 +1,11 @@
-include('csense-javafx',
-        'example-app')
+pluginManagement {
+    repositories {
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+}
+include('example-app',
+        'csense-javafx',
+        'csense-javafx-tools',
+        'csense-javafx-material')
 
