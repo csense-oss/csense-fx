@@ -1,5 +1,6 @@
 package csense.javafx.views.base
 
+import csense.javafx.*
 import csense.javafx.extensions.StageExtensions.stageWith
 import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.showFluent
@@ -8,8 +9,7 @@ import csense.kotlin.Function1
 import csense.kotlin.FunctionUnit
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.coroutines.*
-import javafx.scene.Parent
-import javafx.scene.Scene
+import javafx.scene.*
 import javafx.scene.layout.Pane
 import javafx.stage.Stage
 import javafx.stage.Window
@@ -21,12 +21,10 @@ import kotlinx.coroutines.Job
  *
  * This Guy will contain all the necessary low level stuff;
  *
- *
- *
  * This includes the "bouncing" feature of "threading" / coroutines;
  * The point of Bouncing can be seen in the Bouncing.md file
  */
-abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
+abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
         ToUi<ViewBinding>,
         ToBackground<ViewBinding> {
 
@@ -104,10 +102,6 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
     ): Deferred<Dout> = inUiDeferredAsync {
         getter(binding).createResultAsync()
     }
-
-//    fun <Dout, T : BaseViewInOutput<*, *, *, *, Dout>> getFromUiController(getter: Function1<ViewBinding, T>): Deferred<T> {
-//
-//    }
     //endregion
 
 
@@ -168,16 +162,19 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
 
     open fun addToView(toPlaceIn: Pane): Job = inUi(toPlaceIn) {
         input.addToFront(binding.root)
-        updateWindowAndStage(
-                input.scene?.window,
-                input.scene?.window as? Stage
-        )
+        updateWindowAndStage(input)
+        start()
+    }
+
+    open fun replaceToView(container: Pane, viewToReplace: Node) = inUi {
+        container.replace(viewToReplace, binding.root)
+        updateWindowAndStage(container)
         start()
     }
 
     open fun addToScene(toPlaceIn: Scene): Job = inUi(toPlaceIn) {
         input.root = binding.root
-        updateWindowAndStage(input.window, input.window as? Stage)
+        updateWindowAndStage(input)
         start()
     }
 
@@ -185,6 +182,17 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
      *
      */
     internal open fun start() {
+    }
+
+    private fun updateWindowAndStage(binding: Scene) {
+        updateWindowAndStage(binding.window, binding.window as? Stage)
+    }
+
+    private fun updateWindowAndStage(fromPane: Pane) {
+        updateWindowAndStage(
+                fromPane.scene?.window,
+                fromPane.scene?.window as? Stage
+        )
     }
 
     private fun updateWindowAndStage(scene: Window?, stage: Stage?) {
@@ -213,7 +221,3 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<out Parent>> :
     }
 }
 
-//TODO csense ?
-suspend fun Array<out Job>.joinAll() {
-    forEach { it.join() }
-}

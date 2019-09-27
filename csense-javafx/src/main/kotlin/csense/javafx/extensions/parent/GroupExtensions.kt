@@ -16,7 +16,7 @@ operator fun Group.minusAssign(node: Node) = children.remove(node).toUnit()
 
 //endregion
 
-inline fun <T : Group> T.addChildFluent(child: Node): T = this.apply {
+inline fun <T : Group> T.addFluent(child: Node): T = this.apply {
     children.add(child)
 }
 

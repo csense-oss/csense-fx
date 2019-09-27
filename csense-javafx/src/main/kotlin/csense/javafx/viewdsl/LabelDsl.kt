@@ -5,13 +5,21 @@ import javafx.scene.control.*
 import javafx.scene.layout.*
 import kotlin.contracts.*
 
-
+/**
+ *
+ * @receiver Pane
+ * @param title String
+ * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.viewdsl.InViewDsl] Label, Unit>
+ * @return Label
+ */
 inline fun Pane.label(
         title: String,
         crossinline action: ScopedViewDsl<Label> = {}
-) {
+): Label {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    addToFront(Label(title).apply(action))
+    return Label(title).apply(action).also {
+        addToFront(it)
+    }
 }

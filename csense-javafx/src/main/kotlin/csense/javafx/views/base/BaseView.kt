@@ -1,7 +1,10 @@
+@file:Suppress("unused")
+
 package csense.javafx.views.base
 
 import csense.javafx.views.DelegatingViewFlow
 import csense.javafx.views.ViewFlow
+import csense.kotlin.extensions.coroutines.*
 import csense.kotlin.logger.L
 import csense.kotlin.logger.debug
 import javafx.scene.Parent
@@ -41,6 +44,14 @@ abstract class BaseView<out ViewLoad, ViewBinding : LoadViewAble<Parent>> constr
         inUi(result, uiAction)
     }
 
+    fun <DataType, OutputType> backgroundToUiAsync(
+            computeAction: InBackgroundOutputScope<ViewBinding, DataType>,
+            uiAction: InUiUpdateInputOutputScope<ViewBinding, DataType, OutputType>
+    ): Deferred<OutputType> = inBackgroundAsync {
+        val backgroundData = computeAction(this)
+        inUiAsync(backgroundData, uiAction).await()
+    }
+
 
     fun <DataType> uiToBackground(
             retriveUiData: InUiUpdateOutputScope<ViewBinding, DataType>,
@@ -48,5 +59,13 @@ abstract class BaseView<out ViewLoad, ViewBinding : LoadViewAble<Parent>> constr
     ): Job = inUi {
         val data = retriveUiData(this)
         inBackground(data, backgroundAction)
+    }
+
+    fun <DataType, OutputType> uiToBackgroundAsync(
+            uiAction: InUiUpdateOutputScope<ViewBinding, DataType>,
+            computeAction: InBackgroundInputOutputScope<ViewBinding, DataType, OutputType>
+    ): Deferred<OutputType> = coroutineScope.asyncMain {
+        val uiData = inUiAsync(uiAction).await()
+        inBackgroundAsync(uiData, computeAction).await()
     }
 }
