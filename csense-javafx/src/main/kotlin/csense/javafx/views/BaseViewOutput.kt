@@ -1,5 +1,6 @@
 package csense.javafx.views
 
+import csense.javafx.annotations.*
 import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.InUiUpdateEmpty
 import csense.javafx.views.base.LoadViewAble
@@ -11,20 +12,24 @@ import kotlinx.coroutines.*
 /**
  * Conceptualize a view with only output, so no input
  */
-abstract class BaseViewOutput<ViewLoad, ViewBinding : LoadViewAble<out Parent>, Dout>(
+abstract class BaseViewOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Dout>(
         viewLoader: Function2<ViewLoad, OnViewSetup, ViewBinding>
 ) :
-        BaseView<ViewLoad, ViewBinding>(viewLoader), OutputViewAble<Dout> {
-
+        BaseView<ViewLoad, ViewBinding>(viewLoader),
+        OutputViewAble<Dout>,
+        OnViewBindingRenderType<ViewBinding> {
     override fun start() {
-        inUi { onReady() }
+        inUi {
+            setupOnRender(isInline, binding)
+            onReady()
+        }
     }
 
     abstract fun InUiUpdateEmpty<ViewBinding>.onReady()
 }
 
-
 interface OutputViewAble<Dout> {
+    @AnyThread
     fun createResultAsync(): Deferred<Dout>
 }
 
@@ -33,6 +38,7 @@ interface OutputViewAble<Dout> {
  * @receiver T
  * @return Job
  */
+@AnyThread
 fun <T, Dout> T.closeWithResult(): Job
         where T : BaseView<*, *>, T : OutputViewAble<Dout> = inBackground {
     val result = createResultAsync().await()
@@ -45,6 +51,7 @@ fun <T, Dout> T.closeWithResult(): Job
  * @receiver T
  * @return Job
  */
+@AnyThread
 //??? how to send the result back ?
 fun <T> T.CloseWithNoResult(): Job
         where T : BaseView<*, *>, T : OutputViewAble<*> = closeView()

@@ -2,14 +2,10 @@
 
 package csense.javafx.views.base
 
-import csense.javafx.views.DelegatingViewFlow
-import csense.javafx.views.ViewFlow
+import csense.javafx.views.*
 import csense.kotlin.extensions.coroutines.*
-import csense.kotlin.logger.L
-import csense.kotlin.logger.debug
-import javafx.scene.Parent
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Job
+import javafx.scene.*
+import kotlinx.coroutines.*
 
 
 /**
@@ -23,6 +19,11 @@ abstract class BaseView<out ViewLoad, ViewBinding : LoadViewAble<Parent>> constr
 
     @Deprecated(message = "Inner workings", level = DeprecationLevel.HIDDEN)
     override fun getViewAsync(): Deferred<ViewBinding> {
+        return viewBinding.view
+    }
+
+    //TODO either keep or remove... hmm
+    internal fun preloadView(): Deferred<ViewBinding> {
         return viewBinding.view
     }
 

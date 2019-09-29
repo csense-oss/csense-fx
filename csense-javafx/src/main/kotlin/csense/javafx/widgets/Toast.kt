@@ -1,6 +1,7 @@
 package csense.javafx.widgets
 
 import csense.javafx.animations.animate
+import csense.javafx.annotations.*
 import csense.javafx.viewdsl.label
 import csense.javafx.viewdsl.stackPane
 import csense.javafx.views.background.background
@@ -17,6 +18,7 @@ import kotlinx.coroutines.*
 
 
 object Toast {
+    @InUI
     fun showQuickNotificationToast(text: String): Job {
 //        val plan = UIExecutionPlanBuilder()
 //        plan.add {
@@ -49,7 +51,7 @@ object Toast {
             }
         }
     }
-
+    @InUI
     fun showText(primaryStage: Stage, text: String): Job {
         val stage = TransparentStage()
 
@@ -82,7 +84,7 @@ object Toast {
     }
 }
 
-
+@InUI
 fun createBackground(radiiDouble: Double): Background {
     return BackgroundFill(
         Color.rgb(0x55, 0x55, 0x55, 0.8),

@@ -3,17 +3,17 @@
 package csense.javafx.extensions.parent
 
 import csense.javafx.*
-import csense.kotlin.extensions.collections.list.*
-import csense.kotlin.extensions.collections.list.replace
-import csense.kotlin.extensions.toUnit
-import javafx.scene.Node
-import javafx.scene.layout.Pane
+import csense.javafx.annotations.*
+import csense.kotlin.extensions.*
+import javafx.scene.*
+import javafx.scene.layout.*
 
 /**
  * Adds a given node to the "back" (first rendered, lowest z order) to this pane
  * @receiver Pane
  * @param node Node
  */
+@InUI
 inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
 
 /**
@@ -21,6 +21,7 @@ inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
  * @receiver Pane
  * @param node Node
  */
+@InUI
 inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
 
 /**
@@ -29,6 +30,7 @@ inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
  * @param child Node
  * @return T
  */
+@InUI
 inline fun <T : Pane> T.addFluent(child: Node): T = this.apply {
     children.add(child)
 }
@@ -38,6 +40,7 @@ inline fun <T : Pane> T.addFluent(child: Node): T = this.apply {
  * @receiver Pane
  * @param node Node
  */
+@InUI
 operator fun Pane.minusAssign(node: Node) = children.remove(node).toUnit()
 
 /**
@@ -45,6 +48,7 @@ operator fun Pane.minusAssign(node: Node) = children.remove(node).toUnit()
  * @receiver Pane
  * @param node Node
  */
+@InUI
 operator fun Pane.plusAssign(node: Node) = children.add(node).toUnit()
 
 /**
@@ -53,6 +57,7 @@ operator fun Pane.plusAssign(node: Node) = children.add(node).toUnit()
  * @param node Node
  * @return Boolean
  */
+@InUI
 fun Pane.remove(node: Node) = children.remove(node)
 
 /**
@@ -61,6 +66,7 @@ fun Pane.remove(node: Node) = children.remove(node)
  * @param toReplace Node
  * @param with Node
  */
+@InUI
 fun Pane.replace(toReplace: Node, with: Node) {
     children.replace(toReplace, with)
 }

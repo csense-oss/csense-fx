@@ -1,12 +1,12 @@
 package csense.javafx.viewdsl
 
+import csense.javafx.annotations.*
 import javafx.scene.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
 import kotlin.contracts.*
-import kotlin.coroutines.*
 
-
+@InUI
 inline fun Accordion.titledPane(
         crossinline action: ScopedViewDsl<TitledPane>
 ): TitledPane {
@@ -18,7 +18,7 @@ inline fun Accordion.titledPane(
     }
 }
 
-
+@InUI
 inline fun Accordion.titledPane(
         title: String,
         crossinline action: ScopedViewDsl<TitledPane>
@@ -33,7 +33,7 @@ inline fun Accordion.titledPane(
 }
 
 
-
+@InUI
 inline fun <T> Accordion.titledPaneWith(
         title: String,
         containerControl: T
@@ -46,7 +46,7 @@ inline fun <T> Accordion.titledPaneWith(
 }
 
 
-
+@InUI
 inline fun Accordion.titledPaneWithVBox(
         title: String,
         crossinline action: ScopedViewDsl<VBox>

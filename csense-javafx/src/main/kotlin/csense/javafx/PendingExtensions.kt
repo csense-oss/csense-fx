@@ -1,17 +1,5 @@
 package csense.javafx
 
-import csense.javafx.views.OutputViewAble
-import csense.javafx.views.base.BaseView
-import csense.javafx.views.base.InUiUpdateInputScope
-import csense.javafx.views.base.LoadViewAble
-import csense.kotlin.FunctionUnit
-import javafx.scene.Parent
-import javafx.stage.Stage
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.resume
-
 //
 //fun <ViewBinding : LoadViewAble<out Parent>,
 //        ViewToShow,

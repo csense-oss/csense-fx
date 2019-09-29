@@ -2,22 +2,19 @@
 
 package csense.javafx.viewdsl
 
-import javafx.scene.Group
+import csense.javafx.annotations.*
+import javafx.scene.*
 import javafx.scene.control.*
-import javafx.scene.image.ImageView
+import javafx.scene.image.*
 import javafx.scene.layout.*
-import javafx.scene.media.MediaView
-import javafx.scene.shape.MeshView
-import javafx.scene.text.Text
-import javafx.scene.text.TextFlow
-import javafx.scene.web.HTMLEditor
-import javafx.scene.web.WebView
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+import javafx.scene.media.*
+import javafx.scene.shape.*
+import javafx.scene.text.*
+import javafx.scene.web.*
+import kotlin.contracts.*
 
 
-
+@InUI
 inline fun accordion(
         crossinline action: @InViewDsl ScopedViewDsl<Accordion>
 ): Accordion {
@@ -28,7 +25,7 @@ inline fun accordion(
 }
 
 
-
+@InUI
 inline fun anchorPane(
         crossinline action: @InViewDsl ScopedViewDsl<AnchorPane>
 ): AnchorPane {
@@ -39,7 +36,7 @@ inline fun anchorPane(
 }
 
 
-
+@InUI
 inline fun borderPane(
         crossinline action: @InViewDsl ScopedViewDsl<BorderPane>
 ): BorderPane {
@@ -57,7 +54,7 @@ inline fun borderPane(
  * @param action Button.() -> Unit
  * @return Button
  */
-
+@InUI
 inline fun button(
         text: String,
         crossinline action: @InViewDsl ScopedViewDsl<Button>
@@ -68,12 +65,13 @@ inline fun button(
     return Button(text).apply(action)
 }
 
+@InUI
 inline fun button(text: String): Button {
     return Button(text)
 }
 
 
-
+@InUI
 inline fun buttonBar(
         crossinline action: @InViewDsl ScopedViewDsl<ButtonBar>
 ): ButtonBar {
@@ -84,7 +82,7 @@ inline fun buttonBar(
 }
 
 
-
+@InUI
 inline fun checkBox(
         crossinline action: @InViewDsl ScopedViewDsl<CheckBox>
 ): CheckBox {
@@ -95,7 +93,7 @@ inline fun checkBox(
 }
 
 
-
+@InUI
 inline fun <T> choiceBox(
         crossinline action: @InViewDsl ScopedViewDsl<ChoiceBox<T>>
 ): ChoiceBox<T> {
@@ -106,7 +104,7 @@ inline fun <T> choiceBox(
 }
 
 
-
+@InUI
 inline fun colorPicker(
         crossinline action: @InViewDsl ScopedViewDsl<ColorPicker>
 ): ColorPicker {
@@ -117,7 +115,7 @@ inline fun colorPicker(
 }
 
 
-
+@InUI
 inline fun <T> comboBox(
         crossinline action: @InViewDsl ScopedViewDsl<ComboBox<T>>
 ): ComboBox<T> {
@@ -128,7 +126,7 @@ inline fun <T> comboBox(
 }
 
 
-
+@InUI
 inline fun datePicker(
         crossinline action: @InViewDsl ScopedViewDsl<DatePicker>
 ): DatePicker {
@@ -139,7 +137,7 @@ inline fun datePicker(
 }
 
 
-
+@InUI
 inline fun flowPane(
         crossinline action: @InViewDsl ScopedViewDsl<FlowPane>
 ): FlowPane {
@@ -150,7 +148,7 @@ inline fun flowPane(
 }
 
 
-
+@InUI
 inline fun gridPane(
         crossinline action: @InViewDsl ScopedViewDsl<GridPane>
 ): GridPane {
@@ -161,7 +159,7 @@ inline fun gridPane(
 }
 
 
-
+@InUI
 inline fun group(
         crossinline action: @InViewDsl ScopedViewDsl<Group>
 ): Group {
@@ -172,7 +170,7 @@ inline fun group(
 }
 
 
-
+@InUI
 inline fun hBox(
         crossinline action: @InViewDsl ScopedViewDsl<HBox>
 ): HBox {
@@ -183,7 +181,7 @@ inline fun hBox(
 }
 
 
-
+@InUI
 inline fun htmlEditor(
         crossinline action: @InViewDsl ScopedViewDsl<HTMLEditor>
 ): HTMLEditor {
@@ -194,7 +192,7 @@ inline fun htmlEditor(
 }
 
 
-
+@InUI
 inline fun hyperlink(
         crossinline action: @InViewDsl ScopedViewDsl<Hyperlink>
 ): Hyperlink {
@@ -205,7 +203,7 @@ inline fun hyperlink(
 }
 
 
-
+@InUI
 inline fun imageView(
         crossinline action: @InViewDsl ScopedViewDsl<ImageView>
 ): ImageView {
@@ -216,7 +214,7 @@ inline fun imageView(
 }
 
 
-
+@InUI
 inline fun label(
         crossinline action: @InViewDsl ScopedViewDsl<Label>
 ): Label {
@@ -227,7 +225,7 @@ inline fun label(
 }
 
 
-
+@InUI
 inline fun <T> listView(
         crossinline action: @InViewDsl ScopedViewDsl<ListView<T>>
 ): ListView<T> {
@@ -238,7 +236,7 @@ inline fun <T> listView(
 }
 
 
-
+@InUI
 inline fun mediaView(
         crossinline action: @InViewDsl ScopedViewDsl<MediaView>
 ): MediaView {
@@ -249,7 +247,7 @@ inline fun mediaView(
 }
 
 
-
+@InUI
 inline fun menuBar(
         crossinline action: @InViewDsl ScopedViewDsl<MenuBar>
 ): MenuBar {
@@ -260,7 +258,7 @@ inline fun menuBar(
 }
 
 
-
+@InUI
 inline fun meshView(
         crossinline action: @InViewDsl ScopedViewDsl<MeshView>
 ): MeshView {
@@ -271,7 +269,7 @@ inline fun meshView(
 }
 
 
-
+@InUI
 inline fun pagination(
         crossinline action: @InViewDsl ScopedViewDsl<Pagination>
 ): Pagination {
@@ -282,7 +280,7 @@ inline fun pagination(
 }
 
 
-
+@InUI
 inline fun passwordField(
         crossinline action: @InViewDsl ScopedViewDsl<PasswordField>
 ): PasswordField {
@@ -293,7 +291,7 @@ inline fun passwordField(
 }
 
 
-
+@InUI
 inline fun progressBar(
         crossinline action: @InViewDsl ScopedViewDsl<ProgressBar>
 ): ProgressBar {
@@ -304,7 +302,7 @@ inline fun progressBar(
 }
 
 
-
+@InUI
 inline fun progressIndicator(
         crossinline action: @InViewDsl ScopedViewDsl<ProgressIndicator>
 ): ProgressIndicator {
@@ -315,7 +313,7 @@ inline fun progressIndicator(
 }
 
 
-
+@InUI
 inline fun radioButton(
         crossinline action: @InViewDsl ScopedViewDsl<RadioButton>
 ): RadioButton {
@@ -326,7 +324,7 @@ inline fun radioButton(
 }
 
 
-
+@InUI
 inline fun scrollPane(
         crossinline action: @InViewDsl ScopedViewDsl<ScrollPane>
 ): ScrollPane {
@@ -337,7 +335,7 @@ inline fun scrollPane(
 }
 
 
-
+@InUI
 inline fun separator(
         crossinline action: @InViewDsl ScopedViewDsl<Separator>
 ): Separator {
@@ -348,7 +346,7 @@ inline fun separator(
 }
 
 
-
+@InUI
 inline fun slider(
         crossinline action: @InViewDsl ScopedViewDsl<Slider>
 ): Slider {
@@ -359,7 +357,7 @@ inline fun slider(
 }
 
 
-
+@InUI
 inline fun <T> spinner(
         crossinline action: @InViewDsl ScopedViewDsl<Spinner<T>>
 ): Spinner<T> {
@@ -370,7 +368,7 @@ inline fun <T> spinner(
 }
 
 
-
+@InUI
 inline fun splitPane(
         crossinline action: @InViewDsl ScopedViewDsl<SplitPane>
 ): SplitPane {
@@ -381,7 +379,7 @@ inline fun splitPane(
 }
 
 
-
+@InUI
 inline fun stackPane(
         crossinline action: @InViewDsl ScopedViewDsl<StackPane>
 ): StackPane {
@@ -392,7 +390,7 @@ inline fun stackPane(
 }
 
 
-
+@InUI
 inline fun <T> tableView(
         crossinline action: @InViewDsl ScopedViewDsl<TableView<T>>
 ): TableView<T> {
@@ -403,7 +401,7 @@ inline fun <T> tableView(
 }
 
 
-
+@InUI
 inline fun tabPane(
         crossinline action: @InViewDsl ScopedViewDsl<TabPane>
 ): TabPane {
@@ -414,7 +412,7 @@ inline fun tabPane(
 }
 
 
-
+@InUI
 inline fun text(
         crossinline action: @InViewDsl ScopedViewDsl<Text>
 ): Text {
@@ -425,7 +423,7 @@ inline fun text(
 }
 
 
-
+@InUI
 inline fun textArea(
         crossinline action: @InViewDsl ScopedViewDsl<TextArea>
 ): TextArea {
@@ -436,7 +434,7 @@ inline fun textArea(
 }
 
 
-
+@InUI
 inline fun textField(
         crossinline action: @InViewDsl ScopedViewDsl<TextField>
 ): TextField {
@@ -447,7 +445,7 @@ inline fun textField(
 }
 
 
-
+@InUI
 inline fun textFlow(
         crossinline action: @InViewDsl ScopedViewDsl<TextFlow>
 ): TextFlow {
@@ -458,7 +456,7 @@ inline fun textFlow(
 }
 
 
-
+@InUI
 inline fun tilePane(
         crossinline action: @InViewDsl ScopedViewDsl<TilePane>
 ): TilePane {
@@ -469,7 +467,7 @@ inline fun tilePane(
 }
 
 
-
+@InUI
 inline fun titledPane(
         crossinline action: @InViewDsl ScopedViewDsl<TitledPane>
 ): TitledPane {
@@ -480,7 +478,7 @@ inline fun titledPane(
 }
 
 
-
+@InUI
 inline fun toggleButton(
         crossinline action: @InViewDsl ScopedViewDsl<ToggleButton>
 ): ToggleButton {
@@ -491,7 +489,7 @@ inline fun toggleButton(
 }
 
 
-
+@InUI
 inline fun toolBar(
         crossinline action: @InViewDsl ScopedViewDsl<ToolBar>
 ): ToolBar {
@@ -502,7 +500,7 @@ inline fun toolBar(
 }
 
 
-
+@InUI
 inline fun <T> treeTableView(
         crossinline action: @InViewDsl ScopedViewDsl<TreeTableView<T>>
 ): TreeTableView<T> {
@@ -513,7 +511,7 @@ inline fun <T> treeTableView(
 }
 
 
-
+@InUI
 inline fun <T> treeView(
         crossinline action: @InViewDsl ScopedViewDsl<TreeView<T>>
 ): TreeView<T> {
@@ -524,7 +522,7 @@ inline fun <T> treeView(
 }
 
 
-
+@InUI
 inline fun vBox(
         crossinline action: ScopedViewDsl<VBox>
 ): VBox {
@@ -535,7 +533,7 @@ inline fun vBox(
 }
 
 //TODO consider this.
-
+@InUI
 inline fun vBoxNew(
         crossinline action: ScopedViewDsl<VBox>
 ): VBox {
@@ -546,7 +544,7 @@ inline fun vBoxNew(
 }
 
 
-
+@InUI
 inline fun webView(
         crossinline action: @InViewDsl ScopedViewDsl<WebView>
 ): WebView {

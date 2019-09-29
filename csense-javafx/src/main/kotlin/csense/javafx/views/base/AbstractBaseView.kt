@@ -9,6 +9,7 @@ import csense.kotlin.Function1
 import csense.kotlin.FunctionUnit
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.coroutines.*
+import csense.kotlin.logger.*
 import javafx.scene.*
 import javafx.scene.layout.Pane
 import javafx.stage.Stage
@@ -138,6 +139,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
             ownerWindow: Window? = null,
             configureStage: FunctionUnit<Stage>? = null
     ): Job = inUi(ownerWindow) {
+        isInline = false
         val newStage = stageWith(binding.root) {
             //continue the same place as we left off.
             ownerWindow?.let { ownerWindow ->
@@ -161,25 +163,28 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
     }
 
     open fun addToView(toPlaceIn: Pane): Job = inUi(toPlaceIn) {
+        isInline = true
         input.addToFront(binding.root)
         updateWindowAndStage(input)
         start()
     }
 
     open fun replaceToView(container: Pane, viewToReplace: Node) = inUi {
+        isInline = true
         container.replace(viewToReplace, binding.root)
         updateWindowAndStage(container)
         start()
     }
 
     open fun addToScene(toPlaceIn: Scene): Job = inUi(toPlaceIn) {
+        isInline = false
         input.root = binding.root
         updateWindowAndStage(input)
         start()
     }
 
     /**
-     *
+     * When window /stage and view should be "ok".
      */
     internal open fun start() {
     }
@@ -204,16 +209,30 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
      * If we are a window / owning the context, we can close the "stage".
      */
     fun closeView() = inUi {
-        if (isOwningWindowAndStage) {
+        if (mayClose) {
             currentStage?.close()
+        } else {
+            L.debug(this::class, "tried to close when but was not allowed.")
         }
     }
 
-    val isOwningWindowAndStage: Boolean
-        get() = currentStage != null && currentWindow != null
+    /**
+     * Controls whenever a closeView is allowed.
+     */
+    var mayClose: Boolean = true
+
+    /**
+     * Is this view embedded or is it "the toplevel / standalone view" ?
+     */
+    var isInline: Boolean = false
+        private set
+    /**
+     * is this a standalone view.
+     */
+    val isStandalone: Boolean
+        get() = !isInline
 
     //TODO experimental example
-
     fun executeInUIInOrder(vararg jobs: Job) {
         coroutineScope.launchMain {
             jobs.joinAll()

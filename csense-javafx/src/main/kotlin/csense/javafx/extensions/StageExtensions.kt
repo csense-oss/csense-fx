@@ -1,5 +1,6 @@
 package csense.javafx.extensions
 
+import csense.javafx.annotations.*
 import csense.kotlin.FunctionUnit
 import csense.kotlin.extensions.*
 import javafx.scene.Parent
@@ -9,11 +10,12 @@ import kotlin.also
 
 object StageExtensions {
     /**
-     * Conveince constructor for stages.
+     * Convenience constructor for stages.
      * @param view Parent
      * @param configureStage FunctionUnit<Stage>?
      * @return Stage
      */
+    @InUI
     fun stageWith(
         view: Parent,
         configureStage: FunctionUnit<Stage>? = null
@@ -28,6 +30,7 @@ object StageExtensions {
  * @receiver Stage
  * @param configureStage FunctionUnit<Stage>?
  */
+@InUI
 fun Stage.configure(configureStage: FunctionUnit<Stage>? = null): Unit =
     runIfNotNull(configureStage) ?: Unit
 
@@ -35,4 +38,5 @@ fun Stage.configure(configureStage: FunctionUnit<Stage>? = null): Unit =
 /**
  * Shows this stage and returns this
  */
+@InUI
 fun Stage.showFluent(): Stage = also { it.show() }

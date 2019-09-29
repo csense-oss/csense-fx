@@ -2,10 +2,12 @@
 
 package csense.javafx.viewdsl
 
+import csense.javafx.annotations.*
 import javafx.scene.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
 
+@InUI
 inline fun TabPane.tab(
         title: String,
         crossinline action: ScopedViewDsl<Tab>
@@ -15,6 +17,7 @@ inline fun TabPane.tab(
     return tab.apply(action)
 }
 
+@InUI
 inline fun <T : Node> TabPane.tabWith(
         title: String,
         content: T
@@ -24,6 +27,7 @@ inline fun <T : Node> TabPane.tabWith(
     return tab
 }
 
+@InUI
 inline fun TabPane.tabWithVBox(
         title: String,
         crossinline action: ScopedViewDsl<VBox>

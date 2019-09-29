@@ -2,27 +2,23 @@
 
 package csense.javafx.viewdsl
 
-import csense.javafx.controller.ControllerAdapter
-import csense.javafx.extensions.parent.addToFront
-import csense.javafx.views.base.BaseView
+import csense.javafx.annotations.*
+import csense.javafx.controller.*
+import csense.javafx.extensions.parent.*
+import csense.javafx.views.base.*
 import csense.javafx.widgets.*
-import csense.kotlin.EmptyFunctionResult
-import javafx.scene.Group
-import javafx.scene.Node
+import csense.kotlin.*
+import javafx.scene.*
 import javafx.scene.control.*
-import javafx.scene.image.ImageView
+import javafx.scene.image.*
 import javafx.scene.layout.*
-import javafx.scene.media.MediaView
-import javafx.scene.shape.MeshView
-import javafx.scene.text.Text
-import javafx.scene.text.TextFlow
-import javafx.scene.web.HTMLEditor
-import javafx.scene.web.WebView
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+import javafx.scene.media.*
+import javafx.scene.shape.*
+import javafx.scene.text.*
+import javafx.scene.web.*
+import kotlin.contracts.*
 
-
+@InUI
 inline fun <T : Node> Pane.createAndAdd(create: EmptyFunctionResult<T>): T {
     contract {
         callsInPlace(create, InvocationKind.EXACTLY_ONCE)
@@ -30,7 +26,7 @@ inline fun <T : Node> Pane.createAndAdd(create: EmptyFunctionResult<T>): T {
     return create().apply(::addToFront)
 }
 
-
+@InUI
 inline fun Pane.accordion(
     crossinline action: ScopedViewDsl<Accordion>
 ): Accordion {
@@ -42,7 +38,7 @@ inline fun Pane.accordion(
     }
 }
 
-
+@InUI
 inline fun Pane.anchorPane(
     crossinline action: ScopedViewDsl<AnchorPane>
 ): AnchorPane {
@@ -54,7 +50,7 @@ inline fun Pane.anchorPane(
     }
 }
 
-
+@InUI
 inline fun Pane.borderPane(
     crossinline action: ScopedViewDsl<BorderPane>
 ): BorderPane {
@@ -67,7 +63,7 @@ inline fun Pane.borderPane(
 }
 
 
-
+@InUI
 inline fun Pane.button(text: String): Button = createAndAdd { Button(text) }
 
 /**
@@ -77,7 +73,7 @@ inline fun Pane.button(text: String): Button = createAndAdd { Button(text) }
  * @param action Button.() -> Unit
  * @return Button
  */
-
+@InUI
 inline fun Pane.button(
     text: String,
     crossinline action: ScopedViewDsl<Button>
@@ -88,7 +84,7 @@ inline fun Pane.button(
     return createAndAdd { Button(text).apply(action) }
 }
 
-
+@InUI
 inline fun Pane.buttonBar(
     crossinline action: ScopedViewDsl<ButtonBar>
 ): ButtonBar {
@@ -100,7 +96,7 @@ inline fun Pane.buttonBar(
     }
 }
 
-
+@InUI
 inline fun Pane.checkBox(
     crossinline action: ScopedViewDsl<CheckBox>
 ): CheckBox {
@@ -112,7 +108,7 @@ inline fun Pane.checkBox(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.choiceBox(
     crossinline action: ScopedViewDsl<ChoiceBox<T>>
 ): ChoiceBox<T> {
@@ -124,7 +120,7 @@ inline fun <T> Pane.choiceBox(
     }
 }
 
-
+@InUI
 inline fun Pane.colorPicker(
     crossinline action: ScopedViewDsl<ColorPicker>
 ): ColorPicker {
@@ -136,7 +132,7 @@ inline fun Pane.colorPicker(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.comboBox(
     crossinline action: ScopedViewDsl<ComboBox<T>>
 ): ComboBox<T> {
@@ -148,7 +144,7 @@ inline fun <T> Pane.comboBox(
     }
 }
 
-
+@InUI
 inline fun Pane.datePicker(
     crossinline action: ScopedViewDsl<DatePicker>
 ): DatePicker {
@@ -160,7 +156,7 @@ inline fun Pane.datePicker(
     }
 }
 
-
+@InUI
 inline fun Pane.flowPane(
     crossinline action: ScopedViewDsl<FlowPane>
 ): FlowPane {
@@ -172,7 +168,7 @@ inline fun Pane.flowPane(
     }
 }
 
-
+@InUI
 inline fun Pane.gridPane(
     crossinline action: ScopedViewDsl<GridPane>
 ): GridPane {
@@ -184,7 +180,7 @@ inline fun Pane.gridPane(
     }
 }
 
-
+@InUI
 inline fun Pane.group(
     crossinline action: ScopedViewDsl<Group>
 ): Group {
@@ -196,7 +192,7 @@ inline fun Pane.group(
     }
 }
 
-
+@InUI
 inline fun Pane.hBox(
     crossinline action: ScopedViewDsl<HBox>
 ): HBox {
@@ -208,7 +204,7 @@ inline fun Pane.hBox(
     }
 }
 
-
+@InUI
 inline fun Pane.htmlEditor(
     crossinline action: ScopedViewDsl<HTMLEditor>
 ): HTMLEditor {
@@ -220,7 +216,7 @@ inline fun Pane.htmlEditor(
     }
 }
 
-
+@InUI
 inline fun Pane.hyperlink(
     crossinline action: ScopedViewDsl<Hyperlink>
 ): Hyperlink {
@@ -232,7 +228,7 @@ inline fun Pane.hyperlink(
     }
 }
 
-
+@InUI
 inline fun Pane.imageView(
     crossinline action: ScopedViewDsl<ImageView>
 ): ImageView {
@@ -244,7 +240,7 @@ inline fun Pane.imageView(
     }
 }
 
-
+@InUI
 inline fun Pane.label(
     crossinline action: ScopedViewDsl<Label>
 ): Label {
@@ -256,7 +252,7 @@ inline fun Pane.label(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.listView(
     crossinline action: ScopedViewDsl<ListView<T>>
 ): ListView<T> {
@@ -268,7 +264,7 @@ inline fun <T> Pane.listView(
     }
 }
 
-
+@InUI
 inline fun Pane.mediaView(
     crossinline action: ScopedViewDsl<MediaView>
 ): MediaView {
@@ -280,7 +276,7 @@ inline fun Pane.mediaView(
     }
 }
 
-
+@InUI
 inline fun Pane.menuBar(
     crossinline action: ScopedViewDsl<MenuBar>
 ): MenuBar {
@@ -292,7 +288,7 @@ inline fun Pane.menuBar(
     }
 }
 
-
+@InUI
 inline fun Pane.meshView(
     crossinline action: ScopedViewDsl<MeshView>
 ): MeshView {
@@ -304,7 +300,7 @@ inline fun Pane.meshView(
     }
 }
 
-
+@InUI
 inline fun Pane.pagination(
     crossinline action: ScopedViewDsl<Pagination>
 ): Pagination {
@@ -316,7 +312,7 @@ inline fun Pane.pagination(
     }
 }
 
-
+@InUI
 inline fun Pane.passwordField(
     crossinline action: ScopedViewDsl<PasswordField>
 ): PasswordField {
@@ -328,7 +324,7 @@ inline fun Pane.passwordField(
     }
 }
 
-
+@InUI
 inline fun Pane.progressBar(
     crossinline action: ScopedViewDsl<ProgressBar>
 ): ProgressBar {
@@ -340,7 +336,7 @@ inline fun Pane.progressBar(
     }
 }
 
-
+@InUI
 inline fun Pane.progressIndicator(
     crossinline action: ScopedViewDsl<ProgressIndicator>
 ): ProgressIndicator {
@@ -352,7 +348,7 @@ inline fun Pane.progressIndicator(
     }
 }
 
-
+@InUI
 inline fun Pane.radioButton(
     crossinline action: ScopedViewDsl<RadioButton>
 ): RadioButton {
@@ -364,7 +360,7 @@ inline fun Pane.radioButton(
     }
 }
 
-
+@InUI
 inline fun Pane.scrollPane(
     crossinline action: ScopedViewDsl<ScrollPane>
 ): ScrollPane {
@@ -376,7 +372,7 @@ inline fun Pane.scrollPane(
     }
 }
 
-
+@InUI
 inline fun Pane.separator(
     crossinline action: ScopedViewDsl<Separator>
 ): Separator {
@@ -388,7 +384,7 @@ inline fun Pane.separator(
     }
 }
 
-
+@InUI
 inline fun Pane.slider(
     crossinline action: ScopedViewDsl<Slider>
 ): Slider {
@@ -400,7 +396,7 @@ inline fun Pane.slider(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.spinner(
     crossinline action: ScopedViewDsl<Spinner<T>>
 ): Spinner<T> {
@@ -412,7 +408,7 @@ inline fun <T> Pane.spinner(
     }
 }
 
-
+@InUI
 inline fun Pane.splitPane(
     crossinline action: ScopedViewDsl<SplitPane>
 ): SplitPane {
@@ -424,7 +420,7 @@ inline fun Pane.splitPane(
     }
 }
 
-
+@InUI
 inline fun Pane.stackPane(
     crossinline action: ScopedViewDsl<StackPane>
 ): StackPane {
@@ -436,7 +432,7 @@ inline fun Pane.stackPane(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.tableView(
     crossinline action: ScopedViewDsl<TableView<T>>
 ): TableView<T> {
@@ -448,7 +444,7 @@ inline fun <T> Pane.tableView(
     }
 }
 
-
+@InUI
 inline fun Pane.tabPane(
     crossinline action: ScopedViewDsl<TabPane>
 ): TabPane {
@@ -460,7 +456,7 @@ inline fun Pane.tabPane(
     }
 }
 
-
+@InUI
 inline fun Pane.text(
     crossinline action: ScopedViewDsl<Text>
 ): Text {
@@ -472,7 +468,7 @@ inline fun Pane.text(
     }
 }
 
-
+@InUI
 inline fun Pane.textArea(
     crossinline action: ScopedViewDsl<TextArea>
 ): TextArea {
@@ -484,7 +480,7 @@ inline fun Pane.textArea(
     }
 }
 
-
+@InUI
 inline fun Pane.textField(
     crossinline action: ScopedViewDsl<TextField>
 ): TextField {
@@ -496,7 +492,7 @@ inline fun Pane.textField(
     }
 }
 
-
+@InUI
 inline fun Pane.textFlow(
     crossinline action: ScopedViewDsl<TextFlow>
 ): TextFlow {
@@ -508,7 +504,7 @@ inline fun Pane.textFlow(
     }
 }
 
-
+@InUI
 inline fun Pane.tilePane(
     crossinline action: ScopedViewDsl<TilePane>
 ): TilePane {
@@ -520,7 +516,7 @@ inline fun Pane.tilePane(
     }
 }
 
-
+@InUI
 inline fun Pane.titledPane(
     crossinline action: ScopedViewDsl<TitledPane>
 ): TitledPane {
@@ -532,7 +528,7 @@ inline fun Pane.titledPane(
     }
 }
 
-
+@InUI
 inline fun Pane.toggleButton(
     crossinline action: ScopedViewDsl<ToggleButton>
 ): ToggleButton {
@@ -544,7 +540,7 @@ inline fun Pane.toggleButton(
     }
 }
 
-
+@InUI
 inline fun Pane.toolBar(
     crossinline action: ScopedViewDsl<ToolBar>
 ): ToolBar {
@@ -556,7 +552,7 @@ inline fun Pane.toolBar(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.treeTableView(
     crossinline action: ScopedViewDsl<TreeTableView<T>>
 ): TreeTableView<T> {
@@ -568,7 +564,7 @@ inline fun <T> Pane.treeTableView(
     }
 }
 
-
+@InUI
 inline fun <T> Pane.treeView(
     crossinline action: ScopedViewDsl<TreeView<T>>
 ): TreeView<T> {
@@ -580,7 +576,7 @@ inline fun <T> Pane.treeView(
     }
 }
 
-
+@InUI
 inline fun Pane.vBox(
     crossinline action: ScopedViewDsl<VBox>
 ): VBox {
@@ -592,7 +588,7 @@ inline fun Pane.vBox(
     }
 }
 
-
+@InUI
 inline fun Pane.webView(
     crossinline action: ScopedViewDsl<WebView>
 ): WebView {
@@ -604,7 +600,7 @@ inline fun Pane.webView(
     }
 }
 
-
+@InUI
 inline fun Pane.space(
     spacing: Double
 ) {
@@ -616,7 +612,7 @@ inline fun Pane.space(
  * @receiver Pane
  * @param controller BaseView<*, *>
  */
-
+@InUI
 inline fun <T : BaseView<*, *>> Pane.useController(
     controller: T,
     crossinline action: ScopedViewDsl<T> = {}
