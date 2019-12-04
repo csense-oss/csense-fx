@@ -1,6 +1,6 @@
 package csense.javafx.views
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.javafx.views.base.*
 import javafx.scene.*
 
@@ -11,7 +11,7 @@ interface OnViewBindingRenderType<ViewBinding : LoadViewAble<Parent>> {
      *  of an "inline" view (akk we are just a part of something)
      * @receiver ViewBinding
      */
-    @InUI
+    @InUi
     fun ViewBinding.onRenderInline() {
         //NOP
     }
@@ -21,7 +21,7 @@ interface OnViewBindingRenderType<ViewBinding : LoadViewAble<Parent>> {
      *  of an full view (we own the whole thing).
      * @receiver ViewBinding
      */
-    @InUI
+    @InUi
     fun ViewBinding.onRenderStandAlone() {
         //NOP
     }
@@ -33,6 +33,7 @@ interface OnViewBindingRenderType<ViewBinding : LoadViewAble<Parent>> {
  * @param isInline Boolean true if we are a inline view.
  * @param binding ViewBinding the ViewBinding to use.
  */
+@InUi
 internal fun <ViewBinding : LoadViewAble<Parent>> OnViewBindingRenderType<ViewBinding>.setupOnRender(
         isInline: Boolean,
         binding: ViewBinding

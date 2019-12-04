@@ -1,17 +1,17 @@
 package csense.javafx.viewdsl
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.layout.*
 
-@InUI
+@InUi
 fun Node.setMarginVBox(margin: Int) = setMarginVBox(margin.toDouble())
 
-@InUI
+@InUi
 fun Node.setMarginVBox(margin: Double) = setMarginVBox(Insets(margin))
 
-@InUI
+@InUi
 fun Node.setMarginVBox(margin: Insets) {
     VBox.setMargin(this, margin)
 }

@@ -1,13 +1,13 @@
 package csense.javafx.viewdsl
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.kotlin.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
 import kotlin.contracts.*
 
 
-@InUI
+@InUi
 inline fun Pane.button(
     text: String,
     crossinline onAction: EmptyFunction,

@@ -1,6 +1,6 @@
 package csense.javafx.styling
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.control.*
 import javafx.scene.paint.*
 
@@ -9,9 +9,9 @@ import javafx.scene.paint.*
  */
 
 var Labeled.textColor: Color?
-    @InUI
+    @InUi
     get() = textFill as? Color
-    @InUI
+    @InUi
     set(value) {
         textFill = value
     }

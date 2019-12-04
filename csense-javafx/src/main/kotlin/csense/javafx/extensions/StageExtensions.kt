@@ -1,12 +1,13 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package csense.javafx.extensions
 
-import csense.javafx.annotations.*
 import csense.kotlin.FunctionUnit
-import csense.kotlin.extensions.*
+import csense.kotlin.annotations.threading.InUi
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.stage.Stage
-import kotlin.also
+import javafx.stage.Window
 
 object StageExtensions {
     /**
@@ -15,10 +16,10 @@ object StageExtensions {
      * @param configureStage FunctionUnit<Stage>?
      * @return Stage
      */
-    @InUI
-    fun stageWith(
-        view: Parent,
-        configureStage: FunctionUnit<Stage>? = null
+    @InUi
+    inline fun stageWith(
+            view: Parent,
+            crossinline configureStage: FunctionUnit<Stage> = {}
     ): Stage = Stage().apply {
         scene = Scene(view)
         configure(configureStage)
@@ -30,13 +31,21 @@ object StageExtensions {
  * @receiver Stage
  * @param configureStage FunctionUnit<Stage>?
  */
-@InUI
-fun Stage.configure(configureStage: FunctionUnit<Stage>? = null): Unit =
-    runIfNotNull(configureStage) ?: Unit
+@InUi
+inline fun Stage.configure(crossinline configureStage: FunctionUnit<Stage> = {}): Unit =
+        configureStage(this)
 
 
 /**
  * Shows this stage and returns this
  */
-@InUI
-fun Stage.showFluent(): Stage = also { it.show() }
+@InUi
+inline fun Stage.showFluent(): Stage =
+        apply { show() }
+
+@InUi
+inline fun Stage.updateXYFrom(window: Window) {
+    this.x = window.x
+    this.y = window.y
+}
+

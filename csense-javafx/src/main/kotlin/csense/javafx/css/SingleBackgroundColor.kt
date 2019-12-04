@@ -1,11 +1,11 @@
 package csense.javafx.css
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 
-@InUI
+@InUi
 fun SingleBackgroundColor(
         color: Color,
         radii: CornerRadii? = null,

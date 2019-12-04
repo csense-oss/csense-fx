@@ -1,11 +1,15 @@
 package csense.javafx.views
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
+import csense.kotlin.annotations.threading.InUi
+import csense.javafx.tracking.BaseViewTrackingEvents
 import csense.javafx.views.base.*
-import csense.kotlin.*
-import csense.kotlin.logger.*
+import csense.kotlin.AsyncFunction1
+import csense.kotlin.annotations.sideEffect.NoEscape
+import csense.kotlin.extensions.coroutines.launchMain
 import javafx.scene.Parent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 
 /**
  * Conceptualize a view with only input, no output
@@ -13,9 +17,8 @@ import kotlinx.coroutines.*
  */
 abstract class BaseViewInput<out ViewLoad, ViewBinding : LoadViewAble<Parent>, Din, DinTransformed>(
         private val input: Din,
-        viewLoader: (ViewLoad, OnViewSetup) -> ViewBinding
-) :
-        BaseView<ViewLoad, ViewBinding>(viewLoader) {
+        @InUi viewLoader: Function2<@NoEscape ViewLoad,@NoEscape OnViewSetup, ViewBinding>
+) : BaseView<ViewLoad, ViewBinding>(viewLoader), InputViewAble<Din, DinTransformed> {
 
     val inputDataLoader: Deferred<DinTransformed>
         get() = startDataFlowLoader.startDataFlow.result
@@ -28,52 +31,60 @@ abstract class BaseViewInput<out ViewLoad, ViewBinding : LoadViewAble<Parent>, D
                 ::transformInput)
     }
 
+    @InUi
     override fun start() {
-        startDataFlowLoader.start({
-            onStartData()
-        }, {
+        super.start()
+        startDataFlowLoader.start(onUILoaded = {
             it.onUiReady()
+        }, callback = {
+            onStartData()
+            tracker.logEvent(BaseViewTrackingEvents.Ready)
         })
     }
 
+    @InUi
     internal open fun ViewBinding.onUiReady() {
 
     }
 
+    @InUi
     protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
-
-    abstract suspend fun transformInput(input: Din): DinTransformed
 }
 
 class InputDataLoader<Din, DinTransformed, ViewBinding : LoadViewAble<Parent>>(
         val onView: ToBackground<ViewBinding>,
-        val preloadViewFunction: () -> Deferred<ViewBinding>,
+        @InUi val preloadViewFunction: () -> Deferred<ViewBinding>,
         input: Din,
         coroutineScope: CoroutineScope,
-        transformInput: AsyncFunction1<Din, DinTransformed>
+        @InBackground transformInput: AsyncFunction1<Din, DinTransformed>
 ) {
 
-    val startDataFlow: InputDataFlow<Din, DinTransformed> = InputDataFlow(coroutineScope, input, transformInput)
+    val startDataFlow: InputDataFlow<Din, DinTransformed> =
+            InputDataFlow(coroutineScope, input, transformInput)
 
-    @InUI
+    @InUi
     fun start(
-            callback: InUiUpdateInputScope<ViewBinding, DinTransformed>,
-            onUILoaded: AsyncFunction1<ViewBinding, Unit>
+            @InUi onUILoaded: Function1<ViewBinding, Unit>,
+            @InUi callback: InUiUpdateInputScope<ViewBinding, DinTransformed>
     ) {
-        val started = System.currentTimeMillis()
         //start async to load view.
         val viewAsync = preloadViewFunction()
         //in background load transformation
         onView.inBackground {
             val backgroundDataAsync = startDataFlow.result
             backgroundDataAsync.start()
-            onUILoaded(viewAsync.await())
+            val viewBinding = viewAsync.await()
+            scope.launchMain { onUILoaded(viewBinding) }.join() //TODO consider "InUi" ?hm
             val startData = backgroundDataAsync.await()
             //wait for UI.
             //callback.
             inUi(startData, callback)
-            val after = System.currentTimeMillis()
-            logClassDebug("view took ${after - started} ms to load")
         }
     }
+}
+
+
+interface InputViewAble<Din, DinTransformed> {
+    @InBackground
+    suspend fun transformInput(input: Din): DinTransformed
 }

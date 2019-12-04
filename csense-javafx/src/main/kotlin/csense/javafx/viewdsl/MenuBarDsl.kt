@@ -2,13 +2,13 @@
 
 package csense.javafx.viewdsl
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.kotlin.*
 import javafx.event.*
 import javafx.scene.control.*
 import kotlin.contracts.*
 
-@InUI
+@InUi
 inline fun MenuBar.menu(
     title: String,
     crossinline action: ScopedViewDsl<Menu> = {}
@@ -21,7 +21,7 @@ inline fun MenuBar.menu(
     }
 }
 
-@InUI
+@InUi
 inline fun Menu.menu(
     title: String,
     crossinline action: ScopedViewDsl<Menu> = {}
@@ -34,7 +34,7 @@ inline fun Menu.menu(
     }
 }
 
-@InUI
+@InUi
 inline fun Menu.item(
     title: String,
     crossinline action: ScopedViewDsl<MenuItem> = {}
@@ -53,7 +53,7 @@ inline fun Menu.item(
  * @receiver Menu
  * @param onClicked Function1<Unit, Unit>
  */
-@InUI
+@InUi
 inline fun Menu.setAction(noinline onClicked: FunctionUnit<ActionEvent>): Menu {
     if (items.isEmpty()) {
         //apply fix for "semi" broken menu action handling

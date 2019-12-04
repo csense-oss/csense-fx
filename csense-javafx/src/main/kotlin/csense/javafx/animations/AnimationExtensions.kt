@@ -1,6 +1,6 @@
 package csense.javafx.animations
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.kotlin.AsyncFunction1
 import csense.kotlin.extensions.coroutines.launchMain
 import javafx.scene.Node
@@ -16,7 +16,7 @@ import kotlinx.coroutines.Job
  * @param scope CoroutineScope
  * @return Job
  */
-@InUI
+@InUi
 fun Node.animate(
     scope: CoroutineScope = GlobalScope,
     animationFunction: AsyncFunction1<Node, Unit>

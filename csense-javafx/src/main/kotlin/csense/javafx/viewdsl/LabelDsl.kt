@@ -1,6 +1,6 @@
 package csense.javafx.viewdsl
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.javafx.extensions.parent.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
@@ -13,7 +13,7 @@ import kotlin.contracts.*
  * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.viewdsl.InViewDsl] Label, Unit>
  * @return Label
  */
-@InUI
+@InUi
 inline fun Pane.label(
         title: String,
         crossinline action: ScopedViewDsl<Label> = {}

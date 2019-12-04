@@ -2,7 +2,7 @@
 
 package csense.javafx.styling
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 
 
@@ -12,7 +12,6 @@ import javafx.geometry.*
  * @param top Number
  * @return Insets
  */
-@InUI
 fun Insets.withTop(top: Number): Insets = copy(top = top.toDouble())
 
 /**
@@ -21,7 +20,6 @@ fun Insets.withTop(top: Number): Insets = copy(top = top.toDouble())
  * @param right Number
  * @return Insets
  */
-@InUI
 fun Insets.withRight(right: Number): Insets = copy(right = right.toDouble())
 
 /**
@@ -30,7 +28,6 @@ fun Insets.withRight(right: Number): Insets = copy(right = right.toDouble())
  * @param left Number
  * @return Insets
  */
-@InUI
 fun Insets.withLeft(left: Number): Insets = copy(left = left.toDouble())
 
 /**
@@ -39,7 +36,6 @@ fun Insets.withLeft(left: Number): Insets = copy(left = left.toDouble())
  * @param bottom Number
  * @return Insets
  */
-@InUI
 fun Insets.withBottom(bottom: Number): Insets = copy(bottom = bottom.toDouble())
 
 /**
@@ -51,7 +47,6 @@ fun Insets.withBottom(bottom: Number): Insets = copy(bottom = bottom.toDouble())
  * @param bottom Number
  * @return Insets
  */
-@InUI
 fun Insets.copy(
         top: Number = this.top,
         right: Number = this.right,
@@ -68,7 +63,6 @@ fun Insets.copy(
  * @param bottom Double
  * @return Insets
  */
-@InUI
 fun Insets.copy(
         top: Double = this.top,
         right: Double = this.right,

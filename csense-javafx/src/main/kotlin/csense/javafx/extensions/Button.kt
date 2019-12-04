@@ -2,7 +2,7 @@
 
 package csense.javafx.extensions
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import csense.kotlin.*
 import csense.kotlin.extensions.coroutines.*
 import javafx.event.*
@@ -11,7 +11,7 @@ import javafx.scene.input.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 
-@InUI
+@InUi
 inline fun Node.setOnClickAsync(noinline action: AsyncFunctionUnit<MouseEvent>) {
 
     val eventActor = GlobalScope.actor<MouseEvent>(Dispatchers.Main, capacity = Channel.CONFLATED) {
@@ -27,7 +27,7 @@ inline fun Node.setOnClickAsync(noinline action: AsyncFunctionUnit<MouseEvent>) 
 //    }
 }
 
-@InUI
+@InUi
 inline fun Node.setOnClickAsyncEmpty(noinline action: EmptyFunction) {
     @Suppress("RedundantLambdaArrow") //due to overload resolution.
     setOnClickAsync { _: MouseEvent -> action() }

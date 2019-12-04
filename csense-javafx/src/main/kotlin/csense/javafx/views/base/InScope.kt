@@ -1,5 +1,8 @@
 package csense.javafx.views.base
 
+import csense.kotlin.annotations.sideEffect.NoEscape
+import csense.kotlin.annotations.threading.InBackground
+import csense.kotlin.annotations.threading.InUi
 import javafx.scene.Parent
 import javafx.stage.Stage
 import javafx.stage.Window
@@ -22,13 +25,13 @@ annotation class InScope
  * @property binding ViewBinding
  * @constructor
  */
-open class InUiUpdateEmpty<ViewBinding : LoadViewAble<out Parent>>(
-    val currentWindow: Window?,
-    val currentStage: Stage?,
-    val binding: ViewBinding,
-    private val toBackground: ToBackground<ViewBinding>
+open class InUiUpdateEmpty<ViewBinding : LoadViewAble<Parent>>(
+        @NoEscape val currentWindow: Window?,
+        @NoEscape val currentStage: Stage?,
+        @NoEscape val binding: ViewBinding,
+        private val toBackground: ToBackground<ViewBinding>
 ) :
-    ToBackground<ViewBinding> by toBackground
+        ToBackground<ViewBinding> by toBackground
 
 /**
  * data into
@@ -38,12 +41,12 @@ open class InUiUpdateEmpty<ViewBinding : LoadViewAble<out Parent>>(
  * @property input Input
  * @constructor
  */
-open class InUiUpdateInput<ViewBinding : LoadViewAble<out Parent>, Input>(
-    currentWindow: Window?,
-    currentStage: Stage?,
-    val input: Input,
-    binding: ViewBinding,
-    toBackground: ToBackground<ViewBinding>
+open class InUiUpdateInput<ViewBinding : LoadViewAble<Parent>, Input>(
+        currentWindow: Window?,
+        currentStage: Stage?,
+        val input: Input,
+        binding: ViewBinding,
+        toBackground: ToBackground<ViewBinding>
 ) : InUiUpdateEmpty<ViewBinding>(currentWindow, currentStage, binding, toBackground)
 
 //endregion
@@ -55,9 +58,9 @@ open class InUiUpdateInput<ViewBinding : LoadViewAble<out Parent>, Input>(
  */
 interface ProhibitedBinding<ViewBinding> {
     @Deprecated(
-        "Accessing view on Background is prohibited, call InUi to access it",
-        level = DeprecationLevel.ERROR,
-        replaceWith = ReplaceWith("inUi{ binding }", "csense.javafx.views")
+            "Accessing view on Background is prohibited, call InUi to access it",
+            level = DeprecationLevel.ERROR,
+            replaceWith = ReplaceWith("inUi{ binding }", "csense.javafx.views")
     )
     val binding: ViewBinding
         @Throws(Exception::class)
@@ -65,18 +68,18 @@ interface ProhibitedBinding<ViewBinding> {
 }
 
 //region InBackground states
-class InBackgroundEmpty<ViewBinding : LoadViewAble<out Parent>>(
-    private val toUI: ToUi<ViewBinding>,
-    val scope: CoroutineScope
+class InBackgroundEmpty<ViewBinding : LoadViewAble<Parent>>(
+        private val toUI: ToUi<ViewBinding>,
+        val scope: CoroutineScope
 
 ) : ToUi<ViewBinding> by toUI,
-    ProhibitedBinding<ViewBinding>
+        ProhibitedBinding<ViewBinding>
 
-class InBackgroundInput<ViewBinding : LoadViewAble<out Parent>, Input>(
-    val input: Input,
-    private val toUI: ToUi<ViewBinding>
+class InBackgroundInput<ViewBinding : LoadViewAble<Parent>, Input>(
+        val input: Input,
+        private val toUI: ToUi<ViewBinding>
 ) :
-    ToUi<ViewBinding> by toUI, ProhibitedBinding<ViewBinding>
+        ToUi<ViewBinding> by toUI, ProhibitedBinding<ViewBinding>
 
 //endregion
 
@@ -88,13 +91,13 @@ class InBackgroundInput<ViewBinding : LoadViewAble<out Parent>, Input>(
  * All to UI state transfers
  * @param ViewBinding
  */
-interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
+interface ToUi<ViewBinding : LoadViewAble<Parent>> {
     /**
      * When you want to do something with the ui with no input (could be a simple side effect)
      * @param action FunctionUnit<InUiUpdateEmpty<ViewBinding>>
      * @return Job
      */
-    fun inUi(action: InUiUpdateEmptyScope<ViewBinding>): Job
+    fun inUi(@InUi action: InUiUpdateEmptyScope<ViewBinding>): Job
 
     /**
      * When you want to do something with the ui with with input (display something)
@@ -103,8 +106,8 @@ interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
      * @return Job
      */
     fun <Input> inUi(
-        input: Input,
-        action: InUiUpdateInputScope<ViewBinding, Input>
+            input: Input,
+            @InUi action: InUiUpdateInputScope<ViewBinding, Input>
     ): Job
 
     /**
@@ -115,12 +118,12 @@ interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
      * @return Job
      */
     fun <Input, Output> inUiAsync(
-        input: Input,
-        action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
+            input: Input,
+            @InUi action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output>
 
     fun <Output> inUiAsync(
-        action: InUiUpdateOutputScope<ViewBinding, Output>
+            @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<Output>
 
     /**
@@ -129,7 +132,7 @@ interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
      * @return Deferred<T>
      */
     fun <T, Output : Deferred<T>> inUiDeferredAsync(
-            action: InUiUpdateOutputScope<ViewBinding, Output>
+            @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<T>
 }
 
@@ -137,27 +140,32 @@ interface ToUi<ViewBinding : LoadViewAble<out Parent>> {
  * All to background state transfers
  * @param ViewBinding
  */
-interface ToBackground<ViewBinding : LoadViewAble<out Parent>> {
+interface ToBackground<ViewBinding : LoadViewAble<Parent>> {
     /**
      * Useful for doing a side effect but nothing "computing" like taking or retrieving anything
      * @param action FunctionUnit<InBackgroundEmpty>
      * @return Job
      */
-    fun inBackground(action: InBackgroundEmptyScope<ViewBinding>): Job
+    fun inBackground(
+            @InBackground action: InBackgroundEmptyScope<ViewBinding>): Job
 
     /**
      *
      * @param action InBackgroundInput<ViewBinding, Input>
      * @return Job
      */
-    fun <Input> inBackground(input: Input, action: InBackgroundInputScope<ViewBinding, Input>): Job
+    fun <Input> inBackground(
+            input: Input,
+            @InBackground action: InBackgroundInputScope<ViewBinding, Input>): Job
 
     /**
      *
      * @param action InBackgroundOutput<ViewBinding, Output>
      * @return Deferred<Output>
      */
-    fun <Output> inBackgroundAsync(action: InBackgroundOutputScope<ViewBinding, Output>): Deferred<Output>
+    fun <Output> inBackgroundAsync(
+            @InBackground action: InBackgroundOutputScope<ViewBinding, Output>
+    ): Deferred<Output>
 
     /**
      *
@@ -165,8 +173,8 @@ interface ToBackground<ViewBinding : LoadViewAble<out Parent>> {
      * @return Job
      */
     fun <Input, Output> inBackgroundAsync(
-        input: Input,
-        action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
+            input: Input,
+            @InBackground action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output>
 }
 //endregion

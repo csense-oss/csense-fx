@@ -1,0 +1,8 @@
+<root>
+    <item name='javafx.scene.Node javafx.beans.property.DoubleProperty layoutXProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.scene.Node.NodeTransformation getNodeTransformation()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

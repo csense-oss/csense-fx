@@ -1,12 +1,14 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package csense.javafx.viewdsl
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
 import kotlin.contracts.*
 
-@InUI
+@InUi
 inline fun Accordion.titledPane(
         crossinline action: ScopedViewDsl<TitledPane>
 ): TitledPane {
@@ -18,7 +20,7 @@ inline fun Accordion.titledPane(
     }
 }
 
-@InUI
+@InUi
 inline fun Accordion.titledPane(
         title: String,
         crossinline action: ScopedViewDsl<TitledPane>
@@ -33,7 +35,7 @@ inline fun Accordion.titledPane(
 }
 
 
-@InUI
+@InUi
 inline fun <T> Accordion.titledPaneWith(
         title: String,
         containerControl: T
@@ -46,7 +48,7 @@ inline fun <T> Accordion.titledPaneWith(
 }
 
 
-@InUI
+@InUi
 inline fun Accordion.titledPaneWithVBox(
         title: String,
         crossinline action: ScopedViewDsl<VBox>

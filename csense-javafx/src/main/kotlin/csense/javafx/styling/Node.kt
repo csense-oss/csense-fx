@@ -2,14 +2,14 @@
 
 package csense.javafx.styling
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.*
 
 /**
  * Hides the view
  * @receiver Node
  */
-@InUI
+@InUi
 fun Node.hide() {
     setVisibility(false)
 }
@@ -18,7 +18,7 @@ fun Node.hide() {
  * Shows / present the view
  * @receiver Node
  */
-@InUI
+@InUi
 fun Node.show() {
     setVisibility(true)
 }
@@ -28,7 +28,7 @@ fun Node.show() {
  */
 
 val Node.isShown: Boolean
-    @InUI
+    @InUi
     get() = visibleProperty().value
 
 /**
@@ -36,7 +36,7 @@ val Node.isShown: Boolean
  */
 
 val Node.isNotShown: Boolean
-    @InUI
+    @InUi
     get() = !isShown
 
 /**
@@ -44,5 +44,5 @@ val Node.isNotShown: Boolean
  * @receiver Node
  * @param visible Boolean if true it will be shown, false it will be hidden.
  */
-@InUI
+@InUi
 fun Node.setVisibility(visible: Boolean): Unit = visibleProperty().set(visible)

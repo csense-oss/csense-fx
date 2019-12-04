@@ -1,0 +1,95 @@
+<root>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color gray(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color gray(double, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color grayRgb(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color grayRgb(int) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color grayRgb(int, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color grayRgb(int, double) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int) 2'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int, double) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int, double) 1'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int, double) 2'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color valueOf(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String, double) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color void checkRGB(int, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color void checkRGB(int, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color void checkRGB(int, int, int) 2'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+</root>

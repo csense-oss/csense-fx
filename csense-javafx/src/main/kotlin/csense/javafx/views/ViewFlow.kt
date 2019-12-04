@@ -1,19 +1,21 @@
 package csense.javafx.views
 
 import csense.javafx.views.base.OnViewSetup
-import csense.kotlin.*
-import csense.kotlin.extensions.*
+import csense.kotlin.AsyncFunction0
+import csense.kotlin.AsyncFunction1
+import csense.kotlin.annotations.threading.InAny
+import csense.kotlin.annotations.threading.InBackground
+import csense.kotlin.annotations.threading.InUi
 import csense.kotlin.extensions.coroutines.asyncDefault
 import csense.kotlin.extensions.coroutines.asyncIO
-import csense.kotlin.logger.*
 import kotlinx.coroutines.*
-import kotlin.Function2
+import kotlin.reflect.KClass
 
 
 open class InputDataFlow<Din, DinTransformed>(
         scope: CoroutineScope,
         input: Din,
-        private val transformInput: AsyncFunction1<Din, DinTransformed>
+        @InBackground private val transformInput: AsyncFunction1<Din, DinTransformed>
 ) {
 
     val result: Deferred<DinTransformed> =
@@ -32,25 +34,28 @@ abstract class ViewFlow<ViewLoad, ViewBinding>(scope: CoroutineScope) {
         }
     }
 
+
+    @InBackground
     abstract suspend fun loadView(): ViewLoad
 
+    @InUi
     abstract fun bindView(loadedView: ViewLoad, onViewSetup: OnViewSetup): ViewBinding
 }
 
 private fun <T, U> CoroutineScope.loadAndTransformDefault(
-        loader: suspend () -> T,
-        transformer: suspend (T) -> U
+        @InBackground loader: suspend () -> T,
+        @InBackground transformer: suspend (T) -> U
 ): Deferred<U> = loadAndTransform(Dispatchers.Default, loader, transformer)
 
 private fun <T, U> CoroutineScope.loadAndTransformMain(
-        loader: suspend () -> T,
-        transformer: suspend (T) -> U
+        @InBackground loader: suspend () -> T,
+        @InUi transformer: suspend (T) -> U
 ): Deferred<U> = loadAndTransform(Dispatchers.Main, loader, transformer)
 
 
 private fun <T, U> CoroutineScope.loadAndTransform(
         dispatcher: CoroutineDispatcher,
-        loader: suspend () -> T,
+        @InBackground loader: suspend () -> T,
         transformer: suspend (T) -> U
 ): Deferred<U> = asyncIO {
     val loaded = loader()
@@ -61,18 +66,14 @@ private fun <T, U> CoroutineScope.loadAndTransform(
 
 class DelegatingViewFlow<ViewLoad, ViewBinding>(
         scope: CoroutineScope,
-        private val loadViewFunc: AsyncFunction0<ViewLoad>,
-        private val bindFunction: Function2<ViewLoad, OnViewSetup, ViewBinding>
+        @InBackground private val loadViewFunc: AsyncFunction0<ViewLoad>,
+        @InUi private val bindFunction: Function2<ViewLoad, OnViewSetup, ViewBinding>
 ) : ViewFlow<ViewLoad, ViewBinding>(scope) {
 
-    override suspend fun loadView(): ViewLoad {
-        val (time, res) = measureTimeMillisResult {
-            loadViewFunc()
-        }
-        L.logClassDebug("Took $time ms to load view")
-        return res
-    }
+    @InBackground
+    override suspend fun loadView(): ViewLoad = loadViewFunc()
 
+    @InUi
     override fun bindView(loadedView: ViewLoad, onViewSetup: OnViewSetup): ViewBinding =
             bindFunction(loadedView, onViewSetup)
 

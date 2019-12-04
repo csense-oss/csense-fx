@@ -1,0 +1,23 @@
+<root>
+    <item name='javafx.stage.Stage Stage()'>
+        <annotation name='csense.javafx.annotations.InUI'/>
+    </item>
+    <item name='javafx.stage.Stage javafx.stage.Window getOwner()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Stage void showAndWait()'>
+        <annotation name='csense.javafx.annotations.InUI'/>
+    </item>
+    <item name='javafx.stage.Window java.lang.Object getUserData()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.scene.Scene getScene()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window void setScene(javafx.scene.Scene)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window void setScene(javafx.scene.Scene) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

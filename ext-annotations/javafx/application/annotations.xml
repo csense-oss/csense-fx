@@ -1,0 +1,14 @@
+<root>
+    <item name='javafx.application.Application java.lang.String getUserAgentStylesheet()'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.application.Application void setUserAgentStylesheet(java.lang.String)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.application.Application void start(javafx.stage.Stage)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.application.Application void stop()'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+</root>

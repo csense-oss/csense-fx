@@ -1,7 +1,20 @@
 package csense.javafx.views
 
-import csense.javafx.views.base.*
+import csense.javafx.tracking.BaseViewTrackingEvents
+import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.InUiUpdateInput
+import csense.javafx.views.base.LoadViewAble
+import csense.javafx.views.base.OnViewSetup
+import csense.kotlin.FunctionUnit
+import csense.kotlin.annotations.sideEffect.NoEscape
+import csense.kotlin.annotations.threading.InAny
+import csense.kotlin.annotations.threading.InUi
 import javafx.scene.Parent
+import javafx.stage.Stage
+import javafx.stage.Window
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
 
 /**
  * Conceptualize a view with input and output
@@ -10,12 +23,62 @@ import javafx.scene.Parent
  */
 abstract class BaseViewInOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Din, DinTransformed, Dout>(
         input: Din,
-        viewLoader: Function2<ViewLoad, OnViewSetup, ViewBinding>
-) : BaseViewInput<ViewLoad, ViewBinding, Din, DinTransformed>(input, viewLoader),
+        @InUi viewLoader: Function2<@NoEscape ViewLoad, @NoEscape OnViewSetup, ViewBinding>
+) : BaseView<ViewLoad, ViewBinding>(viewLoader),
         OutputViewAble<Dout>,
+        InputViewAble<Din, DinTransformed>,
         OnViewBindingRenderType<ViewBinding> {
 
-    override fun ViewBinding.onUiReady() {
-        setupOnRender(isInline, this)
+
+    val inputDataLoader: Deferred<DinTransformed>
+        get() = startDataFlowLoader.startDataFlow.result
+
+    private val startDataFlowLoader by lazy {
+        InputDataLoader(this,
+                ::preloadView,
+                input,
+                coroutineScope,
+                ::transformInput)
     }
+
+    @InUi
+    override fun start() {
+        super.start()
+        startDataFlowLoader.start(onUILoaded = {
+            setupOnRender(isInline, it)
+        }, callback = {
+            onStartData()
+            tracker.logEvent(BaseViewTrackingEvents.Ready)
+        })
+    }
+
+
+    @InAny
+    fun closeWithResult(): Job = inBackground {
+        result.complete(createResultAsync().await())
+        closeView().join()
+    }
+
+    @InAny
+    fun presentThisAsModal(
+            window: Window? = null,
+            @InUi configureStage: FunctionUnit<Stage>? = null
+    ): Deferred<Dout> = uiToBackgroundAsync(uiAction = {
+        createInternalNewWindow(window, configureStage)
+    }, computeAction = {
+        input.join()
+        waitForResultAsync()
+    })
+
+    private suspend fun waitForResultAsync(): Dout {
+        return result.await()
+    }
+
+    private val result: CompletableDeferred<Dout> = CompletableDeferred()
+
+    @InUi
+    protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
 }
+
+
+

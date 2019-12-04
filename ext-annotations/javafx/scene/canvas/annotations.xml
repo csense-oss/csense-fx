@@ -1,0 +1,11 @@
+<root>
+    <item name='javafx.scene.canvas.Canvas javafx.beans.property.DoubleProperty heightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.canvas.Canvas javafx.beans.property.DoubleProperty widthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.canvas.Canvas javafx.scene.canvas.GraphicsContext getGraphicsContext2D()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

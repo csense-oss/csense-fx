@@ -1,0 +1,26 @@
+<root>
+    <item name='javafx.scene.control.CheckBox javafx.beans.property.BooleanProperty allowIndeterminateProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.CheckBox javafx.beans.property.BooleanProperty indeterminateProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.CheckBox javafx.beans.property.BooleanProperty selectedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.Control javafx.beans.property.ObjectProperty&lt;javafx.scene.control.Skin&lt;?&gt;&gt; skinProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.Control javafx.beans.property.ObjectProperty&lt;javafx.scene.control.Tooltip&gt; tooltipProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.Control javafx.scene.control.Skin&lt;?&gt; getSkin()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.control.Labeled StringProperty textProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.Labeled javafx.beans.property.StringProperty textProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

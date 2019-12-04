@@ -1,6 +1,6 @@
 package csense.javafx.extensions.parent
 
-import csense.javafx.annotations.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.Node
 import javafx.scene.Parent
 
@@ -11,5 +11,5 @@ import javafx.scene.Parent
  * an readonly list is a readonly list, no matter what.
  */
 val Parent.childrenSafe: List<Node>
-    @InUI
+    @InUi
     get() = childrenUnmodifiable
