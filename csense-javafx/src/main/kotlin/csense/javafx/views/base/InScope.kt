@@ -28,7 +28,7 @@ annotation class InScope
 open class InUiUpdateEmpty<ViewBinding : LoadViewAble<Parent>>(
         @NoEscape val currentWindow: Window?,
         @NoEscape val currentStage: Stage?,
-        @NoEscape val binding: ViewBinding,
+        @NoEscape @InUi val binding: ViewBinding,
         private val toBackground: ToBackground<ViewBinding>
 ) :
         ToBackground<ViewBinding> by toBackground

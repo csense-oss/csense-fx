@@ -23,4 +23,31 @@
     <item name='javafx.scene.control.Labeled javafx.beans.property.StringProperty textProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.control.SelectionModel int getSelectedIndex()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="-1"/>
+            <val name="to" val="java.lang.Integer.MAX_VALUE"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.control.SplitPane SplitPane(javafx.scene.Node...) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane double[] getDividerPositions()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane java.lang.Boolean isResizableWithParent(javafx.scene.Node) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane javafx.beans.property.ObjectProperty&lt;javafx.geometry.Orientation&gt; orientationProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane javafx.collections.ObservableList&lt;javafx.scene.Node&gt; getItems()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane void setResizableWithParent(javafx.scene.Node, java.lang.Boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.SplitPane void setResizableWithParent(javafx.scene.Node, java.lang.Boolean) 1'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
 </root>
