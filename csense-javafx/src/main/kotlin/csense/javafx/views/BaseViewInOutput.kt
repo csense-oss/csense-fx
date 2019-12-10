@@ -81,4 +81,25 @@ abstract class BaseViewInOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Di
 }
 
 
+abstract class SimpleBaseViewInOutput<ViewBinding : LoadViewAble<Parent>, Din, DinTransformed, Dout>(
+        input: Din,
+        viewConstructor: Function1<OnViewSetup, ViewBinding>
+) : BaseViewInOutput<SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout>, ViewBinding, Din, DinTransformed, Dout>(
+        input,
+        { simpleBaseViewInOutput: SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout>, onViewSetup: OnViewSetup ->
+            viewConstructor(onViewSetup)
+        }
+) {
+    override suspend fun loadView(): SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout> = this
+}
 
+
+abstract class SimpleBaseViewInOutputNoTransform<ViewBinding : LoadViewAble<Parent>, Din, Dout>(
+        input: Din,
+        viewConstructor: Function1<OnViewSetup, ViewBinding>
+) : SimpleBaseViewInOutput<ViewBinding, Din, Din, Dout>(
+        input,
+        viewConstructor
+) {
+    override suspend fun transformInput(input: Din): Din = input
+}

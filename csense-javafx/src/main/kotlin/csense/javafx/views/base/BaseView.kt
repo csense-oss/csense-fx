@@ -15,7 +15,7 @@ import kotlinx.coroutines.*
  * akk a boring view.
  * Base for all base views.
  */
- abstract class BaseView<out ViewLoad, ViewBinding : LoadViewAble<Parent>> constructor(
+abstract class BaseView<out ViewLoad, ViewBinding : LoadViewAble<Parent>> constructor(
         @InUi private val viewLoader: Function2<ViewLoad, OnViewSetup, ViewBinding>
 ) : AbstractBaseView<ViewBinding>() {
 
@@ -27,7 +27,7 @@ import kotlinx.coroutines.*
     //TODO either keep or remove... hmm
     internal fun preloadView(): Deferred<ViewBinding> {
         return viewBinding.view
-}
+    }
 
     private val viewBinding: ViewFlow<ViewLoad, ViewBinding> by lazy {
         DelegatingViewFlow(

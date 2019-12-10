@@ -1,8 +1,23 @@
 <root>
+    <item name='javafx.scene.Node java.lang.String getId()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.Node java.lang.String getStyle()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.DoubleProperty layoutXProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.StringProperty idProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.collections.ObservableList&lt;java.lang.String&gt; getStyleClass()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.scene.Node.NodeTransformation getNodeTransformation()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node void setStyle(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
 </root>

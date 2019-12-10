@@ -8,6 +8,15 @@
     <item name='javafx.scene.control.CheckBox javafx.beans.property.BooleanProperty selectedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.control.ContextMenu javafx.collections.ObservableList&lt;javafx.scene.control.MenuItem&gt; getItems()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.ContextMenu void show(javafx.scene.Node, double, double) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.ContextMenu void show(javafx.scene.Node, javafx.geometry.Side, double, double) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.control.Control javafx.beans.property.ObjectProperty&lt;javafx.scene.control.Skin&lt;?&gt;&gt; skinProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
