@@ -1,9 +1,11 @@
 plugins {
     id "kotlin"
     id 'org.openjfx.javafxplugin' version '0.0.8'
+    id "me.champeau.gradle.jmh"
 }
+
 group 'csense'
-version '0.1'
+version '0.0.1'
 
 
 dependencies {
@@ -26,8 +28,12 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+compileJmhKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
 javafx {
-    version = "12.0.1"
+    version = "13.0.1"
     // see https://docs.oracle.com/javase/9/docs/api/overview-summary.html#JavaFX
     modules = [
             "javafx.base",

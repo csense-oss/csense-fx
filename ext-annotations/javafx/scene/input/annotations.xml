@@ -1,0 +1,50 @@
+<root>
+    <item name='javafx.scene.input.ClipboardContent boolean putFiles(java.util.List&lt;java.io.File&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putFilesByPath(java.util.List&lt;java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putHtml(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putImage(javafx.scene.image.Image) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putRtf(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putString(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent boolean putUrl(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent java.lang.String getHtml()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent java.lang.String getRtf()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent java.lang.String getString()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent java.lang.String getUrl()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent java.util.List&lt;java.io.File&gt; getFiles()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.ClipboardContent javafx.scene.image.Image getImage()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.DataFormat java.util.Set&lt;java.lang.String&gt; getIdentifiers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.input.DataFormat javafx.scene.input.DataFormat lookupMimeType(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.DataFormat javafx.scene.input.DataFormat lookupMimeType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.javafx.perf.PerformanceTracker com.sun.javafx.perf.PerformanceTracker getSceneTracker(javafx.scene.Scene)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>
