@@ -10,13 +10,17 @@ fun ApplicationTracker.onCreatedSplash() = logEvent(BaseApplicationTrackingEvent
 fun ApplicationTracker.onLoadingController() = logEvent(BaseApplicationTrackingEvents.LoadingController)
 fun ApplicationTracker.onReady() = logEvent(BaseApplicationTrackingEvents.Ready)
 fun ApplicationTracker.onClosing() = logEvent(BaseApplicationTrackingEvents.Closing)
+fun ApplicationTracker.onBackgroundLoadingStarted() = logEvent(BaseApplicationTrackingEvents.Loading)
+fun ApplicationTracker.onBackgroundLoadingDone() = logEvent(BaseApplicationTrackingEvents.LoadingDone)
 
 enum class BaseApplicationTrackingEvents {
     Initialized,
     CreatedSplash,
     LoadingController,
     Ready,
-    Closing
+    Closing,
+    Loading,
+    LoadingDone
 }
 
 fun List<TrackingEvent<BaseApplicationTrackingEvents>>.logTimingString(): String {
@@ -29,5 +33,7 @@ fun List<TrackingEvent<BaseApplicationTrackingEvents>>.logTimingString(): String
         BaseApplicationTrackingEvents.LoadingController -> "Took $timing from splash to loading"
         BaseApplicationTrackingEvents.Ready -> "Ready took $timing"
         BaseApplicationTrackingEvents.Closing -> "Closing"
+        BaseApplicationTrackingEvents.Loading -> "Loading data in background"
+        BaseApplicationTrackingEvents.LoadingDone -> "Done loading data in background"
     }
 }
