@@ -5,6 +5,7 @@ package csense.javafx.viewdsl
 
 import csense.kotlin.annotations.threading.InUi
 import csense.javafx.extensions.parent.addToFront
+import csense.javafx.extensions.parent.addToFrontF
 import csense.javafx.widgets.SpaceView
 import csense.kotlin.EmptyFunctionResult
 import csense.kotlin.annotations.threading.InUiContext
@@ -22,15 +23,6 @@ import javafx.scene.web.WebView
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-
-@InUi
-inline fun <T : Node> Pane.createAndAdd(@InUi create: EmptyFunctionResult<T>): T {
-    contract {
-        callsInPlace(create, InvocationKind.EXACTLY_ONCE)
-    }
-    return create().apply(::addToFront)
-}
-
 @InUi
 inline fun Pane.accordion(
         @InUi crossinline action: ScopedViewDsl<Accordion>
@@ -38,9 +30,9 @@ inline fun Pane.accordion(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Accordion().apply(action)
-    }
+    return addToFrontF(Accordion())
+            .apply(action)
+
 }
 
 @InUi
@@ -50,9 +42,8 @@ inline fun Pane.anchorPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        AnchorPane().apply(action)
-    }
+    return addToFrontF(
+            AnchorPane()).apply(action)
 }
 
 @InUi
@@ -62,14 +53,12 @@ inline fun Pane.borderPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        BorderPane().apply(action)
-    }
+    return addToFrontF(
+            BorderPane()).apply(action)
 }
 
-
 @InUi
-inline fun Pane.button(text: String): Button = createAndAdd { Button(text) }
+inline fun Pane.button(text: String): Button = addToFrontF(Button(text))
 
 /**
  * Like the general constructor DSL, but also adds the newly created button to the children (at the end)
@@ -86,8 +75,9 @@ inline fun Pane.button(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd { Button(text).apply(action) }
+    return addToFrontF(Button(text)).apply(action)
 }
+
 
 @InUi
 inline fun Pane.buttonBar(
@@ -96,9 +86,8 @@ inline fun Pane.buttonBar(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ButtonBar().apply(action)
-    }
+    return addToFrontF(
+            ButtonBar()).apply(action)
 }
 
 @InUi
@@ -108,9 +97,8 @@ inline fun Pane.checkBox(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        CheckBox().apply(action)
-    }
+    return addToFrontF(
+            CheckBox()).apply(action)
 }
 
 @InUi
@@ -120,9 +108,8 @@ inline fun <T> Pane.choiceBox(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ChoiceBox<T>().apply(action)
-    }
+    return addToFrontF(
+            ChoiceBox<T>()).apply(action)
 }
 
 @InUi
@@ -132,9 +119,8 @@ inline fun Pane.colorPicker(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ColorPicker().apply(action)
-    }
+    return addToFrontF(
+            ColorPicker()).apply(action)
 }
 
 @InUi
@@ -144,9 +130,8 @@ inline fun <T> Pane.comboBox(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ComboBox<T>().apply(action)
-    }
+    return addToFrontF(
+            ComboBox<T>()).apply(action)
 }
 
 @InUi
@@ -156,9 +141,8 @@ inline fun Pane.datePicker(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        DatePicker().apply(action)
-    }
+    return addToFrontF(
+            DatePicker()).apply(action)
 }
 
 @InUi
@@ -168,9 +152,8 @@ inline fun Pane.flowPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        FlowPane().apply(action)
-    }
+    return addToFrontF(
+            FlowPane()).apply(action)
 }
 
 @InUi
@@ -180,9 +163,8 @@ inline fun Pane.gridPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        GridPane().apply(action)
-    }
+    return addToFrontF(
+            GridPane()).apply(action)
 }
 
 @InUi
@@ -192,9 +174,8 @@ inline fun Pane.group(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Group().apply(action)
-    }
+    return addToFrontF(
+            Group()).apply(action)
 }
 
 @InUi
@@ -204,9 +185,8 @@ inline fun Pane.hBox(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        HBox().apply(action)
-    }
+    return addToFrontF(
+            HBox()).apply(action)
 }
 
 @InUi
@@ -216,9 +196,8 @@ inline fun Pane.htmlEditor(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        HTMLEditor().apply(action)
-    }
+    return addToFrontF(
+            HTMLEditor()).apply(action)
 }
 
 @InUi
@@ -228,9 +207,8 @@ inline fun Pane.hyperlink(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Hyperlink().apply(action)
-    }
+    return addToFrontF(
+            Hyperlink()).apply(action)
 }
 
 @InUi
@@ -240,9 +218,8 @@ inline fun Pane.imageView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ImageView().apply(action)
-    }
+    return addToFrontF(
+            ImageView()).apply(action)
 }
 
 @InUi
@@ -252,9 +229,8 @@ inline fun Pane.label(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Label().apply(action)
-    }
+    return addToFrontF(
+            Label()).apply(action)
 }
 
 @InUi
@@ -264,9 +240,8 @@ inline fun <T> Pane.listView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ListView<T>().apply(action)
-    }
+    return addToFrontF(
+            ListView<T>()).apply(action)
 }
 
 @InUi
@@ -276,9 +251,8 @@ inline fun Pane.mediaView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        MediaView().apply(action)
-    }
+    return addToFrontF(
+            MediaView()).apply(action)
 }
 
 @InUi
@@ -288,9 +262,8 @@ inline fun Pane.menuBar(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        MenuBar().apply(action)
-    }
+    return addToFrontF(
+            MenuBar()).apply(action)
 }
 
 @InUi
@@ -300,9 +273,8 @@ inline fun Pane.meshView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        MeshView().apply(action)
-    }
+    return addToFrontF(
+            MeshView()).apply(action)
 }
 
 @InUi
@@ -312,9 +284,8 @@ inline fun Pane.pagination(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Pagination().apply(action)
-    }
+    return addToFrontF(
+            Pagination()).apply(action)
 }
 
 @InUi
@@ -324,9 +295,8 @@ inline fun Pane.passwordField(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        PasswordField().apply(action)
-    }
+    return addToFrontF(
+            PasswordField()).apply(action)
 }
 
 @InUi
@@ -336,9 +306,8 @@ inline fun Pane.progressBar(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ProgressBar().apply(action)
-    }
+    return addToFrontF(
+            ProgressBar()).apply(action)
 }
 
 @InUi
@@ -348,9 +317,8 @@ inline fun Pane.progressIndicator(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ProgressIndicator().apply(action)
-    }
+    return addToFrontF(
+            ProgressIndicator()).apply(action)
 }
 
 @InUi
@@ -360,9 +328,8 @@ inline fun Pane.radioButton(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        RadioButton().apply(action)
-    }
+    return addToFrontF(
+            RadioButton()).apply(action)
 }
 
 @InUi
@@ -372,9 +339,8 @@ inline fun Pane.scrollPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ScrollPane().apply(action)
-    }
+    return addToFrontF(
+            ScrollPane()).apply(action)
 }
 
 @InUi
@@ -384,9 +350,8 @@ inline fun Pane.separator(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Separator().apply(action)
-    }
+    return addToFrontF(
+            Separator()).apply(action)
 }
 
 @InUi
@@ -396,9 +361,8 @@ inline fun Pane.slider(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Slider().apply(action)
-    }
+    return addToFrontF(
+            Slider()).apply(action)
 }
 
 @InUi
@@ -408,9 +372,8 @@ inline fun <T> Pane.spinner(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Spinner<T>().apply(action)
-    }
+    return addToFrontF(
+            Spinner<T>()).apply(action)
 }
 
 @InUi
@@ -420,9 +383,8 @@ inline fun Pane.splitPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        SplitPane().apply(action)
-    }
+    return addToFrontF(
+            SplitPane()).apply(action)
 }
 
 @InUi
@@ -432,9 +394,8 @@ inline fun Pane.stackPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        StackPane().apply(action)
-    }
+    return addToFrontF(
+            StackPane()).apply(action)
 }
 
 @InUi
@@ -444,9 +405,8 @@ inline fun <T> Pane.tableView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TableView<T>().apply(action)
-    }
+    return addToFrontF(
+            TableView<T>()).apply(action)
 }
 
 @InUi
@@ -456,9 +416,8 @@ inline fun Pane.tabPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TabPane().apply(action)
-    }
+    return addToFrontF(
+            TabPane()).apply(action)
 }
 
 @InUi
@@ -468,9 +427,8 @@ inline fun Pane.text(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        Text().apply(action)
-    }
+    return addToFrontF(
+            Text()).apply(action)
 }
 
 @InUi
@@ -480,9 +438,8 @@ inline fun Pane.textArea(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TextArea().apply(action)
-    }
+    return addToFrontF(
+            TextArea()).apply(action)
 }
 
 @InUi
@@ -492,9 +449,8 @@ inline fun Pane.textField(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TextField().apply(action)
-    }
+    return addToFrontF(
+            TextField()).apply(action)
 }
 
 @InUi
@@ -504,9 +460,8 @@ inline fun Pane.textFlow(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TextFlow().apply(action)
-    }
+    return addToFrontF(
+            TextFlow()).apply(action)
 }
 
 @InUi
@@ -516,9 +471,8 @@ inline fun Pane.tilePane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TilePane().apply(action)
-    }
+    return addToFrontF(
+            TilePane()).apply(action)
 }
 
 @InUi
@@ -528,9 +482,8 @@ inline fun Pane.titledPane(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TitledPane().apply(action)
-    }
+    return addToFrontF(
+            TitledPane()).apply(action)
 }
 
 @InUi
@@ -540,9 +493,8 @@ inline fun Pane.toggleButton(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ToggleButton().apply(action)
-    }
+    return addToFrontF(
+            ToggleButton()).apply(action)
 }
 
 @InUi
@@ -552,9 +504,8 @@ inline fun Pane.toolBar(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        ToolBar().apply(action)
-    }
+    return addToFrontF(
+            ToolBar()).apply(action)
 }
 
 @InUi
@@ -564,9 +515,8 @@ inline fun <T> Pane.treeTableView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TreeTableView<T>().apply(action)
-    }
+    return addToFrontF(
+            TreeTableView<T>()).apply(action)
 }
 
 @InUi
@@ -576,9 +526,8 @@ inline fun <T> Pane.treeView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        TreeView<T>().apply(action)
-    }
+    return addToFrontF(
+            TreeView<T>()).apply(action)
 }
 
 @InUi
@@ -588,9 +537,8 @@ inline fun Pane.vBox(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        VBox().apply(action)
-    }
+    return addToFrontF(
+            VBox()).apply(action)
 }
 
 @InUi
@@ -600,9 +548,8 @@ inline fun Pane.webView(
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
     }
-    return createAndAdd {
-        WebView().apply(action)
-    }
+    return addToFrontF(
+            WebView()).apply(action)
 }
 
 @InUi

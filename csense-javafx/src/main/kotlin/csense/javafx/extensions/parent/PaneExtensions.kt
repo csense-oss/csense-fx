@@ -24,6 +24,13 @@ inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
 @InUi
 inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
 
+
+@InUi
+inline fun <T : Node> Pane.addToFrontF(view: T): T {
+    addToFront(view)
+    return view
+}
+
 /**
  * Adds the given child to this pane while returning it as well.
  * @receiver T

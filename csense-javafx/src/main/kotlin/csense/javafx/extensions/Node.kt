@@ -3,6 +3,7 @@ package csense.javafx.extensions
 import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.*
+import javafx.scene.control.SplitPane
 import javafx.scene.layout.*
 
 @InUi
@@ -18,6 +19,10 @@ fun Node.fillParent() {
         is TilePane -> fillTilePane()
     }
 }
+
+@InUi
+fun Node.fillSplitPane() = SplitPane.setResizableWithParent(this,true)
+
 
 @InUi
 fun Node.fillVBox() = VBox.setVgrow(this, Priority.ALWAYS)
