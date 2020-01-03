@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package csense.javafx.extensions
+package csense.javafx.extensions.system
 
 import csense.kotlin.FunctionUnit
 import csense.kotlin.annotations.threading.InUi

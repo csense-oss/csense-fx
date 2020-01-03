@@ -1,4 +1,4 @@
-package csense.javafx.extensions
+package csense.javafx.extensions.views
 
 import csense.kotlin.annotations.threading.*
 import javafx.geometry.*

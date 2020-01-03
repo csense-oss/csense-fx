@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE", "unused", "EXPERIMENTAL_API_USAGE")
 
-package csense.javafx.extensions
+package csense.javafx.extensions.views
 
 import csense.kotlin.annotations.threading.*
 import csense.kotlin.*

@@ -1,10 +1,10 @@
 package csense.javafx.views.base
 
-import csense.javafx.extensions.StageExtensions.stageWith
+import csense.javafx.extensions.system.StageExtensions.stageWith
 import csense.javafx.extensions.parent.addToFront
 import csense.javafx.extensions.parent.replace
-import csense.javafx.extensions.showFluent
-import csense.javafx.extensions.updateXYFrom
+import csense.javafx.extensions.system.showFluent
+import csense.javafx.extensions.system.updateXYFrom
 import csense.javafx.observable.addObserverF
 import csense.javafx.tracking.BaseViewTracker
 import csense.javafx.tracking.logTimingString
