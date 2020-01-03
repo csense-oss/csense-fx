@@ -1,0 +1,8 @@
+<root>
+    <item name='javafx.beans.Observable void addListener(javafx.beans.InvalidationListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.beans.Observable void removeListener(javafx.beans.InvalidationListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

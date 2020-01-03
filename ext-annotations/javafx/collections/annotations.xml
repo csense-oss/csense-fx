@@ -1,0 +1,5 @@
+<root>
+    <item name='javafx.collections.FXCollections javafx.collections.ObservableSet&lt;E&gt; unmodifiableObservableSet(javafx.collections.ObservableSet&lt;E&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

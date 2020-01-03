@@ -1,0 +1,26 @@
+<root>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; addListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ObservableValue&lt;T&gt;, javafx.beans.InvalidationListener) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; addListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ObservableValue&lt;T&gt;, javafx.beans.InvalidationListener) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; addListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ObservableValue&lt;T&gt;, javafx.beans.value.ChangeListener&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; addListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ObservableValue&lt;T&gt;, javafx.beans.value.ChangeListener&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; addListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ObservableValue&lt;T&gt;, javafx.beans.value.ChangeListener&lt;? super T&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; removeListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.InvalidationListener) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper com.sun.javafx.binding.ExpressionHelper&lt;T&gt; removeListener(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;, javafx.beans.value.ChangeListener&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.binding.ExpressionHelper void fireValueChangedEvent(com.sun.javafx.binding.ExpressionHelper&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

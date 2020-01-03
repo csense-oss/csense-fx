@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.javafx.tk.TKClipboard java.lang.Object getContent(javafx.scene.input.DataFormat)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

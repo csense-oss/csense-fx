@@ -1,4 +1,43 @@
 <root>
+    <item name='javafx.scene.input.Clipboard'>
+        <annotation name='csense.kotlin.annotations.threading.InUiContext'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard boolean setContent(java.util.Map&lt;javafx.scene.input.DataFormat,java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.lang.Object getContent(javafx.scene.input.DataFormat)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.lang.String getHtml()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.lang.String getRtf()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.lang.String getString()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.lang.String getUrl()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.util.List&lt;java.io.File&gt; getFiles()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard java.util.Set&lt;javafx.scene.input.DataFormat&gt; getContentTypes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard javafx.scene.image.Image getImage()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard javafx.scene.input.Clipboard getLocalClipboardImpl()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard javafx.scene.input.Clipboard getSystemClipboard()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.input.Clipboard javafx.scene.input.Clipboard getSystemClipboardImpl()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.input.ClipboardContent boolean putFiles(java.util.List&lt;java.io.File&gt;) 0'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>

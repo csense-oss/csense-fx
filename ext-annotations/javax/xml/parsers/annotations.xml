@@ -1,0 +1,17 @@
+<root>
+    <item name='javax.xml.parsers.DocumentBuilder org.w3c.dom.Document parse(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.xml.parsers.DocumentBuilder org.w3c.dom.Document parse(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.xml.parsers.DocumentBuilder org.w3c.dom.Document parse(java.io.InputStream, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.xml.parsers.DocumentBuilder org.w3c.dom.Document parse(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.xml.parsers.DocumentBuilder org.w3c.dom.Document parse(org.xml.sax.InputSource) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

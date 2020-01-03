@@ -1,0 +1,8 @@
+<root>
+    <item name='com.sun.javafx.event.EventHandlerManager void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.event.EventHandlerManager void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

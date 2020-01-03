@@ -1,0 +1,8 @@
+<root>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.InputMethodEvent&gt;&gt; onInputMethodTextChangedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyTypedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

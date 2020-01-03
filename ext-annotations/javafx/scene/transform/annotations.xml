@@ -1,0 +1,68 @@
+<root>
+    <item name='javafx.scene.transform.Transform javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.transform.TransformChangedEvent&gt;&gt; onTransformChangedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.event.EventHandler&lt;? super javafx.scene.transform.TransformChangedEvent&gt; getOnTransformChanged()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Bounds inverseTransform(javafx.geometry.Bounds) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point2D deltaTransform(javafx.geometry.Point2D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point2D inverseDeltaTransform(javafx.geometry.Point2D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point2D inverseTransform(javafx.geometry.Point2D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point3D deltaTransform(javafx.geometry.Point3D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point3D inverseDeltaTransform(javafx.geometry.Point3D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point3D inverseTransform(javafx.geometry.Point3D) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void addEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void addEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void addEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void addEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void inverseTransform2DPoints(double[], int, double[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void inverseTransform2DPoints(double[], int, double[], int, int) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void inverseTransform3DPoints(double[], int, double[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void inverseTransform3DPoints(double[], int, double[], int, int) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void removeEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void removeEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void setOnTransformChanged(javafx.event.EventHandler&lt;? super javafx.scene.transform.TransformChangedEvent&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

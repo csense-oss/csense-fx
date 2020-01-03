@@ -8,16 +8,150 @@
     <item name='javafx.stage.Stage void showAndWait()'>
         <annotation name='csense.javafx.annotations.InUI'/>
     </item>
+    <item name='javafx.stage.Window double getOpacity()'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
+    </item>
     <item name='javafx.stage.Window java.lang.Object getUserData()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.BooleanProperty forceIntegerRenderScaleProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.DoubleProperty opacityProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.DoubleProperty renderScaleXProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.DoubleProperty renderScaleYProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt;&gt; onCloseRequestProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt;&gt; onHiddenProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt;&gt; onHidingProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt;&gt; onShowingProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt;&gt; onShownProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyBooleanProperty focusedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyBooleanProperty showingProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty heightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty outputScaleXProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty outputScaleYProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty widthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty xProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyDoubleProperty yProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.Scene&gt; sceneProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window javafx.collections.ObservableMap&lt;java.lang.Object,java.lang.Object&gt; getProperties()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt; getOnCloseRequest()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt; getOnHidden()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt; getOnHiding()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt; getOnShowing()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window javafx.event.EventHandler&lt;javafx.stage.WindowEvent&gt; getOnShown()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
     <item name='javafx.stage.Window javafx.scene.Scene getScene()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window void addEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void addEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void addEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void addEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void fireEvent(javafx.event.Event)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window void fireEvent(javafx.event.Event) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void hide()'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void removeEventFilter(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void removeEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void removeEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void setEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void setEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.stage.Window void setOpacity(double) 0'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
     </item>
     <item name='javafx.stage.Window void setScene(javafx.scene.Scene)'>
         <annotation name='csense.kotlin.annotations.threading.InUi'/>
     </item>
     <item name='javafx.stage.Window void setScene(javafx.scene.Scene) 0'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.stage.Window void setShowing(boolean)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window void show()'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+    </item>
+    <item name='javafx.stage.Window.SceneModel'>
+        <annotation name='csense.kotlin.annotations.threading.InUiContext'/>
     </item>
 </root>
