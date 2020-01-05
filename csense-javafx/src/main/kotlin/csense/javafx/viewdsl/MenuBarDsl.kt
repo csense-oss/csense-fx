@@ -35,7 +35,7 @@ inline fun Menu.menu(
 }
 
 @InUi
-inline fun Menu.item(
+inline fun Menu.menuItem(
     title: String,
     crossinline action: ScopedViewDsl<MenuItem> = {}
 ): MenuItem {
@@ -58,7 +58,7 @@ inline fun Menu.setAction(noinline onClicked: FunctionUnit<ActionEvent>): Menu {
     if (items.isEmpty()) {
         //apply fix for "semi" broken menu action handling
         //see https://stackoverflow.com/questions/10315774/javafx-2-0-activating-a-menu-like-a-menuitem/19006643#19006643
-        this.item("")
+        this.menuItem("")
         this.addEventHandler(Menu.ON_SHOWN) { hide() }
         this.addEventHandler(Menu.ON_SHOWING) { fire() }
     }
