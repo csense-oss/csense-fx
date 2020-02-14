@@ -13,6 +13,7 @@ import csense.javafx.tracking.onStart
 import csense.javafx.views.OutputViewAble
 import csense.kotlin.Function1
 import csense.kotlin.FunctionUnit
+import csense.kotlin.annotations.inheritance.SuperCallRequired
 import csense.kotlin.annotations.sideEffect.NoEscape
 import csense.kotlin.annotations.threading.InAny
 import csense.kotlin.annotations.threading.InBackground
@@ -21,6 +22,8 @@ import csense.kotlin.extensions.coroutines.*
 import csense.kotlin.extensions.tryAndLog
 import csense.kotlin.logger.L
 import csense.kotlin.logger.debug
+import csense.kotlin.logger.debugLazy
+import csense.kotlin.logger.logClassDebug
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.Scene
@@ -38,22 +41,23 @@ import kotlinx.coroutines.Job
  * This includes the "bouncing" feature of "threading" / coroutines;
  * The point of Bouncing can be seen in the Bouncing.md file
  */
-abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
+abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
         ToUi<ViewBinding>,
         ToBackground<ViewBinding> {
 
     internal val tracker = BaseViewTracker().addObserverF {
-        L.debugLazy(this::class.java.simpleName) { it.logTimingString() }//TODO use extensions when available!!!
+        L.debugLazy(this::class, { it.logTimingString() }, null)
     }
 
     @InUi
     private var currentStage: Stage? = null
+
     @InUi
     private var currentWindow: Window? = null
 
     internal val coroutineScope = BaseViewCoroutineScopeImpl()
 
-    internal abstract fun getViewAsync(): Deferred<ViewBinding>
+    internal abstract val viewLoader: Deferred<ViewBinding>
 
     //region inUi state transfer
     override fun inUi(@InUi action: InUiUpdateEmptyScope<ViewBinding>): Job = coroutineScope.launchMain {
@@ -62,8 +66,8 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
                 InUiUpdateEmpty(
                         currentWindow,
                         currentStage,
-                        getViewAsync().await(),
-                        this@AbstractBaseView
+                        viewLoader.await(),
+                        this@AbstractBaseViewController
                 )
         )
     }
@@ -72,14 +76,14 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
             input: T,
             action: InUiUpdateInputScope<ViewBinding, T>
     ): Job = coroutineScope.launchMain {
-        val view = getViewAsync().await()
+        val view = viewLoader.await()
         action(
                 InUiUpdateInput(
                         currentWindow,
                         currentStage,
                         input,
                         view,
-                        this@AbstractBaseView
+                        this@AbstractBaseViewController
                 )
         )
     }
@@ -87,29 +91,29 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
     final override fun <T, Output : Deferred<T>> inUiDeferredAsync(
             @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<T> = coroutineScope.asyncMain {
-        val view = getViewAsync().await()
-        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseView)).await()
+        val view = viewLoader.await()
+        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseViewController)).await()
     }
 
     final override fun <Output> inUiAsync(
             @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<Output> = coroutineScope.asyncMain {
-        val view = getViewAsync().await()
-        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseView))
+        val view = viewLoader.await()
+        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseViewController))
     }
 
     final override fun <Input, Output> inUiAsync(
             input: Input,
             @InUi action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output> = coroutineScope.asyncMain {
-        val view = getViewAsync().await()
+        val view = viewLoader.await()
         action(
                 InUiUpdateInput(
                         currentWindow,
                         currentStage,
                         input,
                         view,
-                        this@AbstractBaseView
+                        this@AbstractBaseViewController
                 )
         )
     }
@@ -131,7 +135,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
             @InBackground action: InBackgroundEmptyScope<ViewBinding>
     ): Job = coroutineScope.launchDefault {
         tryAndLog {
-            action(InBackgroundEmpty(this@AbstractBaseView, this))
+            action(InBackgroundEmpty(this@AbstractBaseViewController, this))
         }
     }
 
@@ -139,20 +143,20 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
             input: Input,
             @InBackground action: InBackgroundInputScope<ViewBinding, Input>
     ): Job = coroutineScope.launchDefault {
-        action(InBackgroundInput(input, this@AbstractBaseView))
+        action(InBackgroundInput(input, this@AbstractBaseViewController))
     }
 
     final override fun <Output> inBackgroundAsync(
             @InBackground action: InBackgroundOutputScope<ViewBinding, Output>
     ): Deferred<Output> = coroutineScope.asyncDefault {
-        action(InBackgroundEmpty(this@AbstractBaseView, coroutineScope))
+        action(InBackgroundEmpty(this@AbstractBaseViewController, coroutineScope))
     }
 
     final override fun <Input, Output> inBackgroundAsync(
             input: Input,
             @InBackground action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output> = coroutineScope.asyncDefault {
-        action(InBackgroundInput(input, this@AbstractBaseView))
+        action(InBackgroundInput(input, this@AbstractBaseViewController))
     }
 
     //    //TODO this is bad. maybe ?
@@ -175,7 +179,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
 //
 
     open fun transitionTo(
-            view: AbstractBaseView<*>,
+            view: AbstractBaseViewController<*>,
             @InUi configureStage: FunctionUnit<Stage>? = null
     ): Job = inUi {
         executeInUIInOrder(
@@ -228,6 +232,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
     }
 
     @InUi
+    @SuperCallRequired
     internal open fun onClosing() {
         tracker.onClosing()
     }
@@ -236,6 +241,7 @@ abstract class AbstractBaseView<ViewBinding : LoadViewAble<Parent>> :
      * When window /stage and view should be "ok".
      */
     @InUi
+    @SuperCallRequired
     internal open fun start() {
         tracker.onStart()
     }

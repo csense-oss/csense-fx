@@ -5,7 +5,7 @@ import csense.javafx.views.base.*
 import javafx.scene.*
 
 
-interface OnViewBindingRenderType<ViewBinding : LoadViewAble<Parent>> {
+interface OnViewBindingRenderType<ViewBinding : BaseView<Parent>> {
     /**
      * Hookpoint for handling special rendering
      *  of an "inline" view (akk we are just a part of something)
@@ -34,7 +34,7 @@ interface OnViewBindingRenderType<ViewBinding : LoadViewAble<Parent>> {
  * @param binding ViewBinding the ViewBinding to use.
  */
 @InUi
-internal fun <ViewBinding : LoadViewAble<Parent>> OnViewBindingRenderType<ViewBinding>.setupOnRender(
+internal fun <ViewBinding : BaseView<Parent>> OnViewBindingRenderType<ViewBinding>.setupOnRender(
         isInline: Boolean,
         binding: ViewBinding
 ) {

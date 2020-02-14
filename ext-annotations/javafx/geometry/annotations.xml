@@ -1,0 +1,5 @@
+<root>
+    <item name='javafx.geometry.Point2D javafx.geometry.Point2D multiply(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -12,7 +12,7 @@ import javafx.scene.layout.*
 
 inline fun TabPane.tabWithController(
         title: String,
-        baseView: BaseView<*, *>): Tab {
+        baseView: BaseViewController<*>): Tab {
     val containerPane = Pane().apply {
         useController(baseView)
     }

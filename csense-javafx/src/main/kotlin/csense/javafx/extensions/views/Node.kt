@@ -3,6 +3,7 @@ package csense.javafx.extensions.views
 import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.*
+import javafx.scene.control.Control
 import javafx.scene.control.SplitPane
 import javafx.scene.layout.*
 

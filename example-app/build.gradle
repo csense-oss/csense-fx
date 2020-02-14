@@ -1,22 +1,24 @@
 plugins {
-    id "java"
-    id "application"
-    id "kotlin"
-    id 'org.openjfx.javafxplugin' version '0.0.7'
-    id 'org.beryx.jlink' version '2.12.0'
-
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id "me.champeau.gradle.jmh"
+    id 'application'
 }
 
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-annotations-jvm:$csenseKotlinAnnotationsVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     implementation project(":csense-javafx")
+    implementation project(":csense-javafx-tools")
+    implementation project(":csense-javafx-material")
 }
 
 compileKotlin {
+
     kotlinOptions.jvmTarget = "1.8"
     kotlinOptions {
         freeCompilerArgs = ["-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
@@ -56,7 +58,7 @@ mainClassName = "csense.example.app.MainKt"
 //tasks.compileJava.dependsOn tasks.runJar
 
 javafx {
-    version = "12.0.1"
+    version = "13.0.1"
     modules = [
             "javafx.base",
             "javafx.controls",
@@ -68,10 +70,10 @@ javafx {
 
 }
 
-
-jlink {
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher {
-        name = 'csense.example.app'
-    }
-}
+//
+//jlink {
+//    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+//    launcher {
+//        name = 'csense.example.app'
+//    }
+//}

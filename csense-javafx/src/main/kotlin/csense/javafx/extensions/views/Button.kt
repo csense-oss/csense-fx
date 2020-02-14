@@ -10,7 +10,7 @@ import javafx.scene.*
 import javafx.scene.input.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
-
+//TODO coroutines in UI is generally a bad idea (unless somehow you can solve the real problem of "is the UI still there" after any suspending)
 @InUi
 inline fun Node.setOnClickAsync(noinline action: AsyncFunctionUnit<MouseEvent>) {
 

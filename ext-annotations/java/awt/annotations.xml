@@ -1,0 +1,26 @@
+<root>
+    <item name='java.awt.Color int getAlpha()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='java.awt.Color int getBlue()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='java.awt.Color int getGreen()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+    <item name='java.awt.Color int getRed()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="255"/>
+        </annotation>
+    </item>
+</root>

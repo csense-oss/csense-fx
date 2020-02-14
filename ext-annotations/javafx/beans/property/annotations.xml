@@ -1,5 +1,14 @@
 <root>
+    <item name='javafx.beans.property.DoublePropertyBase void bind(javafx.beans.value.ObservableValue&lt;? extends java.lang.Number&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.beans.property.ReadOnlyBooleanWrapper javafx.beans.property.ReadOnlyBooleanProperty getReadOnlyProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.beans.property.ReadOnlyProperty java.lang.Object getBean()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.beans.property.ReadOnlyProperty java.lang.String getName()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
 </root>

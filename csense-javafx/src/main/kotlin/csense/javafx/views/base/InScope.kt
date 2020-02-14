@@ -25,7 +25,7 @@ annotation class InScope
  * @property binding ViewBinding
  * @constructor
  */
-open class InUiUpdateEmpty<ViewBinding : LoadViewAble<Parent>>(
+open class InUiUpdateEmpty<ViewBinding : BaseView<Parent>>(
         @NoEscape val currentWindow: Window?,
         @NoEscape val currentStage: Stage?,
         @NoEscape @InUi val binding: ViewBinding,
@@ -41,7 +41,7 @@ open class InUiUpdateEmpty<ViewBinding : LoadViewAble<Parent>>(
  * @property input Input
  * @constructor
  */
-open class InUiUpdateInput<ViewBinding : LoadViewAble<Parent>, Input>(
+open class InUiUpdateInput<ViewBinding : BaseView<Parent>, Input>(
         currentWindow: Window?,
         currentStage: Stage?,
         val input: Input,
@@ -68,14 +68,14 @@ interface ProhibitedBinding<ViewBinding> {
 }
 
 //region InBackground states
-class InBackgroundEmpty<ViewBinding : LoadViewAble<Parent>>(
+class InBackgroundEmpty<ViewBinding : BaseView<Parent>>(
         private val toUI: ToUi<ViewBinding>,
         val scope: CoroutineScope
 
 ) : ToUi<ViewBinding> by toUI,
         ProhibitedBinding<ViewBinding>
 
-class InBackgroundInput<ViewBinding : LoadViewAble<Parent>, Input>(
+class InBackgroundInput<ViewBinding : BaseView<Parent>, Input>(
         val input: Input,
         private val toUI: ToUi<ViewBinding>
 ) :
@@ -91,7 +91,7 @@ class InBackgroundInput<ViewBinding : LoadViewAble<Parent>, Input>(
  * All to UI state transfers
  * @param ViewBinding
  */
-interface ToUi<ViewBinding : LoadViewAble<Parent>> {
+interface ToUi<ViewBinding : BaseView<Parent>> {
     /**
      * When you want to do something with the ui with no input (could be a simple side effect)
      * @param action FunctionUnit<InUiUpdateEmpty<ViewBinding>>
@@ -127,7 +127,7 @@ interface ToUi<ViewBinding : LoadViewAble<Parent>> {
     ): Deferred<Output>
 
     /**
-     * Unlike the closely related functions this unpacks the "inner" await of a given deferred statement, such as the result of a BaseViewOutput.createResult.
+     * Unlike the closely related functions this unpacks the "inner" await of a given deferred statement, such as the result of a BaseViewControllerOutput.createResult.
      * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.views.base.InScope] InUiUpdateEmpty<ViewBinding>, Output>
      * @return Deferred<T>
      */
@@ -140,7 +140,7 @@ interface ToUi<ViewBinding : LoadViewAble<Parent>> {
  * All to background state transfers
  * @param ViewBinding
  */
-interface ToBackground<ViewBinding : LoadViewAble<Parent>> {
+interface ToBackground<ViewBinding : BaseView<Parent>> {
     /**
      * Useful for doing a side effect but nothing "computing" like taking or retrieving anything
      * @param action FunctionUnit<InBackgroundEmpty>

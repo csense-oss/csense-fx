@@ -1,0 +1,11 @@
+<root>
+    <item name='com.sun.javafx.util.TempState leafTx'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.util.TempState point'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.util.TempState vec3d'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -14,7 +14,7 @@ import kotlin.contracts.*
  * @param controller BaseView<*, *>
  */
 @InUi
-inline fun <T : BaseView<*, *>> Pane.useController(
+inline fun <T : BaseViewController<*>> Pane.useController(
         controller: T,
         crossinline action: ScopedViewDsl<T>
 ): T {
@@ -25,7 +25,7 @@ inline fun <T : BaseView<*, *>> Pane.useController(
 }
 
 @InUi
-inline fun <T : BaseView<*, *>> Pane.useController(controller: T): T {
+inline fun <T : BaseViewController<*>> Pane.useController(controller: T): T {
     val text = this.text { text = "loading" } //TODO change this..
     controller.replaceToView(this, text)
     return controller

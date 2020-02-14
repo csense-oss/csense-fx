@@ -89,6 +89,9 @@
     <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanProperty focusedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.transform.Transform&gt; localToParentTransformProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.StringProperty idProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -137,6 +140,9 @@
     <item name='javafx.scene.Node javafx.geometry.Point3D parentToLocal(double, double, double)'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.Node javafx.geometry.Point3D parentToLocal(javafx.geometry.Point3D)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.Node javafx.scene.Node.AccessibilityProperties getAccessibilityProperties()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -152,8 +158,21 @@
     <item name='javafx.scene.Node javafx.scene.Parent getParent()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.Node javafx.scene.image.WritableImage doSnapshot(javafx.scene.SnapshotParameters, javafx.scene.image.WritableImage)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.scene.image.WritableImage snapshot(javafx.scene.SnapshotParameters, javafx.scene.image.WritableImage)'>
+        <annotation name='csense.kotlin.annotations.threading.InUi'/>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.scene.image.WritableImage snapshot(javafx.scene.SnapshotParameters, javafx.scene.image.WritableImage) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.Node javafx.scene.input.InputMethodRequests getInputMethodRequests()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.Node javafx.scene.transform.Transform getLocalToParentTransform()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node nodeTransformation'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
@@ -221,6 +240,15 @@
     <item name='javafx.scene.Node.LazyBoundsProperty void removeListener(javafx.beans.value.ChangeListener&lt;? super javafx.geometry.Bounds&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node.LazyTransformProperty javafx.scene.transform.Transform computeTransform(javafx.scene.transform.Transform)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.LazyTransformProperty javafx.scene.transform.Transform get()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.LazyTransformProperty javafx.scene.transform.Transform getInternalValue()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node.LazyTransformProperty void addListener(javafx.beans.InvalidationListener) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -260,7 +288,19 @@
     <item name='javafx.scene.Node.NodeTransformation javafx.beans.property.ObjectProperty&lt;javafx.geometry.Point3D&gt; rotationAxisProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node.NodeTransformation javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.transform.Transform&gt; localToParentTransformProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.NodeTransformation javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.transform.Transform&gt; localToSceneTransformProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node.NodeTransformation javafx.collections.ObservableList&lt;javafx.scene.transform.Transform&gt; getTransforms()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.NodeTransformation.LocalToSceneTransformProperty void addListener(javafx.beans.InvalidationListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.NodeTransformation.LocalToSceneTransformProperty void addListener(javafx.beans.value.ChangeListener&lt;? super javafx.scene.transform.Transform&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node.TreeShowingPropertyReadOnly void addListener(javafx.beans.InvalidationListener) 0'>
@@ -286,5 +326,11 @@
     </item>
     <item name='javafx.scene.Node.TreeVisiblePropertyReadOnly void removeListener(javafx.beans.value.ChangeListener&lt;? super java.lang.Boolean&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Scene javafx.scene.image.WritableImage doSnapshot(javafx.scene.Scene, double, double, double, double, javafx.scene.Node, com.sun.javafx.geom.transform.BaseTransform, boolean, javafx.scene.paint.Paint, javafx.scene.Camera, javafx.scene.image.WritableImage)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Scene javafx.scene.image.WritableImage doSnapshot(javafx.scene.Scene, double, double, double, double, javafx.scene.Node, com.sun.javafx.geom.transform.BaseTransform, boolean, javafx.scene.paint.Paint, javafx.scene.Camera, javafx.scene.image.WritableImage) 10'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
 </root>

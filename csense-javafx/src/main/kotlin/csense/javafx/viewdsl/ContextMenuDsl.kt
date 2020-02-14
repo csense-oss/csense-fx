@@ -82,7 +82,12 @@ inline fun ContextMenu.menuItem(
 }
 
 @InUi
-inline fun separatorMenuItem() = SeparatorMenuItem()
+inline fun separatorMenuItem(): SeparatorMenuItem = SeparatorMenuItem()
+
+@InUi
+inline fun Menu.separatorMenuItem(): SeparatorMenuItem = SeparatorMenuItem().also {
+    items.add(it)
+}
 
 @InUi
 inline fun ContextMenu.separatorMenuItem() {

@@ -1,0 +1,23 @@
+<root>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D) 1'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D) 2'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D) 3'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D, javafx.geometry.Point2D)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='com.sun.javafx.geometry.BoundsUtils javafx.geometry.Bounds createBoundingBox(javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D, javafx.geometry.Point3D)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

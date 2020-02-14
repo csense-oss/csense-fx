@@ -1,0 +1,11 @@
+<root>
+    <item name='javafx.css.CssMetaData boolean isSettable(S) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.css.CssMetaData javafx.css.StyleableProperty&lt;V&gt; getStyleableProperty(S)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.css.CssMetaData javafx.css.StyleableProperty&lt;V&gt; getStyleableProperty(S) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

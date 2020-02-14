@@ -47,6 +47,9 @@
             <val name="to" val="255"/>
         </annotation>
     </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color rgb(int, int, int, double) 0'>
         <annotation name='org.jetbrains.annotations.Range'>
             <val name="from" val="0"/>
@@ -68,11 +71,23 @@
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color valueOf(java.lang.String) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String, double)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String, double) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color web(java.lang.String, double) 1'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
     </item>
     <item name='javafx.scene.paint.Color void checkRGB(int, int, int) 0'>
         <annotation name='org.jetbrains.annotations.Range'>

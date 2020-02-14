@@ -2,17 +2,14 @@ package csense.javafx
 
 import csense.javafx.observable.addObserverF
 import csense.javafx.tracking.*
-import csense.javafx.views.base.BaseView
-import csense.kotlin.annotations.numbers.DoubleLimit
+import csense.javafx.views.base.BaseViewController
 import csense.kotlin.annotations.numbers.DoubleLimitFromMin
 import csense.kotlin.annotations.threading.InBackground
 import csense.kotlin.annotations.threading.InUi
 import csense.kotlin.extensions.coroutines.asyncDefault
 import csense.kotlin.extensions.coroutines.launchMain
 import csense.kotlin.logger.L
-import csense.kotlin.logger.debug
 import csense.kotlin.logger.logClassWarning
-import csense.kotlin.logger.logCurrentStackTrace
 import javafx.application.Application
 import javafx.scene.Parent
 import javafx.scene.Scene
@@ -71,7 +68,7 @@ abstract class BaseApplication<BackgroundData> : Application() {
     abstract suspend fun loadBackgroundData(): BackgroundData
 
     @InUi
-    abstract fun createView(data: BackgroundData): BaseView<*, *>
+    abstract fun createView(data: BackgroundData): BaseViewController<*>
 
     @InUi
     abstract fun createSplashScreen(): Parent
@@ -91,7 +88,7 @@ abstract class BaseApplication<BackgroundData> : Application() {
 abstract class SimpleBaseApplication : BaseApplication<Unit>() {
     override suspend fun loadBackgroundData() = Unit
 
-    override fun createView(data: Unit): BaseView<*, *> = createView()
+    override fun createView(data: Unit): BaseViewController<*> = createView()
 
-    abstract fun createView(): BaseView<*, *>
+    abstract fun createView(): BaseViewController<*>
 }

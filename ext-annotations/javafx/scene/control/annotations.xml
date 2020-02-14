@@ -17,6 +17,9 @@
     <item name='javafx.scene.control.ContextMenu void show(javafx.scene.Node, javafx.geometry.Side, double, double) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.control.Control java.util.List&lt;javafx.css.CssMetaData&lt;? extends javafx.css.Styleable,?&gt;&gt; getClassCssMetaData()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.control.Control javafx.beans.property.ObjectProperty&lt;javafx.scene.control.Skin&lt;?&gt;&gt; skinProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -25,6 +28,9 @@
     </item>
     <item name='javafx.scene.control.Control javafx.scene.control.Skin&lt;?&gt; getSkin()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.control.Control.StyleableProperties STYLEABLES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.control.Labeled StringProperty textProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
@@ -37,6 +43,9 @@
             <val name="from" val="-1"/>
             <val name="to" val="java.lang.Integer.MAX_VALUE"/>
         </annotation>
+    </item>
+    <item name='javafx.scene.control.SkinBase SkinBase(C) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.control.SplitPane SplitPane(javafx.scene.Node...) 0'>
         <annotation name='org.jetbrains.annotations.Nullable'/>

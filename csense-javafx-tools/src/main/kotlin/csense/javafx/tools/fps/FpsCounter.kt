@@ -46,17 +46,17 @@ class FpsCounter(scene: Scene) {
  */
 fun Scene.logFps(): AnimationTimerForCallback {
     val counter = FpsCounter(this)
-    var lastTimeCalled: Long = System.currentTimeMillis()
+//    var lastTimeCalled: Long = System.currentTimeMillis()
     return AnimationTimerForCallback {
         val avg = counter.getAverageFps()
         if (avg <= 0.1) {
             return@AnimationTimerForCallback
         }
         val calledAt = System.currentTimeMillis()
-        if (calledAt - lastTimeCalled > 1000) {
+//        if (calledAt - lastTimeCalled > 1000) {
             println("Current fps is: $avg")
-        }
-        lastTimeCalled = calledAt
+//        }
+//        lastTimeCalled = calledAt
     }.apply {
         start()
     }

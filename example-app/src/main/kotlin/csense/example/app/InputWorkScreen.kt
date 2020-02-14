@@ -1,27 +1,28 @@
 package csense.example.app
 
 import csense.javafx.viewdsl.button
-import csense.javafx.views.BaseViewInput
+import csense.javafx.views.BaseViewControllerInput
 import csense.javafx.views.base.InUiUpdateInput
-import csense.javafx.views.base.LoadViewAble
-import csense.javafx.views.base.OnViewSetup
+import csense.javafx.views.base.BaseView
 import csense.kotlin.extensions.coroutines.asyncDefault
+import csense.kotlin.extensions.coroutines.asyncMain
 import javafx.scene.control.Button
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 
 
-class InputWorkScreenView(onViewSetup: OnViewSetup) : LoadViewAble<Button>(onViewSetup) {
+class InputWorkScreenView() : BaseView<Button> {
     override val root: Button = button("loading...")
 }
 
-class InputWorkScreen(input: String) : BaseViewInput<Unit, InputWorkScreenView, String, Int>(
-    input,
-    { _: Unit, onViewSetup: OnViewSetup -> InputWorkScreenView(onViewSetup) }
+class InputWorkScreen(input: String) : BaseViewControllerInput<InputWorkScreenView, String, Int>(
+        input
 ) {
 
 
-    override suspend fun loadView() {}
+//    override suspend fun loadView() {}
 
 
     //initial data concept (bad)
@@ -44,15 +45,15 @@ class InputWorkScreen(input: String) : BaseViewInput<Unit, InputWorkScreenView, 
     }
 
     fun onButtonClicked() = backgroundToUi(
-        computeAction = {
-            loadFile.await()
-        },
-        uiAction = {
-            binding.root.text = "file content = $input"
-            binding.root.setOnAction {
-                onButtonBadClicked()
-            }
-        })
+            computeAction = {
+                loadFile.await()
+            },
+            uiAction = {
+                binding.root.text = "file content = $input"
+                binding.root.setOnAction {
+                    onButtonBadClicked()
+                }
+            })
 
 
     var shouldCrash = true
@@ -83,4 +84,8 @@ class InputWorkScreen(input: String) : BaseViewInput<Unit, InputWorkScreenView, 
         binding.root.text = "result = $input"
         throw Exception("should crash application")
     })
+
+    override fun CoroutineScope.createNewUi(): Deferred<InputWorkScreenView> = asyncMain {
+        InputWorkScreenView()
+    }
 }

@@ -29,3 +29,4 @@ csense-javafx/build/
 example-app/build/
 !gradle/*
 csense-javafx-tools/build/
+csense-javafx-material/build

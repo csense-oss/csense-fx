@@ -1,4 +1,10 @@
 <root>
+    <item name='javafx.scene.transform.Transform double[] toArray(javafx.scene.transform.MatrixType, double[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform double[] toArray(javafx.scene.transform.MatrixType, double[]) 1'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.transform.Transform javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.transform.TransformChangedEvent&gt;&gt; onTransformChangedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -6,6 +12,12 @@
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
     <item name='javafx.scene.transform.Transform javafx.geometry.Bounds inverseTransform(javafx.geometry.Bounds) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point2D deltaTransform(double, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform javafx.geometry.Point2D deltaTransform(javafx.geometry.Point2D)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.transform.Transform javafx.geometry.Point2D deltaTransform(javafx.geometry.Point2D) 0'>
@@ -36,6 +48,9 @@
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.transform.Transform void addEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.transform.Transform void fill3DArray(double[]) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.transform.Transform void inverseTransform2DPoints(double[], int, double[], int, int) 0'>

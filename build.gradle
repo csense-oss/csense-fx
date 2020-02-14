@@ -13,34 +13,46 @@ buildscript {
 
 
     //version deps
-    ext.csenseKotlinVersion = "0.0.22"
-    ext.coroutinesVersion = "1.3.2"
+    ext.csenseKotlinVersion = "0.0.29"
+    ext.csenseTestsVersion = "0.0.26"
+    ext.csenseKotlinDsVersion = "0.0.24"
+    ext.csenseKotlinAnnotationsVersion = "0.0.15"
+    ext.junitVersion = "4.13"
+    
+    ext.coroutinesVersion = "1.3.3"
     ext.dokkaVersion = "0.9.18"
     ext.kotlin_version = "1.3.61"
 
 
     repositories {
         jcenter()
+
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
     }
+}
+
+plugins{
+    id "me.champeau.gradle.jmh" version "0.5.0"
 }
 
 subprojects {
     repositories {
         mavenCentral()
         jcenter()
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url "https://dl.bintray.com/csense-oss/maven" }
     }
 
     buildscript {
 
         repositories {
             jcenter()
-            mavenCentral()
             google()
-            maven { url "https://plugins.gradle.org/m2/" }
+
         }
 
         dependencies {

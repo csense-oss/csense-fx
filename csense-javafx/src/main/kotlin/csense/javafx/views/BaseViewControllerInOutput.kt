@@ -1,12 +1,11 @@
 package csense.javafx.views
 
 import csense.javafx.tracking.BaseViewTrackingEvents
-import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.BaseViewController
 import csense.javafx.views.base.InUiUpdateInput
-import csense.javafx.views.base.LoadViewAble
-import csense.javafx.views.base.OnViewSetup
+import csense.javafx.views.base.BaseView
+//
 import csense.kotlin.FunctionUnit
-import csense.kotlin.annotations.sideEffect.NoEscape
 import csense.kotlin.annotations.threading.InAny
 import csense.kotlin.annotations.threading.InUi
 import javafx.scene.Parent
@@ -21,10 +20,9 @@ import kotlinx.coroutines.Job
  * typical either a view computing a result, resolving a result, from a given input.
  * like looking into a database (with an input of what name for example)
  */
-abstract class BaseViewInOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Din, DinTransformed, Dout>(
-        input: Din,
-        @InUi viewLoader: Function2<@NoEscape ViewLoad, @NoEscape OnViewSetup, ViewBinding>
-) : BaseView<ViewLoad, ViewBinding>(viewLoader),
+abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, DinTransformed, Dout>(
+        input: Din
+) : BaseViewController<ViewBinding>(),
         OutputViewAble<Dout>,
         InputViewAble<Din, DinTransformed>,
         OnViewBindingRenderType<ViewBinding> {
@@ -35,7 +33,7 @@ abstract class BaseViewInOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Di
 
     private val startDataFlowLoader by lazy {
         InputDataLoader(this,
-                ::preloadView,
+                ::viewLoader,
                 input,
                 coroutineScope,
                 ::transformInput)
@@ -78,28 +76,4 @@ abstract class BaseViewInOutput<ViewLoad, ViewBinding : LoadViewAble<Parent>, Di
 
     @InUi
     protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
-}
-
-
-abstract class SimpleBaseViewInOutput<ViewBinding : LoadViewAble<Parent>, Din, DinTransformed, Dout>(
-        input: Din,
-        viewConstructor: Function1<OnViewSetup, ViewBinding>
-) : BaseViewInOutput<SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout>, ViewBinding, Din, DinTransformed, Dout>(
-        input,
-        { simpleBaseViewInOutput: SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout>, onViewSetup: OnViewSetup ->
-            viewConstructor(onViewSetup)
-        }
-) {
-    override suspend fun loadView(): SimpleBaseViewInOutput<ViewBinding, Din, DinTransformed, Dout> = this
-}
-
-
-abstract class SimpleBaseViewInOutputNoTransform<ViewBinding : LoadViewAble<Parent>, Din, Dout>(
-        input: Din,
-        viewConstructor: Function1<OnViewSetup, ViewBinding>
-) : SimpleBaseViewInOutput<ViewBinding, Din, Din, Dout>(
-        input,
-        viewConstructor
-) {
-    override suspend fun transformInput(input: Din): Din = input
 }

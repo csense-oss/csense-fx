@@ -1,15 +1,12 @@
 package csense.javafx.views
 
-import csense.javafx.views.base.OnViewSetup
 import csense.kotlin.AsyncFunction0
 import csense.kotlin.AsyncFunction1
-import csense.kotlin.annotations.threading.InAny
 import csense.kotlin.annotations.threading.InBackground
 import csense.kotlin.annotations.threading.InUi
 import csense.kotlin.extensions.coroutines.asyncDefault
 import csense.kotlin.extensions.coroutines.asyncIO
 import kotlinx.coroutines.*
-import kotlin.reflect.KClass
 
 
 open class InputDataFlow<Din, DinTransformed>(
@@ -27,10 +24,7 @@ abstract class ViewFlow<ViewLoad, ViewBinding>(scope: CoroutineScope) {
 
     val view: Deferred<ViewBinding> by lazy {
         scope.loadAndTransformMain({ loadView() }) {
-            bindView(
-                    it,
-                    OnViewSetup.instance
-            )
+            bindView(it)
         }
     }
 
@@ -39,7 +33,7 @@ abstract class ViewFlow<ViewLoad, ViewBinding>(scope: CoroutineScope) {
     abstract suspend fun loadView(): ViewLoad
 
     @InUi
-    abstract fun bindView(loadedView: ViewLoad, onViewSetup: OnViewSetup): ViewBinding
+    abstract fun bindView(loadedView: ViewLoad): ViewBinding
 }
 
 private fun <T, U> CoroutineScope.loadAndTransformDefault(
@@ -67,15 +61,15 @@ private fun <T, U> CoroutineScope.loadAndTransform(
 class DelegatingViewFlow<ViewLoad, ViewBinding>(
         scope: CoroutineScope,
         @InBackground private val loadViewFunc: AsyncFunction0<ViewLoad>,
-        @InUi private val bindFunction: Function2<ViewLoad, OnViewSetup, ViewBinding>
+        @InUi private val bindFunction: Function0<ViewBinding>
 ) : ViewFlow<ViewLoad, ViewBinding>(scope) {
 
     @InBackground
     override suspend fun loadView(): ViewLoad = loadViewFunc()
 
     @InUi
-    override fun bindView(loadedView: ViewLoad, onViewSetup: OnViewSetup): ViewBinding =
-            bindFunction(loadedView, onViewSetup)
+    override fun bindView(loadedView: ViewLoad): ViewBinding =
+            bindFunction()
 
 }
 

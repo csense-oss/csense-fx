@@ -5,11 +5,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 
-interface BaseViewCoroutineScope : CoroutineScope {
+interface BaseViewControllerCoroutineScope : CoroutineScope {
     fun onDestroyScope()
 }
 
-class BaseViewCoroutineScopeImpl : BaseViewCoroutineScope {
+class BaseViewCoroutineScopeImpl : BaseViewControllerCoroutineScope {
 
     private val job = SupervisorJob()
 

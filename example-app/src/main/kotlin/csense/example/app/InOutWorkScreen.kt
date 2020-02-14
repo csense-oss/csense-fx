@@ -2,12 +2,14 @@ package csense.example.app
 
 import csense.javafx.viewdsl.button
 import csense.javafx.viewdsl.vBox
-import csense.javafx.views.BaseViewInOutput
+import csense.javafx.views.BaseViewControllerInOutput
 import csense.javafx.views.base.InUiUpdateInput
-import csense.javafx.views.base.LoadViewAble
-import csense.javafx.views.base.OnViewSetup
+import csense.javafx.views.base.BaseView
+import csense.kotlin.extensions.coroutines.asyncDefault
+//import csense.javafx.views.base.OnViewSetup
 import javafx.scene.Parent
 import javafx.scene.control.Button
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 
 
@@ -17,7 +19,7 @@ interface InOutWorkScreenCallbacks {
 }
 
 
-class InOutWorkScreenBinding(onViewSetup: OnViewSetup) : LoadViewAble<Parent>(onViewSetup) {
+class InOutWorkScreenBinding() : BaseView<Parent> {
     val mainButton: Button
     val otherButton: Button
     override val root: Parent = vBox {
@@ -30,16 +32,15 @@ class InOutWorkScreenBinding(onViewSetup: OnViewSetup) : LoadViewAble<Parent>(on
 /*
 * IO screen
 */
-class InOutWorkScreen(input: String) : BaseViewInOutput<Unit, InOutWorkScreenBinding, String, String, Int?>(
-    input,
-    { _: Unit, onViewSetup: OnViewSetup -> InOutWorkScreenBinding(onViewSetup) }
+class InOutWorkScreen(input: String) : BaseViewControllerInOutput<InOutWorkScreenBinding, String, String, Int?>(
+        input
 ), InOutWorkScreenCallbacks {
 
 
 //    private val view: Button = Button()
 //    override suspend fun loadView(onViewSetup: OnViewSetup): Button = view
 
-    override suspend fun loadView() {}
+//    override suspend fun loadView() {}
 
     override fun InUiUpdateInput<InOutWorkScreenBinding, String>.onStartData() {
         println("---on start data--")
@@ -64,5 +65,9 @@ class InOutWorkScreen(input: String) : BaseViewInOutput<Unit, InOutWorkScreenBin
 
     override fun onMagic() {
 
+    }
+
+    override fun CoroutineScope.createNewUi(): Deferred<InOutWorkScreenBinding> = asyncDefault {
+        InOutWorkScreenBinding()
     }
 }
