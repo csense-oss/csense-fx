@@ -13,10 +13,10 @@ buildscript {
 
 
     //version deps
-    ext.csenseKotlinVersion = "0.0.29"
+    ext.csenseKotlinVersion = "0.0.31"
     ext.csenseTestsVersion = "0.0.26"
     ext.csenseKotlinDsVersion = "0.0.24"
-    ext.csenseKotlinAnnotationsVersion = "0.0.15"
+    ext.csenseKotlinAnnotationsVersion = "0.0.17"
     ext.junitVersion = "4.13"
     
     ext.coroutinesVersion = "1.3.3"

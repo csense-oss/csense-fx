@@ -68,4 +68,10 @@
     <item name='javafx.scene.control.SplitPane void setResizableWithParent(javafx.scene.Node, java.lang.Boolean) 1'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.control.TextInputControl StringProperty textProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.control.TextInputControl text'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
 </root>

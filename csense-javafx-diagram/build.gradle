@@ -4,6 +4,7 @@ plugins {
     id "me.champeau.gradle.jmh"
 }
 
+group 'csense'
 version '0.0.1'
 
 repositories {
@@ -13,13 +14,23 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-annotations-jvm:$csenseKotlinAnnotationsVersion"
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     implementation project(":csense-javafx")
+
+    testImplementation "junit:junit:$junitVersion"
+
+    testImplementation "csense.kotlin:csense-kotlin-tests-jvm:$csenseTestsVersion"
 }
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions {
+        freeCompilerArgs = ["-Xuse-experimental=kotlin.contracts.ExperimentalContracts",
+                            "-Xuse-experimental=kotlin.Experimental"]
+    }
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -30,7 +41,6 @@ javafx {
     // see https://docs.oracle.com/javase/9/docs/api/overview-summary.html#JavaFX
     modules = [
             "javafx.base",
-            "javafx.controls"]
+            "javafx.controls",
+            "javafx.graphics"]
 }
-sourceCompatibility = '11'
-targetCompatibility = '11'

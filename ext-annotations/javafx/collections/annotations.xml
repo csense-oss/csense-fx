@@ -2,4 +2,22 @@
     <item name='javafx.collections.FXCollections javafx.collections.ObservableSet&lt;E&gt; unmodifiableObservableSet(javafx.collections.ObservableSet&lt;E&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.collections.ObservableList boolean setAll(E...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.collections.ObservableList boolean setAll(java.util.Collection&lt;? extends E&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.collections.ObservableList void remove(int, int) 0'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="0"/>
+            <val name="to" val="java.lang.Integer.MAX_VALUE"/>
+        </annotation>
+    </item>
+    <item name='javafx.collections.ObservableList void remove(int, int) 1'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="1"/>
+            <val name="to" val="java.lang.Integer.MAX_VALUE"/>
+        </annotation>
+    </item>
 </root>

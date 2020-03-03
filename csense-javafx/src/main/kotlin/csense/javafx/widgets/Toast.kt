@@ -52,7 +52,7 @@ object Toast {
     }
 
     @InUi
-    fun showText(primaryStage: Stage, text: String): Job {
+    fun showText(text: String, parentStage: Stage? = null): Job {
         val stage = TransparentStage()
 
         val view = stackPane {

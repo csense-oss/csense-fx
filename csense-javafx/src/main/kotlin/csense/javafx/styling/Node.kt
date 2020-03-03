@@ -2,6 +2,7 @@
 
 package csense.javafx.styling
 
+import csense.javafx.extensions.scene.visibleProperty
 import csense.kotlin.annotations.threading.*
 import javafx.scene.*
 
@@ -10,34 +11,30 @@ import javafx.scene.*
  * @receiver Node
  */
 @InUi
-fun Node.hide() {
-    setVisibility(false)
-}
+fun Node.hide(): Unit = setVisibility(false)
 
 /**
  * Shows / present the view
  * @receiver Node
  */
 @InUi
-fun Node.show() {
-    setVisibility(true)
-}
+fun Node.show(): Unit = setVisibility(true)
 
 /**
  * Tells if this view is visible / shown
  */
 
-val Node.isShown: Boolean
+inline val Node.isShown: Boolean
     @InUi
-    get() = visibleProperty().value
+    inline get() = isVisible
 
 /**
  * Tells if this view is invisible / not shown
  */
 
-val Node.isNotShown: Boolean
+inline val Node.isNotShown: Boolean
     @InUi
-    get() = !isShown
+    inline get() = !isShown
 
 /**
  * Changes the visibility of this view
@@ -45,4 +42,4 @@ val Node.isNotShown: Boolean
  * @param visible Boolean if true it will be shown, false it will be hidden.
  */
 @InUi
-fun Node.setVisibility(visible: Boolean): Unit = visibleProperty().set(visible)
+inline fun Node.setVisibility(visible: Boolean): Unit = visibleProperty.set(visible)

@@ -1,15 +1,14 @@
 package csense.example.app
 
-import csense.javafx.tools.fps.logFps
 import csense.javafx.viewdsl.hBox
 import csense.javafx.viewdsl.label
 import csense.javafx.viewdsl.stackPane
 import csense.javafx.views.BaseEmptyViewController
 import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.InUiUpdateEmpty
-import csense.javafx.views.list.SimpleListView
-import csense.javafx.views.list.SimpleListViewAdapter
-import csense.javafx.views.list.SimpleListViewRender
+import csense.javafx.widgets.list.SimpleListView
+import csense.javafx.widgets.list.SimpleListViewAdapter
+import csense.javafx.widgets.list.SimpleListViewRender
 import csense.kotlin.annotations.threading.InUi
 import csense.kotlin.extensions.collections.list.repeatToSize
 import csense.kotlin.extensions.coroutines.asyncMain
@@ -34,7 +33,7 @@ class SimpleListExample : BaseEmptyViewController<SimpleListExampleUi>() {
         binding.root.adapter = adapter
 //        val items = (0..50).map { SimpleListExampleItem("N:$it") } +
 //                SimpleListExampleItem3("type 3")
-        val items = listOf(
+        val items = listOf(SimpleListExampleItem3("first")) + listOf(
                 SimpleListExampleItem("normal"),
                 SimpleListExampleItem2("unormal"),
                 SimpleListExampleItem("normal"),
@@ -59,7 +58,7 @@ class SimpleListExample : BaseEmptyViewController<SimpleListExampleUi>() {
                 SimpleListExampleItem2("unormal"),
                 SimpleListExampleItem("normal"),
                 SimpleListExampleItem2("unormal"))
-        .repeatToSize(100) + SimpleListExampleItem3("type 3")
+                .repeatToSize(100) + SimpleListExampleItem3("type 3")
 
         adapter.setSection(1, items)
 //        currentStage?.scene?.logFps()
@@ -71,7 +70,7 @@ class SimpleListExample : BaseEmptyViewController<SimpleListExampleUi>() {
 }
 
 class SimpleListExampleItem(val text: String) : SimpleListViewRender<SimpleListExampleItemUi>(type()) {
-    private val ourText =  text + " - omg"
+    private val ourText = text + " - omg"
     override fun onRender(renderTo: SimpleListExampleItemUi) {
         renderTo.textLabel.text = ourText
     }
@@ -102,7 +101,7 @@ class SimpleListExampleItem2Ui : BaseView<Parent> {
 }
 
 class SimpleListExampleItem3(text: String) : SimpleListViewRender<SimpleListExampleItemUi>(type()) {
-    private val ourText =  text + " - Moo"
+    private val ourText = text + " - Moo"
     override fun onRender(renderTo: SimpleListExampleItemUi) {
         renderTo.textLabel.text = ourText
     }

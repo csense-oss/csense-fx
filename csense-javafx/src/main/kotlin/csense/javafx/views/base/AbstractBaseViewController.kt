@@ -13,6 +13,7 @@ import csense.javafx.tracking.onStart
 import csense.javafx.views.OutputViewAble
 import csense.kotlin.Function1
 import csense.kotlin.FunctionUnit
+import csense.kotlin.ReceiverFunction0
 import csense.kotlin.annotations.inheritance.SuperCallRequired
 import csense.kotlin.annotations.sideEffect.NoEscape
 import csense.kotlin.annotations.threading.InAny
@@ -118,12 +119,17 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
         )
     }
 
-    fun <T> getFromUiAsync(@InUi getter: Function1<ViewBinding, List<T>>): Deferred<List<T>> = inUiAsync {
+    fun <T> getAllFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, List<T>>): Deferred<List<T>> = inUiAsync {
         getter(binding)
     }
 
+    fun <T> getSingleFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, T>): Deferred<T> = inUiAsync {
+        getter(binding)
+    }
+
+
     fun <Dout, T : OutputViewAble<out Dout>> getResultFromControllerAsync(
-            @InUi getter: Function1<ViewBinding, T>
+            @InUi getter: ReceiverFunction0<ViewBinding, T>
     ): Deferred<Dout> = inUiDeferredAsync {
         getter(binding).createResultAsync()
     }

@@ -1,5 +1,7 @@
 package csense.example.app
 
+import csense.example.app.mat.MatButtonController
+import csense.example.app.widgets.TabsExampleScreen
 import csense.javafx.SimpleBaseApplication
 import csense.javafx.extensions.parent.plusAssign
 import csense.javafx.material.widgets.spinner.MatSpinnerSingleColor
@@ -10,11 +12,7 @@ import csense.javafx.viewdsl.vBox
 import csense.javafx.views.BaseEmptyViewController
 import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.BaseViewController
-import csense.javafx.views.base.BaseViewParent
 import csense.javafx.views.base.InUiUpdateEmpty
-import csense.javafx.views.list.SimpleListView
-import csense.javafx.views.list.SimpleListViewAdapter
-import csense.javafx.views.list.SimpleListViewRender
 import csense.kotlin.extensions.coroutines.asyncMain
 import csense.kotlin.logger.L
 import csense.kotlin.logger.usePrintAsLoggers
@@ -22,7 +20,6 @@ import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.scene.Node
 import javafx.scene.Parent
-import javafx.scene.control.Label
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.delay
@@ -57,7 +54,9 @@ class FxApplicationWrapper : SimpleBaseApplication() {
     override fun createView(): BaseViewController<*> {
         //        return FXMLWorkScreen()
 //        return LoginViewController()
-        return SimpleListExample()
+//        return SimpleListExample()
+        return TabsExampleScreen()
+//        return MatButtonController()
     }
 }
 

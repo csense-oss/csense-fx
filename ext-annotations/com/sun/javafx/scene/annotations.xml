@@ -1,8 +1,119 @@
 <root>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ContextMenuEvent&gt;&gt; onContextMenuRequestedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragDoneProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragDroppedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragExitedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragOverProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.InputMethodEvent&gt;&gt; onInputMethodTextChangedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyPressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyTypedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragExitedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragOverProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onDragDetectedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseClickedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseDraggedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseExitedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseMovedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMousePressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotateProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotationFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotationStartedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollStartedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeDownProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeLeftProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeRightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeUpProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchMovedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchPressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchStationaryProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ZoomEvent&gt;&gt; onZoomFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ZoomEvent&gt;&gt; onZoomProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.sun.javafx.scene.EventHandlerProperties javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ZoomEvent&gt;&gt; onZoomStartedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
 </root>

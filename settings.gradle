@@ -7,5 +7,6 @@ pluginManagement {
 include('example-app',
         'csense-javafx',
         'csense-javafx-tools',
+        'csense-javafx-diagram',
         'csense-javafx-material')
 

@@ -1,9 +1,8 @@
-package csense.javafx.extensions.views
+package csense.javafx.extensions.scene
 
 import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.*
-import javafx.scene.control.Control
 import javafx.scene.control.SplitPane
 import javafx.scene.layout.*
 
@@ -22,7 +21,7 @@ fun Node.fillParent() {
 }
 
 @InUi
-fun Node.fillSplitPane() = SplitPane.setResizableWithParent(this,true)
+fun Node.fillSplitPane() = SplitPane.setResizableWithParent(this, true)
 
 
 @InUi
@@ -67,4 +66,14 @@ fun Node.fillTilePane() {
     TilePane.setAlignment(this, Pos.CENTER)
     TilePane.setMargin(this, Insets.EMPTY)
 }
+
+
+////region Cursor extensions
+//fun Node.cursorHand() {
+//    cursor = Cursor.HAND
+//}
+////endregion
+
+
+val Node.isNotPressed: Boolean get() = !isPressed
 

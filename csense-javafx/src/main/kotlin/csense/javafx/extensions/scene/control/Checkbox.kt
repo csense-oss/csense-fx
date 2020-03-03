@@ -1,4 +1,4 @@
-package csense.javafx.extensions.views
+package csense.javafx.extensions.scene.control
 
 import javafx.scene.control.CheckBox
 

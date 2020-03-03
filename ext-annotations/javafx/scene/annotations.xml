@@ -1,4 +1,79 @@
 <root>
+    <item name='javafx.scene.Cursor CLOSED_HAND'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor CROSSHAIR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor Cursor(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor DEFAULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor DISAPPEAR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor E_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor HAND'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor H_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor MOVE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor NE_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor NONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor NW_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor N_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor OPEN_HAND'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor SE_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor SW_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor S_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor TEXT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor V_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor WAIT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor W_RESIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor com.sun.javafx.cursor.CursorFrame getCurrentFrame()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor javafx.scene.Cursor cursor(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor javafx.scene.Cursor cursor(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Cursor name'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node com.sun.javafx.scene.EventHandlerProperties getEventHandlerProperties()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -7,6 +82,12 @@
     </item>
     <item name='javafx.scene.Node com.sun.javafx.scene.NodeEventDispatcher getInternalEventDispatcher()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node double getOpacity()'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
     </item>
     <item name='javafx.scene.Node java.lang.String getAccessibleHelp()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
@@ -29,13 +110,31 @@
     <item name='javafx.scene.Node javafx.beans.binding.BooleanExpression treeVisibleProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.BooleanProperty cacheProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.BooleanProperty disableProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.BooleanProperty focusTraversableProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.BooleanProperty managedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.BooleanProperty mouseTransparentProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.BooleanProperty pickOnBoundsProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.beans.property.BooleanProperty showMnemonicsProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.beans.property.DoubleProperty layoutXProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.DoubleProperty opacityProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.beans.property.DoubleProperty rotateProperty()'>
@@ -71,10 +170,112 @@
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventDispatcher&gt; eventDispatcherProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ContextMenuEvent&gt;&gt; onContextMenuRequestedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragDoneProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragDroppedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.DragEvent&gt;&gt; onDragEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.InputMethodEvent&gt;&gt; onInputMethodTextChangedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyPressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.KeyEvent&gt;&gt; onKeyTypedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragExitedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragOverProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseDragEvent&gt;&gt; onMouseDragReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onDragDetectedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseClickedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseDraggedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseEnteredProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseMovedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMousePressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.MouseEvent&gt;&gt; onMouseReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotateProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotationFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.RotateEvent&gt;&gt; onRotationStartedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ScrollEvent&gt;&gt; onScrollStartedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeDownProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeLeftProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeRightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.SwipeEvent&gt;&gt; onSwipeUpProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchMovedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchPressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchReleasedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.TouchEvent&gt;&gt; onTouchStationaryProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ZoomEvent&gt;&gt; onZoomFinishedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.event.EventHandler&lt;? super javafx.scene.input.ZoomEvent&gt;&gt; onZoomStartedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.geometry.NodeOrientation&gt; nodeOrientationProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.geometry.Point3D&gt; rotationAxisProperty()'>
@@ -83,16 +284,76 @@
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.AccessibleRole&gt; accessibleRoleProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.CacheHint&gt; cacheHintProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.Cursor&gt; cursorProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.DepthTest&gt; depthTestProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.Node&gt; clipProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.effect.BlendMode&gt; blendModeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.effect.Effect&gt; effectProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.ObjectProperty&lt;javafx.scene.input.InputMethodRequests&gt; inputMethodRequestsProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanProperty disabledProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanProperty focusedProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanProperty hoverProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanProperty pressedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanWrapper disabledPropertyImpl()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyBooleanWrapper hoverPropertyImpl()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Bounds&gt; boundsInLocalProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Bounds&gt; boundsInParentProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Bounds&gt; layoutBoundsProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.NodeOrientation&gt; effectiveNodeOrientationProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.Parent&gt; parentProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.Scene&gt; sceneProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.transform.Transform&gt; localToParentTransformProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.scene.transform.Transform&gt; localToSceneTransformProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.ReadOnlyObjectWrapper&lt;javafx.scene.Parent&gt; parentPropertyImpl()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.beans.property.StringProperty idProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node javafx.beans.property.StringProperty styleProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node javafx.collections.ObservableList&lt;java.lang.String&gt; getStyleClass()'>
@@ -143,6 +404,9 @@
     <item name='javafx.scene.Node javafx.geometry.Point3D parentToLocal(javafx.geometry.Point3D)'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.Node javafx.scene.Cursor getCursor()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.Node javafx.scene.Node.AccessibilityProperties getAccessibilityProperties()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -158,6 +422,12 @@
     <item name='javafx.scene.Node javafx.scene.Parent getParent()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.Node javafx.scene.Scene getScene()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.Node javafx.scene.effect.BlendMode getBlendMode()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.Node javafx.scene.image.WritableImage doSnapshot(javafx.scene.SnapshotParameters, javafx.scene.image.WritableImage)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
@@ -168,10 +438,16 @@
     <item name='javafx.scene.Node javafx.scene.image.WritableImage snapshot(javafx.scene.SnapshotParameters, javafx.scene.image.WritableImage) 0'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.scene.Node javafx.scene.input.Dragboard startDragAndDrop(javafx.scene.input.TransferMode...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node javafx.scene.input.InputMethodRequests getInputMethodRequests()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
     <item name='javafx.scene.Node javafx.scene.transform.Transform getLocalToParentTransform()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node layoutBounds'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Node nodeTransformation'>
@@ -213,8 +489,20 @@
     <item name='javafx.scene.Node void removeEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 1'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node void setBlendMode(javafx.scene.effect.BlendMode) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.Node void setCursor(javafx.scene.Cursor) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.scene.Node void setEventHandler(javafx.event.EventType&lt;T&gt;, javafx.event.EventHandler&lt;? super T&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node void setOpacity(double) 0'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
     </item>
     <item name='javafx.scene.Node void setStyle(java.lang.String) 0'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
@@ -261,8 +549,44 @@
     <item name='javafx.scene.Node.LazyTransformProperty void removeListener(javafx.beans.value.ChangeListener&lt;? super javafx.scene.transform.Transform&gt;) 0'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.BooleanProperty cacheProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.BooleanProperty disableProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.BooleanProperty mouseTransparentProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.DoubleProperty viewOrderProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.CacheHint&gt; cacheHintProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.Cursor&gt; cursorProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.DepthTest&gt; depthTestProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.Node&gt; clipProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.effect.Effect&gt; effectProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ObjectProperty&lt;javafx.scene.input.InputMethodRequests&gt; inputMethodRequestsProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Bounds&gt; boundsInLocalProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Bounds&gt; boundsInParentProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Node.MiscProperties javafx.scene.Cursor getCursor()'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
     <item name='javafx.scene.Node.NodeTransformation javafx.beans.property.DoubleProperty rotateProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
@@ -331,6 +655,12 @@
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
     <item name='javafx.scene.Scene javafx.scene.image.WritableImage doSnapshot(javafx.scene.Scene, double, double, double, double, javafx.scene.Node, com.sun.javafx.geom.transform.BaseTransform, boolean, javafx.scene.paint.Paint, javafx.scene.Camera, javafx.scene.image.WritableImage) 10'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='javafx.scene.Scene javafx.scene.input.Dragboard startDragAndDrop(javafx.event.EventTarget, javafx.scene.input.TransferMode...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.Scene.DnDGesture javafx.scene.input.Dragboard startDrag(javafx.event.EventTarget, java.util.Set&lt;javafx.scene.input.TransferMode&gt;)'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
 </root>

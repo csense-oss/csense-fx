@@ -6,12 +6,17 @@ import csense.kotlin.annotations.threading.*
 import javafx.scene.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 @InUi
 inline fun TabPane.tab(
         title: String,
         crossinline action: ScopedViewDsl<Tab>
 ): Tab {
+    contract {
+        callsInPlace(action, InvocationKind.EXACTLY_ONCE)
+    }
     val tab = Tab(title)
     tabs += tab
     return tab.apply(action)
@@ -32,8 +37,25 @@ inline fun TabPane.tabWithVBox(
         title: String,
         crossinline action: ScopedViewDsl<VBox>
 ): Tab {
+    contract {
+        callsInPlace(action, InvocationKind.EXACTLY_ONCE)
+    }
     val vBox = vBox {}
     return tabWith(title, vBox).also {
+        action(vBox)
+    }
+}
+
+@InUi
+inline fun TabPane.tabWithScrollableVBox(
+        title: String,
+        crossinline action: ScopedViewDsl<VBox>
+): Tab {
+    contract {
+        callsInPlace(action, InvocationKind.EXACTLY_ONCE)
+    }
+    val vBox = vBox {}
+    return tabWith(title, scrollPane { content = vBox }).also {
         action(vBox)
     }
 }

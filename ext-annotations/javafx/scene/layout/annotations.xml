@@ -1,0 +1,65 @@
+<root>
+    <item name='javafx.scene.layout.Region background'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region insets'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.BooleanProperty cacheShapeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.BooleanProperty centerShapeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.BooleanProperty scaleShapeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.BooleanProperty snapToPixelProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty maxHeightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty maxWidthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty minHeightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty minWidthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty prefHeightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.DoubleProperty prefWidthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ObjectProperty&lt;javafx.geometry.Insets&gt; opaqueInsetsProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ObjectProperty&lt;javafx.geometry.Insets&gt; paddingProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ObjectProperty&lt;javafx.scene.layout.Background&gt; backgroundProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ObjectProperty&lt;javafx.scene.layout.Border&gt; borderProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ObjectProperty&lt;javafx.scene.shape.Shape&gt; shapeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ReadOnlyDoubleProperty heightProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ReadOnlyDoubleProperty widthProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.geometry.Insets&gt; insetsProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.layout.Region padding'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

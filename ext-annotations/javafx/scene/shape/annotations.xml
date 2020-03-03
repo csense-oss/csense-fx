@@ -1,4 +1,13 @@
 <root>
+    <item name='javafx.scene.shape.Shape javafx.beans.property.BooleanProperty smoothProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.shape.Shape javafx.beans.property.ObjectProperty&lt;javafx.scene.paint.Paint&gt; fillProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.shape.Shape javafx.beans.property.ObjectProperty&lt;javafx.scene.paint.Paint&gt; strokeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.shape.Shape javafx.scene.paint.Paint getStroke()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>

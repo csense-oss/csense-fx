@@ -44,3 +44,5 @@ javafx {
             "javafx.swing",
             "javafx.web"]
 }
+sourceCompatibility = '11'
+targetCompatibility = '11'
