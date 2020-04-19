@@ -2,6 +2,33 @@
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double, double) 0'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double, double) 1'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double, double) 2'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
+    </item>
+    <item name='javafx.scene.paint.Color javafx.scene.paint.Color color(double, double, double, double) 3'>
+        <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
+            <val name="from" val="0.0"/>
+            <val name="to" val="1.0"/>
+        </annotation>
+    </item>
     <item name='javafx.scene.paint.Color javafx.scene.paint.Color gray(double)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>

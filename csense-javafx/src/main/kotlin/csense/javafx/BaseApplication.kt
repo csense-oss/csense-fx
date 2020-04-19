@@ -44,9 +44,8 @@ abstract class BaseApplication<BackgroundData> : Application() {
 
     @InUi
     override fun start(primaryStage: Stage?) {
-        if (primaryStage == null) {
-            return
-        }
+        primaryStage ?: return
+        
         val newScene = Scene(createSplashScreen(), startingWidth, startingHeight)
         primaryStage.scene = newScene
         primaryStage.show()
@@ -54,6 +53,7 @@ abstract class BaseApplication<BackgroundData> : Application() {
 
         coroutineScope.launchMain {
             applicationTracker.onLoadingController()
+            
             val backgroundData = backgroundDataLoader.await()
             val view = createView(backgroundData)
             view.addToScene(newScene)

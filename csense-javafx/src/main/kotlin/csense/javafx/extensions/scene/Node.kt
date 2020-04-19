@@ -1,6 +1,7 @@
 package csense.javafx.extensions.scene
 
 import csense.kotlin.annotations.threading.*
+import csense.kotlin.logger.*
 import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.control.SplitPane
@@ -8,6 +9,10 @@ import javafx.scene.layout.*
 
 @InUi
 fun Node.fillParent() {
+    if (parent == null) {
+        L.debug("Node.fillParent", "Null parent")
+        return
+    }
     when (parent) {
         is VBox -> fillVBox()
         is HBox -> fillHBox()
@@ -17,6 +22,7 @@ fun Node.fillParent() {
         is FlowPane -> fillFlowPane()
         is StackPane -> fillStackPane()
         is TilePane -> fillTilePane()
+        else -> L.debug("Node.fillParent", "Failed to fill parent, unknown type; type is = " + parent.javaClass.simpleName)
     }
 }
 

@@ -3,7 +3,7 @@
 package csense.javafx.extensions.parent
 
 import csense.kotlin.annotations.threading.InUi
-import csense.kotlin.extensions.collections.list.replace
+import csense.kotlin.extensions.collections.list.*
 import csense.kotlin.extensions.toUnit
 import javafx.scene.Node
 import javafx.scene.layout.Pane
@@ -24,6 +24,11 @@ inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
 @InUi
 inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
 
+@InUi
+inline fun Pane.addAllToFront(nodes: Iterable<Node>) = children.addAll(nodes).toUnit()
+
+@InUi
+inline fun Pane.addAllToBack(nodes: Iterable<Node>) = children.addAll(0, nodes).toUnit()
 
 @InUi
 inline fun <T : Node> Pane.addToFrontF(view: T): T {

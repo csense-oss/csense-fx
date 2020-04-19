@@ -12,6 +12,9 @@ import csense.javafx.views.base.InUiUpdateEmpty
 import csense.kotlin.extensions.coroutines.asyncDefault
 import javafx.geometry.Insets
 import javafx.scene.Parent
+import javafx.scene.effect.BlurType
+import javafx.scene.effect.DropShadow
+import javafx.scene.paint.Color
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 
@@ -24,14 +27,23 @@ class MatButtonUi : BaseViewParent {
 
     }
     val rippler = RippleControl(text).apply {
-        maskType =  RippleControl.RipplerMask.CIRCLE
+        maskType = RippleControl.RipplerMask.CIRCLE
     }
     override val root: Parent = vBox {
+
+        padding = Insets(20.0)
+        spacing = 20.0
         btn = matButton {
             padding = Insets(20.0)
-            text = "myButton"
+            text = "long"
             prefWidth = 500.0
             prefHeight = 50.0
+        }
+        matButton {
+            padding = Insets(20.0)
+            text = "square"
+            prefWidth = 300.0
+            prefHeight = 300.0
         }
 
         addToFront(rippler)

@@ -1,7 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm'
     id 'org.openjfx.javafxplugin' version '0.0.8'
-    id "me.champeau.gradle.jmh"
+//    id "me.champeau.gradle.jmh"
 }
 
 group 'csense'
@@ -44,3 +44,5 @@ javafx {
             "javafx.controls",
             "javafx.graphics"]
 }
+sourceCompatibility = '11'
+targetCompatibility = '11'

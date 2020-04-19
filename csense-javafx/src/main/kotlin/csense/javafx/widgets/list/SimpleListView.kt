@@ -8,7 +8,8 @@ import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.InScope
 import csense.kotlin.Function0
 import csense.kotlin.ReceiverFunctionUnit
-import csense.kotlin.annotations.inheritance.SuperCallRequired
+import csense.kotlin.annotations.inheritance.*
+import csense.kotlin.extensions.collections.getSafe
 import csense.kotlin.extensions.collections.list.removeAtOr
 import csense.kotlin.extensions.collections.map.putSubList
 import csense.kotlin.extensions.collections.setAll
@@ -25,19 +26,23 @@ import javafx.scene.layout.Pane
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
+//TODO make me
+abstract class BaseSimpleListView<RenderType : SimpleListViewRender<*>>(adapter: SimpleListViewAdapter) {
+
+}
 
 open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<InternalCellSimpleListViewRender<Parent>>() {
     val adapterProperty = SimpleObjectProperty<SimpleListViewAdapter>()
-
+    
     var adapter: SimpleListViewAdapter?
         get() = adapterProperty.value
         set(value) {
             adapterProperty.value = value
             value?.registerToListView(this)
         }
-
+    
     private val BindingCache = SimpleListViewBindingCache()
-
+    
     init {
         setCellFactory {
             RenderListCell(BindingCache, this)
@@ -50,7 +55,7 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
 //        }
         this.adapter = adapter
     }
-
+    
     override fun createDefaultSkin(): Skin<*> {
         return mySkin.apply {
             myVirtualFlow.myVbar.setOnScroll {
@@ -58,7 +63,15 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
             }
         }
     }
-
+    
+    /**
+     * Linear index
+     * @param index Int
+     */
+    fun getCell(index: Int): Cell<InternalCellSimpleListViewRender<Parent>> {
+        return mySkin.myVirtualFlow.getCell(index)
+    }
+    
     private val mySkin by lazy {
         SimpleListViewSkin(this)
     }
@@ -74,7 +87,7 @@ inline fun Pane.simpleListView(configure: @InScope ReceiverFunctionUnit<SimpleLi
 class SimpleListViewBindingCache(val maxElementsCached: Int = 200) {
     private var currentAmountsOfElements: Int = 0
     private val cache: MutableMap<Int, MutableList<MyGroupNode>> = mutableMapOf()
-
+    
     fun recycle(toRecycle: MyGroupNode) {
         if (currentAmountsOfElements >= maxElementsCached) {
             //cleanup the LRU
@@ -83,7 +96,7 @@ class SimpleListViewBindingCache(val maxElementsCached: Int = 200) {
         cache.putSubList(toRecycle.bindingClassTypeHashCode, toRecycle)
         currentAmountsOfElements += 1
     }
-
+    
     fun getFromCacheOrNull(uiType: Int): MyGroupNode? {
         val lst = cache[uiType] ?: return null
         return lst.removeAtOr(lst.lastIndex, null)?.also { currentAmountsOfElements -= 1 }
@@ -93,16 +106,18 @@ class SimpleListViewBindingCache(val maxElementsCached: Int = 200) {
 }
 
 class SimpleListViewSkin(control: SimpleListView) : ListViewSkin<InternalCellSimpleListViewRender<Parent>>(control) {
-
+    
     val myVirtualFlow: SimpleListViewVirtualFlow
         get() = virtualFlow as SimpleListViewVirtualFlow
-
-
-    //TODO "called from constructor", so we can find the "dreaded" null /bad initialization problems.
+    
+    
+    //TODO external "called from constructor", so we can find the "dreaded" null /bad initialization problems.
+    @CalledFromConstructor
     override fun createVirtualFlow(): VirtualFlow<ListCell<InternalCellSimpleListViewRender<Parent>>> {
+        
         return SimpleListViewVirtualFlow()
     }
-
+    
 }
 
 
@@ -114,34 +129,35 @@ class SimpleListViewVirtualFlow : VirtualFlow<ListCell<InternalCellSimpleListVie
 class InternalCellSimpleListViewRender<T : Parent>(
         val render: SimpleListViewRender<BaseView<T>>
 ) {
+    var lastRenderedTo: BaseView<T>? = null
     fun renderTo(binding: BaseView<T>, cell: Cell<*>) {
         render.onRender(binding, cell)
+        lastRenderedTo = binding
     }
-
+    
     fun createNew(): BaseView<T> {
-        println("creating new")
         return render.createUi()
     }
-
+    
     fun createNewGroupNode(): MyGroupNode {
         return createNew().inMyGroupNode()
     }
-
+    
     fun createNewRendered(cell: Cell<*>): MyGroupNode {
         return createNew().also {
             renderTo(it, cell)
         }.inMyGroupNode()
     }
-
+    
     private fun BaseView<T>.inMyGroupNode(): MyGroupNode {
         return MyGroupNode(render.uiClassTypeHashCode, this)
     }
-
+    
     fun tryRenderTo(graphic: Node?, bindingCache: SimpleListViewBindingCache, cell: Cell<*>): MyGroupNode {
         //is it either there or a valid type ?
         val graphicAsMyGroupNode = graphic as? MyGroupNode
                 ?: return createNewRendered(cell)
-
+        
         //can we reuse it ?
         val isBaseView = graphicAsMyGroupNode.bindingClassTypeHashCode == render.uiClassTypeHashCode
         return if (isBaseView) {
@@ -156,7 +172,7 @@ class InternalCellSimpleListViewRender<T : Parent>(
             bindingToUse
         }
     }
-
+    
 }
 
 class MyGroupNode(val bindingClassTypeHashCode: Int, val binding: BaseView<*>) : Group() {
@@ -178,7 +194,7 @@ open class RenderListCell<T : Parent>(val bindingCache: SimpleListViewBindingCac
         maxWidth = Control.USE_PREF_SIZE
         maxHeight = Control.USE_PREF_SIZE
     }
-
+    
     override fun updateItem(newRender: InternalCellSimpleListViewRender<T>?, empty: Boolean) {
         if (newRender == null || empty) {
             graphic = null
@@ -190,26 +206,26 @@ open class RenderListCell<T : Parent>(val bindingCache: SimpleListViewBindingCac
         }
 //        prefWidth = 0.0
     }
-
+    
 }
 
 abstract class SimpleListViewRender<Ui : BaseView<*>>(
-       val uiClass: Class<Ui>
+        val uiClass: Class<Ui>
 ) {
-
+    
     val uiClassTypeHashCode: Int = uiClass.hashCode()
-
+    
     abstract fun createUi(): Ui
-
+    
     /**
      * get called when we are to render to the given Ui
      * @param renderTo Ui
      */
     abstract fun onRender(renderTo: Ui)
-
+    
     /**
      * delegate the UI rendering to the onRender, and provides a hook point for "handling" the
-     * real cell incase that is really needed.
+     * real cell in case that is really needed.
      * @param renderTo Ui
      * @param cell Cell<*>
      */
@@ -219,15 +235,15 @@ abstract class SimpleListViewRender<Ui : BaseView<*>>(
     }
 }
 
-abstract class SimpleDelegatingListViewRender<Ui: BaseView<*>>(val other: SimpleListViewRender<Ui>): SimpleListViewRender<Ui>(other.uiClass){
+abstract class SimpleDelegatingListViewRender<Ui : BaseView<*>>(val other: SimpleListViewRender<Ui>) : SimpleListViewRender<Ui>(other.uiClass) {
     override fun createUi(): Ui {
         return other.createUi()
     }
-
+    
     override fun onRender(renderTo: Ui) {
         other.onRender(renderTo)
     }
-
+    
     override fun onRender(renderTo: Ui, cell: Cell<*>) {
         other.onRender(renderTo, cell)
     }
@@ -239,34 +255,52 @@ data class SimpleListViewAdapterUpdate(
         val updated: List<SimpleListViewRender<*>>,
         val removed: List<SimpleListViewRender<*>>)
 
+typealias SimpleListViewAdapterItem = SimpleListViewRender<out BaseView<Parent>>
+
 class SimpleListViewAdapter {
     private var listview: SimpleListView? = null
     private val onDataChangedListeners: MutableList<Function0<SimpleListViewAdapterUpdate>> = mutableListOf()
     private var realItemCount: Int = 0
-    private val data: HashMap<Int, MutableList<SimpleListViewRender<out BaseView<Parent>>>> = hashMapOf()
-
-    fun setSection(section: Int, items: List<SimpleListViewRender<out BaseView<Parent>>>) {
-        val list = data[section] ?: mutableListOf<SimpleListViewRender<out BaseView<Parent>>>().also {
+    private val data: HashMap<Int, MutableList<SimpleListViewAdapterItem>> = hashMapOf()
+    
+    fun setSection(section: Int, items: List<SimpleListViewAdapterItem>) {
+        val list = data[section] ?: mutableListOf<SimpleListViewAdapterItem>().also {
             data[section] = it
         }
         realItemCount += (items.size - list.size)
         list.setAll(items)
         updateListViewItems()
     }
-
+    
+    /**
+     *
+     */
+    fun clearAll() {
+        //compute delta
+        data.clear()
+    }
+    
+    fun removeSection(section: Int) {
+    
+    }
+    
+    fun addItems(section: Int, items: List<SimpleListViewAdapterItem>) {
+    
+    }
+    
     fun registerOnChangeListener(listener: Function0<SimpleListViewAdapterUpdate>) {
         onDataChangedListeners += listener
     }
-
+    
     fun unregisterOnChangeListener(listener: Function0<SimpleListViewAdapterUpdate>) {
         onDataChangedListeners -= listener
     }
-
+    
     fun registerToListView(listView: SimpleListView) {
         this.listview = listView
 //        listView.
     }
-
+    
     private fun updateListViewItems() = listview?.let {
         val keys = data.keys
         val result = mutableListOf<InternalCellSimpleListViewRender<Parent>>()
@@ -279,7 +313,15 @@ class SimpleListViewAdapter {
         }
         it.items.setAll(result)
     }.toUnit()
-
+    
+    operator fun get(section: Int, index: Int): SimpleListViewAdapterItem? {
+        return data[section]?.getSafe(index)
+    }
+    
+    fun addItem(section: Int, listOf: SimpleListViewAdapterItem) {
+    
+    }
+    
     val totalItemCount: Int
         get() = realItemCount
 }

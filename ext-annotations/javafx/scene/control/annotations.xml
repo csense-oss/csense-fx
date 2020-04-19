@@ -1,4 +1,7 @@
 <root>
+    <item name='javafx.scene.control.ButtonBase javafx.beans.property.ReadOnlyBooleanProperty armedProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.scene.control.CheckBox javafx.beans.property.BooleanProperty allowIndeterminateProperty()'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>

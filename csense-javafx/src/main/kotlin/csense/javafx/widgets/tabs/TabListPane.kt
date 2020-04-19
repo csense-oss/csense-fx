@@ -1,94 +1,131 @@
 package csense.javafx.widgets.tabs
 
+import csense.javafx.*
+import csense.javafx.css.*
+import csense.javafx.extensions.listener.*
 import csense.javafx.extensions.parent.addToFrontF
-import csense.javafx.extensions.scene.fillParent
-import csense.javafx.extensions.scene.fillStackPane
+import csense.javafx.extensions.scene.*
 import csense.javafx.viewdsl.hBox
-import csense.javafx.viewdsl.scrollPane
 import csense.javafx.viewdsl.vBox
 import csense.javafx.views.base.BaseView
-import csense.javafx.views.base.BaseViewParent
-import csense.javafx.widgets.list.SimpleDelegatingListViewRender
-import csense.javafx.widgets.list.SimpleListView
-import csense.javafx.widgets.list.SimpleListViewAdapter
-import csense.javafx.widgets.list.SimpleListViewRender
-import csense.kotlin.Function0R
-import csense.kotlin.ReceiverFunctionUnit
+import csense.javafx.widgets.list.*
+import csense.kotlin.*
 import csense.kotlin.annotations.numbers.IntLimit
-import csense.kotlin.extensions.collections.getSafe
-import csense.kotlin.extensions.collections.setAll
+import csense.kotlin.extensions.*
+import csense.kotlin.extensions.collections.*
+import javafx.application.*
 import javafx.geometry.Orientation
 import javafx.scene.Node
 import javafx.scene.Parent
+import javafx.scene.control.Cell
 import javafx.scene.control.ScrollPane
-import javafx.scene.layout.Pane
-import javafx.scene.layout.StackPane
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
+import javafx.scene.paint.*
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 class TabListPane(orientation: Orientation) : StackPane() {
-
-
-    private var selectedTab: TabListPaneTab<*>? = null
-
+    
+    
+    var selectedTab: TabListPaneTab<*>? = null
+        private set
+    
     private val tabs: MutableList<TabListPaneTab<*>> = mutableListOf()
     private val tabsAdapter: SimpleListViewAdapter = SimpleListViewAdapter()
-
+    
     private val tabsList: SimpleListView = SimpleListView(tabsAdapter)
-
+    
     private val rootPane: Pane = orientation.toBox()
     private val contentPane: Pane = StackPane()
-
+    
     init {
         rootPane.children.setAll(tabsList, contentPane)
         contentPane.fillParent()
         tabsList.orientation = orientation
+//        tabsList.selectionModel.selectedItemProperty().addListener(ChangeListenerNewValue {
+//            (it?.render as? InnerTabListRender)?.toDelegateTo?.select()
+//        })
+        tabsList.focusModel.focusedItemProperty().addListener(ChangeListenerNewValue {
+            (it?.render as? InnerTabListRender)?.toDelegateTo?.select()
+        })
         children.setAll(rootPane)
     }
-
+    
     fun addTab(tab: TabListPaneTab<*>) {
         tabs += tab
-        tabsAdapter.setSection(0, listOf(tab.header))
+        tabsAdapter.addItem(0, tab.toInnerTabListRender(this))
     }
-
+    
     fun addTabAt(tab: TabListPaneTab<*>, @IntLimit(from = 0) at: Int) {
         tabs.add(at, tab)
-        tabsAdapter.setSection(0, listOf(tab.header))//TODO
+        tabsAdapter.setSection(0, listOf(tab.toInnerTabListRender(this)))//TODO
     }
-
+    
     fun removeTab(tab: TabListPaneTab<*>) {
         tabs -= tab
         tabsAdapter.setSection(0, listOf())
     }
-
+    
     fun clearTabs() {
         tabs.clear()
-//        tabsAdapter.clear()
+        tabsAdapter.clearAll()
     }
-
+    
     fun setTabs(vararg newTabs: TabListPaneTab<*>) {
-        tabs.setAll(*newTabs)
-        tabsAdapter.setSection(0, newTabs.map { it.header })
+        setTabs(newTabs.toList())
     }
-
-    fun setTabs(tabs: List<TabListPaneTab<*>>) {
-
-    }
-
-    fun selectTabAt(@IntLimit(from = 0) index: Int) {
-        val tab = tabs.getSafe(index) ?: return
-        selectTab(tab)
-    }
-
-    fun selectTab(tab: TabListPaneTab<*>) {
-        if (tab == selectedTab) {
+    
+    fun setTabs(newTabs: List<TabListPaneTab<*>>) {
+        if (newTabs.isEmpty()) {
+            clearTabs()
             return
         }
-        val node = tab.content
+        tabs.setAll(newTabs)
+        tabsAdapter.setSection(0, newTabs.map { it.toInnerTabListRender(this) })
+        selectTabAt(0)
+    }
+    
+    
+    fun selectTabAt(@IntLimit(from = 0) index: Int) =
+            tabs.getOrNull(index)?.select().toUnit()
+    
+    fun selectTab(tab: TabListPaneTab<*>) = tab.select()
+    
+    private fun TabListPaneTab<*>.select() {
+        if (this == selectedTab) {
+            return
+        }
+        val selectedIndex = tabs.indexOfOrNull(this) ?: return
+        val cell = tabsList.getCell(selectedIndex)
+        lastSelectedCell?.background = null
+        lastSelectedCell = cell
+        
+        selectedTab = this
+        val node = this.content
         contentPane.children.setAll(node)
         node.fillStackPane()
-        selectedTab = tab
+        tabsList.focusModel.focus(selectedIndex)
+//        cell.updateSelected(true)
+//        tabs.indexOfOrNull(this)?.let {
+//            tabsList.requestFocus()
+//            tabsList.selectionModel.select(it)
+//            tabsList.focusModel.focus(it)
+
+//        }
+    }
+    
+    private var lastSelectedCell: Cell<*>? = null
+    
+    fun selectTab(tab: TabListPaneTab<*>, renderTo: BaseView<*>) {
+//        lastSelectedCell?.background = null
+//        findCellFromRenderRoot(renderTo.root) {
+//            lastSelectedCell = it
+//        }
+        tab.select()
+    }
+    
+    private inline fun findCellFromRenderRoot(root: Node?, crossinline changeAction: FunctionUnit<Cell<*>>) {
+        (root?.parent?.parent as? Cell<*>)?.let(changeAction)
     }
 }
 
@@ -96,7 +133,7 @@ class TabListPaneTab<HeaderUi : BaseView<*>>(
         val header: SimpleListViewRender<HeaderUi>,
         val content: Node)
 
-inline fun <HeaderUi : BaseView<*>>  TabListPaneTab(
+inline fun <HeaderUi : BaseView<*>> TabListPaneTab(
         header: SimpleListViewRender<HeaderUi>,
         crossinline configureNode: ReceiverFunctionUnit<StackPane>): TabListPaneTab<HeaderUi> {
     contract {
@@ -107,15 +144,19 @@ inline fun <HeaderUi : BaseView<*>>  TabListPaneTab(
     return TabListPaneTab(header, stackPane)
 }
 
-inline fun <HeaderUi : BaseView<*>>  TabListPaneTabScrollableVbox(
+inline fun <HeaderUi : BaseView<*>> TabListPaneTabScrollableVbox(
         header: SimpleListViewRender<HeaderUi>,
         crossinline configureNode: ReceiverFunctionUnit<VBox>): TabListPaneTab<HeaderUi> {
     contract {
         callsInPlace(configureNode, InvocationKind.EXACTLY_ONCE)
     }
     val box = VBox()
+    val scrollContent = ScrollPane(box).apply {
+        isFitToHeight = true
+        isFitToWidth = true
+    }
     configureNode(box)
-    return TabListPaneTab(header, ScrollPane(box))
+    return TabListPaneTab(header, scrollContent)
 }
 
 inline fun <HeaderUi : BaseView<*>> TabListPaneTabNew(
@@ -142,19 +183,32 @@ inline fun Pane.tabListPane(
     return addToFrontF(TabListPane(orientation)).apply(configureAction)
 }
 
-//fun <HeaderUi : BaseView<*>> TabListPaneTab<HeaderUi>.toInnerTabListRender(
-//): SimpleListViewRender<*>{
-////    return object : SimpleDelegatingListViewRender(this){
-////
-////    }
-//}
+class InnerTabListRender<HeaderUi : BaseView<Parent>>(
+        val tabListPane: TabListPane,
+        val toDelegateTo: TabListPaneTab<HeaderUi>
+) : SimpleListViewRender<HeaderUi>(toDelegateTo.header.uiClass) {
+    
+    override fun createUi(): HeaderUi = toDelegateTo.header.createUi()
+    
+    override fun onRender(renderTo: HeaderUi) = toDelegateTo.header.onRender(renderTo)
+    
+    override fun onRender(renderTo: HeaderUi, cell: Cell<*>) {
+        super.onRender(renderTo, cell)
+        cell.setOnMouseClicked {
+            tabListPane.selectTab(toDelegateTo, renderTo)
+        }
+        toDelegateTo.header.onRender(renderTo, cell)
+        if (tabListPane.selectedTab?.header == toDelegateTo.header) {
+            cell.background = SingleBackgroundColor(Color.RED)
+        } else {
+            cell.background = null
+        }
+    }
+    
+}
 
-//private class InnerTabListRender(val header: TabListPaneTab<*>, selectTabFunction: Function0R<TabListPaneTab>) : SimpleDelegatingListViewRender<*>(header.header) {
-//    override fun createUi(): BaseView<*> {
-//        return header.header.createUi()
-//    }
-//
-//    override fun onRender(renderTo: BaseViewParent) {
-//        TODO("Not yet implemented")
-//    }
-//}
+fun <HeaderUi : BaseView<Parent>> TabListPaneTab<HeaderUi>.toInnerTabListRender(
+        tabListPane: TabListPane
+): SimpleListViewRender<HeaderUi> {
+    return InnerTabListRender(tabListPane, this)
+}

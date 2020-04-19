@@ -91,9 +91,9 @@ class TabsExampleListRender(val index: Int, val setIndex: (Int) -> Unit) : Simpl
     override fun onRender(renderTo: TabsExampleListRenderUi, cell: Cell<*>) {
         super.onRender(renderTo, cell)
         renderTo.root.background = SingleBackgroundColor(Color.BEIGE)
-        cell.setOnClickAsync {
-            setIndex(index)
-        }
+//        cell.setOnClickAsync {
+//            setIndex(index)
+//        }
 //        cell.graphic?.fillParent()
 //        renderTo.root.background = SingleBackgroundColor(Color.MAGENTA)
 
