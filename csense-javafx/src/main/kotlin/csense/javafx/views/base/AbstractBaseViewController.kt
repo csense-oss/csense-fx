@@ -1,38 +1,22 @@
 package csense.javafx.views.base
 
+import csense.javafx.extensions.parent.*
+import csense.javafx.extensions.system.*
 import csense.javafx.extensions.system.StageExtensions.stageWith
-import csense.javafx.extensions.parent.addToFront
-import csense.javafx.extensions.parent.replace
-import csense.javafx.extensions.system.showFluent
-import csense.javafx.extensions.system.updateXYFrom
-import csense.javafx.observable.addObserverF
-import csense.javafx.tracking.BaseViewTracker
-import csense.javafx.tracking.logTimingString
-import csense.javafx.tracking.onClosing
-import csense.javafx.tracking.onStart
-import csense.javafx.views.OutputViewAble
-import csense.kotlin.Function1
-import csense.kotlin.FunctionUnit
-import csense.kotlin.ReceiverFunction0
-import csense.kotlin.annotations.inheritance.SuperCallRequired
-import csense.kotlin.annotations.sideEffect.NoEscape
-import csense.kotlin.annotations.threading.InAny
-import csense.kotlin.annotations.threading.InBackground
-import csense.kotlin.annotations.threading.InUi
+import csense.javafx.observable.*
+import csense.javafx.tracking.*
+import csense.javafx.views.*
+import csense.kotlin.*
+import csense.kotlin.annotations.inheritance.*
+import csense.kotlin.annotations.sideEffect.*
+import csense.kotlin.annotations.threading.*
+import csense.kotlin.extensions.*
 import csense.kotlin.extensions.coroutines.*
-import csense.kotlin.extensions.tryAndLog
-import csense.kotlin.logger.L
-import csense.kotlin.logger.debug
-import csense.kotlin.logger.debugLazy
-import csense.kotlin.logger.logClassDebug
-import javafx.scene.Node
-import javafx.scene.Parent
-import javafx.scene.Scene
-import javafx.scene.layout.Pane
-import javafx.stage.Stage
-import javafx.stage.Window
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Job
+import csense.kotlin.logger.*
+import javafx.scene.*
+import javafx.scene.layout.*
+import javafx.stage.*
+import kotlinx.coroutines.*
 
 
 /**
@@ -217,13 +201,15 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
     
     internal fun createInternalNewWindow(
             window: Window? = null,
-            @InUi configureStage: FunctionUnit<Stage>? = null
+            @InUi configureStage: FunctionUnit<Stage>? = null,
+            modal: Modality? = null,
+            stageStyle: StageStyle? = null
     ): Job {
         return inUi(window) {
             val bindingRoot = binding.root
             isInline = false
-            //TODO preload here ?.. hmm..
-            val newStage = stageWith(bindingRoot) {
+            //TODO preload what ? a cache ?
+            val newStage = stageWith(bindingRoot, window, modal, stageStyle) {
                 //continue the same place as we left off.
                 input?.let(it::updateXYFrom)
                 configureStage?.invoke(it)

@@ -1,4 +1,10 @@
 <root>
+    <item name='javafx.animation.Animation javafx.beans.property.ReadOnlyObjectProperty&lt;javafx.util.Duration&gt; currentTimeProperty()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.animation.Animation javafx.util.Duration getCurrentTime()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
     <item name='javafx.animation.Interpolator double curve(double) 0'>
         <annotation name='csense.kotlin.annotations.numbers.DoubleLimit'>
             <val name="from" val="0.0"/>

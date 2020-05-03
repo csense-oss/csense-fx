@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.javafx.animation.TickCalculation javafx.util.Duration toDuration(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

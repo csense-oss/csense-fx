@@ -3,25 +3,18 @@
 
 package csense.javafx.viewdsl
 
-import csense.kotlin.annotations.threading.InUi
-import csense.javafx.extensions.parent.addToFront
-import csense.javafx.extensions.parent.addToFrontF
-import csense.javafx.widgets.SpaceView
-import csense.kotlin.EmptyFunctionResult
-import csense.kotlin.annotations.threading.InUiContext
-import javafx.scene.Group
-import javafx.scene.Node
+import csense.javafx.extensions.parent.*
+import csense.javafx.widgets.*
+import csense.kotlin.annotations.threading.*
+import javafx.scene.*
 import javafx.scene.control.*
-import javafx.scene.image.ImageView
+import javafx.scene.image.*
 import javafx.scene.layout.*
-import javafx.scene.media.MediaView
-import javafx.scene.shape.MeshView
-import javafx.scene.text.Text
-import javafx.scene.text.TextFlow
-import javafx.scene.web.HTMLEditor
-import javafx.scene.web.WebView
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+import javafx.scene.media.*
+import javafx.scene.shape.*
+import javafx.scene.text.*
+import javafx.scene.web.*
+import kotlin.contracts.*
 
 @InUi
 inline fun Pane.accordion(

@@ -2,7 +2,6 @@
 
 package csense.javafx.styling
 
-import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 
 

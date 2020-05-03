@@ -5,6 +5,9 @@
     <item name='javafx.stage.Stage javafx.stage.Window getOwner()'>
         <annotation name='org.jetbrains.annotations.Nullable'/>
     </item>
+    <item name='javafx.stage.Stage void initOwner(javafx.stage.Window) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
     <item name='javafx.stage.Stage void showAndWait()'>
         <annotation name='csense.javafx.annotations.InUI'/>
     </item>

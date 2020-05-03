@@ -1,28 +1,22 @@
 package csense.javafx.widgets.tabs
 
-import csense.javafx.*
 import csense.javafx.css.*
 import csense.javafx.extensions.listener.*
-import csense.javafx.extensions.parent.addToFrontF
+import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.scene.*
-import csense.javafx.viewdsl.hBox
-import csense.javafx.viewdsl.vBox
-import csense.javafx.views.base.BaseView
+import csense.javafx.viewdsl.*
+import csense.javafx.views.base.*
 import csense.javafx.widgets.list.*
 import csense.kotlin.*
-import csense.kotlin.annotations.numbers.IntLimit
+import csense.kotlin.annotations.numbers.*
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.collections.*
-import javafx.application.*
-import javafx.geometry.Orientation
-import javafx.scene.Node
-import javafx.scene.Parent
-import javafx.scene.control.Cell
-import javafx.scene.control.ScrollPane
+import javafx.geometry.*
+import javafx.scene.*
+import javafx.scene.control.*
 import javafx.scene.layout.*
 import javafx.scene.paint.*
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+import kotlin.contracts.*
 
 class TabListPane(orientation: Orientation) : StackPane() {
     

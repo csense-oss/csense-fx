@@ -2,13 +2,12 @@
 
 package csense.javafx.controller
 
-import csense.kotlin.annotations.threading.*
 import csense.javafx.viewdsl.*
 import csense.javafx.views.base.*
 import csense.kotlin.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.*
 import javafx.scene.layout.*
-import kotlin.contracts.*
 
 /**
  *

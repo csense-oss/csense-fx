@@ -6,8 +6,11 @@ import csense.javafx.tracking.*
 import csense.javafx.views.base.BaseViewController
 import csense.javafx.views.base.InUiUpdateEmpty
 import csense.javafx.views.base.BaseView
-import csense.kotlin.annotations.threading.InUi
+import csense.kotlin.*
+import csense.kotlin.annotations.threading.*
 import javafx.scene.Parent
+import javafx.stage.*
+import kotlinx.coroutines.*
 
 
 /**
@@ -23,9 +26,18 @@ abstract class BaseEmptyViewController<ViewBinding : BaseView<Parent>>
             tracker.logEvent(BaseViewTrackingEvents.Ready)
         }
     }
-
+    
     @InUi
     abstract fun InUiUpdateEmpty<ViewBinding>.onReady()
-
+    
+    @InAny
+    fun presentThisAsModal(
+            window: Window? = null,
+            @InUi configureStage: FunctionUnit<Stage>? = null
+    ): Job = uiToBackgroundAsync(uiAction = {
+        createInternalNewWindow(window, configureStage, Modality.WINDOW_MODAL)
+    }, computeAction = {
+        input.join()
+    })
 }
 
