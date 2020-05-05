@@ -9,8 +9,7 @@ import csense.kotlin.FunctionUnit
 import csense.kotlin.annotations.threading.InAny
 import csense.kotlin.annotations.threading.InUi
 import javafx.scene.Parent
-import javafx.stage.Stage
-import javafx.stage.Window
+import javafx.stage.*
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
@@ -26,11 +25,11 @@ abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, D
         OutputViewAble<Dout>,
         InputViewAble<Din, DinTransformed>,
         OnViewBindingRenderType<ViewBinding> {
-
-
+    
+    
     val inputDataLoader: Deferred<DinTransformed>
         get() = startDataFlowLoader.startDataFlow.result
-
+    
     private val startDataFlowLoader by lazy {
         InputDataLoader(this,
                 ::viewLoader,
@@ -38,7 +37,7 @@ abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, D
                 coroutineScope,
                 ::transformInput)
     }
-
+    
     @InUi
     override fun start() {
         super.start()
@@ -49,31 +48,31 @@ abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, D
             tracker.logEvent(BaseViewTrackingEvents.Ready)
         })
     }
-
-
+    
+    
     @InAny
     fun closeWithResult(): Job = inBackground {
         result.complete(createResultAsync().await())
         closeView().join()
     }
-
+    
     @InAny
     fun presentThisAsModal(
             window: Window? = null,
             @InUi configureStage: FunctionUnit<Stage>? = null
     ): Deferred<Dout> = uiToBackgroundAsync(uiAction = {
-        createInternalNewWindow(window, configureStage)
+        createInternalNewWindow(window, configureStage, Modality.WINDOW_MODAL)
     }, computeAction = {
         input.join()
         waitForResultAsync()
     })
-
+    
     private suspend fun waitForResultAsync(): Dout {
         return result.await()
     }
-
+    
     private val result: CompletableDeferred<Dout> = CompletableDeferred()
-
+    
     @InUi
     protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
 }

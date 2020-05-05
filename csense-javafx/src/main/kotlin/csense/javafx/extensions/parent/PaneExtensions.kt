@@ -24,6 +24,14 @@ inline fun Pane.addToBack(node: Node): Unit = children.add(0, node).toUnit()
 @InUi
 inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
 
+/**
+ * replaces all the children with the given nodes
+ * @receiver Pane
+ * @param nodes Collection<Node>
+ * @return Unit
+ */
+@InUi
+inline fun Pane.setChildren(nodes: Collection<Node>): Unit = children.setAll(nodes).toUnit()
 @InUi
 inline fun Pane.addAllToFront(nodes: Iterable<Node>) = children.addAll(nodes).toUnit()
 

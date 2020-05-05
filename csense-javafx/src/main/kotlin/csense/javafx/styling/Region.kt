@@ -1,5 +1,7 @@
 package csense.javafx.styling
 
+import csense.javafx.viewdsl.*
+import csense.kotlin.*
 import csense.kotlin.annotations.threading.*
 import javafx.geometry.*
 import javafx.scene.layout.*
@@ -62,5 +64,21 @@ fun Region.setPaddingBottom(value: Number) {
     this.padding = this.padding.withBottom(value)
 }
 
+data class RegionPadding(
+        var left: Number = 0,
+        var top: Number = 0,
+        var right: Number = 0,
+        var bottom: Number = 0
+)
 
+inline fun RegionPadding.toInsets(): Insets = Insets(
+        top.toDouble(),
+        right.toDouble(),
+        bottom.toDouble(),
+        left.toDouble()
+)
 
+@InUi
+inline fun Region.padding(configure: @InViewDsl ReceiverFunctionUnit<RegionPadding>) {
+    padding = RegionPadding().apply(configure).toInsets()
+}
