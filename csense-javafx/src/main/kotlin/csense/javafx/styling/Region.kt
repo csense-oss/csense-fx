@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package csense.javafx.styling
 
 import csense.javafx.viewdsl.*
@@ -71,6 +73,46 @@ data class RegionPadding(
         var bottom: Number = 0
 )
 
+/**
+ * Sets all sides with the given number
+ */
+inline var RegionPadding.all: Number
+    @Deprecated("Should never use this", level = DeprecationLevel.HIDDEN)
+    get() = left
+    set(newValue) {
+        left = newValue
+        right = newValue
+        top = newValue
+        bottom = newValue
+    }
+
+/**
+ * Sets left and right to the given number
+ */
+inline var RegionPadding.leftRight: Number
+    @Deprecated("Should never use this", level = DeprecationLevel.HIDDEN)
+    get() = left
+    set(newValue) {
+        left = newValue
+        right = newValue
+    }
+
+/**
+ * Sets top and bottom to the given number
+ */
+inline var RegionPadding.topBottom: Number
+    @Deprecated("Should never use this", level = DeprecationLevel.HIDDEN)
+    get() = left
+    set(newValue) {
+        top = newValue
+        bottom = newValue
+    }
+
+/**
+ * Converts this padding to an insets
+ * @receiver RegionPadding
+ * @return Insets
+ */
 inline fun RegionPadding.toInsets(): Insets = Insets(
         top.toDouble(),
         right.toDouble(),

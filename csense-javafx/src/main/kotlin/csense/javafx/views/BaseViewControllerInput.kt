@@ -18,51 +18,24 @@ import kotlinx.coroutines.Job
  * Conceptualize a view with only input, no output
  * typical a view  / readonly view
  */
-abstract class BaseViewControllerInput<ViewBinding : BaseView<Parent>, Din, DinTransformed>(
+abstract class BaseViewControllerInput<ViewBinding : BaseView<Parent>, Din>(
         private val input: Din
-) : BaseViewController<ViewBinding>(), InputViewAble<Din, DinTransformed> {
-
-    val inputDataLoader: Deferred<DinTransformed>
-        get() = startDataFlowLoader.startDataFlow.result
-
-    private val startDataFlowLoader by lazy {
-        InputDataLoader(this,
-                ::viewLoader,
-                input,
-                coroutineScope,
-                ::transformInput)
-    }
-
+) : BaseViewControllerInputNoStart<ViewBinding, Din>() {
+    
     @InUi
     override fun start() {
         super.start()
-        startDataFlowLoader.start(onUILoaded = {
-            it.onUiReady()
-        }, callback = {
+        inUi(input) {
+            setupOnRender(isInline, binding)
             onStartData()
             tracker.logEvent(BaseViewTrackingEvents.Ready)
-        })
+        }
     }
-
+    
     @InUi
-    internal open fun ViewBinding.onUiReady() {
-
-    }
-
-    @InUi
-    protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
-
-    @InAny
-    fun presentThisAsModal(
-            window: Window? = null,
-            @InUi configureStage: FunctionUnit<Stage>? = null
-    ): Job = uiToBackgroundAsync(uiAction = {
-        createInternalNewWindow(window, configureStage)
-    }, computeAction = {
-        input.join()
-    })
-
-
+    protected abstract fun InUiUpdateInput<ViewBinding, Din>.onStartData()
+    
+    
 }
 
 class InputDataLoader<Din, DinTransformed, ViewBinding : BaseView<Parent>>(
@@ -72,10 +45,10 @@ class InputDataLoader<Din, DinTransformed, ViewBinding : BaseView<Parent>>(
         coroutineScope: CoroutineScope,
         @InBackground transformInput: AsyncFunction1<Din, DinTransformed>
 ) {
-
+    
     val startDataFlow: InputDataFlow<Din, DinTransformed> =
             InputDataFlow(coroutineScope, input, transformInput)
-
+    
     @InUi
     fun start(
             @InUi onUILoaded: Function1<ViewBinding, Unit>,
@@ -101,4 +74,51 @@ class InputDataLoader<Din, DinTransformed, ViewBinding : BaseView<Parent>>(
 interface InputViewAble<Din, DinTransformed> {
     @InBackground
     suspend fun transformInput(input: Din): DinTransformed
+}
+
+
+abstract class BaseViewControllerInputNoStart<ViewBinding : BaseView<Parent>, Din>(
+
+) : BaseViewController<ViewBinding>(
+
+),OnViewBindingRenderType<ViewBinding> {
+    
+    @InAny
+    fun presentThisAsModal(
+            window: Window? = null,
+            @InUi configureStage: FunctionUnit<Stage>? = null
+    ): Job = uiToBackgroundAsync(uiAction = {
+        createInternalNewWindow(window, configureStage)
+    }, computeAction = {
+        input.join()
+    })
+}
+
+abstract class BaseViewControllerInputTransformed<ViewBinding : BaseView<Parent>, Din, DinTransformed>(
+        input: Din
+) : BaseViewControllerInputNoStart<ViewBinding, Din>(), InputViewAble<Din, DinTransformed> {
+    val inputDataLoader: Deferred<DinTransformed>
+        get() = startDataFlowLoader.startDataFlow.result
+    
+    private val startDataFlowLoader by lazy {
+        InputDataLoader(this,
+                ::viewLoader,
+                input,
+                coroutineScope,
+                ::transformInput)
+    }
+    
+    @InUi
+    override fun start() {
+        super.start()
+        startDataFlowLoader.start(onUILoaded = {
+            setupOnRender(isInline, it)
+        }, callback = {
+            onStartDataTransformed()
+            tracker.logEvent(BaseViewTrackingEvents.Ready)
+        })
+    }
+    
+    @InUi
+    protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartDataTransformed()
 }

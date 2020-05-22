@@ -1,0 +1,20 @@
+<root>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(java.lang.String, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(java.lang.String, javafx.scene.text.FontPosture, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(java.lang.String, javafx.scene.text.FontWeight, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javafx.scene.text.Font javafx.scene.text.Font font(java.lang.String, javafx.scene.text.FontWeight, javafx.scene.text.FontPosture, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

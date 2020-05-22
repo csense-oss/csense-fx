@@ -32,6 +32,10 @@ inline fun Pane.addToFront(node: Node): Unit = children.add(node).toUnit()
  */
 @InUi
 inline fun Pane.setChildren(nodes: Collection<Node>): Unit = children.setAll(nodes).toUnit()
+
+@InUi
+inline fun Pane.setChildren(node: Node): Unit = children.setAll(node).toUnit()
+
 @InUi
 inline fun Pane.addAllToFront(nodes: Iterable<Node>) = children.addAll(nodes).toUnit()
 

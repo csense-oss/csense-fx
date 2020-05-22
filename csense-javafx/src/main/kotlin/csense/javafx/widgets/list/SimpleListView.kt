@@ -77,6 +77,13 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
     }
 }
 
+inline fun simpleListView(configure: @InScope ReceiverFunctionUnit<SimpleListView> = {}): SimpleListView {
+    contract {
+        callsInPlace(configure, InvocationKind.EXACTLY_ONCE)
+    }
+    return SimpleListView().apply(configure)
+}
+
 inline fun Pane.simpleListView(configure: @InScope ReceiverFunctionUnit<SimpleListView> = {}): SimpleListView {
     contract {
         callsInPlace(configure, InvocationKind.EXACTLY_ONCE)

@@ -6,8 +6,7 @@ import csense.javafx.views.base.InUiUpdateInput
 import csense.javafx.views.base.BaseView
 //
 import csense.kotlin.FunctionUnit
-import csense.kotlin.annotations.threading.InAny
-import csense.kotlin.annotations.threading.InUi
+import csense.kotlin.annotations.threading.*
 import javafx.scene.Parent
 import javafx.stage.*
 import kotlinx.coroutines.CompletableDeferred
@@ -19,12 +18,36 @@ import kotlinx.coroutines.Job
  * typical either a view computing a result, resolving a result, from a given input.
  * like looking into a database (with an input of what name for example)
  */
-abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, DinTransformed, Dout>(
+abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, Dout>(
+        private val input: Din
+) : BaseViewControllerInOutputNoStart<ViewBinding, Din, Dout>(input) {
+    
+    @InUi
+    override fun start() {
+        super.start()
+        inUi(input) {
+            setupOnRender(isInline, binding)
+            onStartData()
+            tracker.logEvent(BaseViewTrackingEvents.Ready)
+        }
+    }
+    
+    @InUi
+    protected abstract fun InUiUpdateInput<ViewBinding, Din>.onStartData()
+}
+
+/**
+ *
+ * @param ViewBinding : BaseView<Parent>
+ * @param Din
+ * @param DinTransformed
+ * @param Dout
+ * @constructor
+ */
+abstract class BaseViewControllerInOutputTransformed<ViewBinding : BaseView<Parent>, Din, DinTransformed, Dout>(
         input: Din
-) : BaseViewController<ViewBinding>(),
-        OutputViewAble<Dout>,
-        InputViewAble<Din, DinTransformed>,
-        OnViewBindingRenderType<ViewBinding> {
+) : BaseViewControllerInOutputNoStart<ViewBinding, Din, Dout>(input),
+        InputViewAble<Din, DinTransformed> {
     
     
     val inputDataLoader: Deferred<DinTransformed>
@@ -38,17 +61,25 @@ abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, D
                 ::transformInput)
     }
     
-    @InUi
     override fun start() {
         super.start()
         startDataFlowLoader.start(onUILoaded = {
             setupOnRender(isInline, it)
         }, callback = {
-            onStartData()
+            onStartDataTransformed()
             tracker.logEvent(BaseViewTrackingEvents.Ready)
         })
     }
     
+    abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartDataTransformed()
+}
+
+
+abstract class BaseViewControllerInOutputNoStart<ViewBinding : BaseView<Parent>, Din, Dout>(
+        private val input: Din
+) : BaseViewController<ViewBinding>(),
+        OutputViewAble<Dout>,
+        OnViewBindingRenderType<ViewBinding> {
     
     @InAny
     fun closeWithResult(): Job = inBackground {
@@ -72,7 +103,4 @@ abstract class BaseViewControllerInOutput<ViewBinding : BaseView<Parent>, Din, D
     }
     
     private val result: CompletableDeferred<Dout> = CompletableDeferred()
-    
-    @InUi
-    protected abstract fun InUiUpdateInput<ViewBinding, DinTransformed>.onStartData()
 }

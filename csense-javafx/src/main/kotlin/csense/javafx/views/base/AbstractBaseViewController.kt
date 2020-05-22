@@ -261,7 +261,7 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
      * If we are a window / owning the context, we can close the "stage".
      */
     @InAny
-    fun closeView() = inUi {
+    fun closeView(): Job = inUi {
         if (mayClose) {
             onClosing()
             currentStage?.close()
