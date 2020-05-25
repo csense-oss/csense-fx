@@ -1,6 +1,5 @@
 package csense.javafx.widgets.tabs
 
-import csense.javafx.css.*
 import csense.javafx.extensions.listener.*
 import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.scene.*
@@ -15,7 +14,6 @@ import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.control.*
 import javafx.scene.layout.*
-import javafx.scene.paint.*
 import kotlin.contracts.*
 
 class TabListPane(orientation: Orientation) : StackPane() {
@@ -32,7 +30,19 @@ class TabListPane(orientation: Orientation) : StackPane() {
     private val rootPane: Pane = orientation.toBox()
     private val contentPane: Pane = StackPane()
     
+    var onSetSelection: ((currentCell: Cell<*>) -> Unit)? = null
+    var onRemoveSelection: ((currentCell: Cell<*>) -> Unit)? = null
+    
     init {
+        border = null
+        background = null
+        tabsList.border = null
+        tabsList.style = ".list-view:focused {\n" +
+                "-fx-faint-focus-color: transparent; \n" +
+                "-fx-focus-color: transparent; \n" +
+                "-fx-background-insets: 0, 0, 0, 0;" +
+                "}"
+        
         rootPane.children.setAll(tabsList, contentPane)
         contentPane.fillParent()
         tabsList.orientation = orientation
@@ -140,7 +150,8 @@ inline fun <HeaderUi : BaseView<*>> TabListPaneTab(
 
 inline fun <HeaderUi : BaseView<*>> TabListPaneTabScrollableVbox(
         header: SimpleListViewRender<HeaderUi>,
-        crossinline configureNode: ReceiverFunctionUnit<VBox>): TabListPaneTab<HeaderUi> {
+        crossinline configureNode: ReceiverFunctionUnit<VBox>,
+): TabListPaneTab<HeaderUi> {
     contract {
         callsInPlace(configureNode, InvocationKind.EXACTLY_ONCE)
     }
@@ -193,9 +204,11 @@ class InnerTabListRender<HeaderUi : BaseView<Parent>>(
         }
         toDelegateTo.header.onRender(renderTo, cell)
         if (tabListPane.selectedTab?.header == toDelegateTo.header) {
-            cell.background = SingleBackgroundColor(Color.RED)
+            tabListPane.onSetSelection?.invoke(cell)
+//            cell.background = SingleBackgroundColor(Color.RED)
         } else {
-            cell.background = null
+            tabListPane.onRemoveSelection?.invoke(cell)
+//            cell.background = null
         }
     }
     

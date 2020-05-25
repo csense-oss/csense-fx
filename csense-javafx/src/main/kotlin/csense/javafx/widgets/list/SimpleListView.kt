@@ -2,8 +2,8 @@ package csense.javafx.widgets.list
 
 import csense.javafx.extensions.parent.addToBack
 import csense.javafx.extensions.parent.addToFrontF
-import csense.javafx.extensions.scene.layout.prefHeightProperty
-import csense.javafx.extensions.scene.layout.prefWidthProperty
+import csense.javafx.extensions.scene.layout.*
+import csense.javafx.styling.*
 import csense.javafx.views.base.BaseView
 import csense.javafx.views.base.InScope
 import csense.kotlin.Function0
@@ -22,7 +22,7 @@ import javafx.scene.Parent
 import javafx.scene.control.*
 import javafx.scene.control.skin.ListViewSkin
 import javafx.scene.control.skin.VirtualFlow
-import javafx.scene.layout.Pane
+import javafx.scene.layout.*
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
@@ -31,7 +31,7 @@ abstract class BaseSimpleListView<RenderType : SimpleListViewRender<*>>(adapter:
 
 }
 
-open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<InternalCellSimpleListViewRender<Parent>>() {
+open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<InternalCellSimpleListViewRender<Pane>>() {
     val adapterProperty = SimpleObjectProperty<SimpleListViewAdapter>()
     
     var adapter: SimpleListViewAdapter?
@@ -68,7 +68,7 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
      * Linear index
      * @param index Int
      */
-    fun getCell(index: Int): Cell<InternalCellSimpleListViewRender<Parent>> {
+    fun getCell(index: Int): Cell<InternalCellSimpleListViewRender<Pane>> {
         return mySkin.myVirtualFlow.getCell(index)
     }
     
@@ -112,7 +112,7 @@ class SimpleListViewBindingCache(val maxElementsCached: Int = 200) {
 //    private class CachedNodes(val lastTakenFrom: Int, )
 }
 
-class SimpleListViewSkin(control: SimpleListView) : ListViewSkin<InternalCellSimpleListViewRender<Parent>>(control) {
+class SimpleListViewSkin(control: SimpleListView) : ListViewSkin<InternalCellSimpleListViewRender<Pane>>(control) {
     
     val myVirtualFlow: SimpleListViewVirtualFlow
         get() = virtualFlow as SimpleListViewVirtualFlow
@@ -120,7 +120,7 @@ class SimpleListViewSkin(control: SimpleListView) : ListViewSkin<InternalCellSim
     
     //TODO external "called from constructor", so we can find the "dreaded" null /bad initialization problems.
     @CalledFromConstructor
-    override fun createVirtualFlow(): VirtualFlow<ListCell<InternalCellSimpleListViewRender<Parent>>> {
+    override fun createVirtualFlow(): VirtualFlow<ListCell<InternalCellSimpleListViewRender<Pane>>> {
         
         return SimpleListViewVirtualFlow()
     }
@@ -128,12 +128,12 @@ class SimpleListViewSkin(control: SimpleListView) : ListViewSkin<InternalCellSim
 }
 
 
-class SimpleListViewVirtualFlow : VirtualFlow<ListCell<InternalCellSimpleListViewRender<Parent>>>() {
+class SimpleListViewVirtualFlow : VirtualFlow<ListCell<InternalCellSimpleListViewRender<Pane>>>() {
     val myVbar: ScrollBar
         get() = vbar
 }
 
-class InternalCellSimpleListViewRender<T : Parent>(
+class InternalCellSimpleListViewRender<T : Pane>(
         val render: SimpleListViewRender<BaseView<T>>
 ) {
     var lastRenderedTo: BaseView<T>? = null
@@ -182,36 +182,47 @@ class InternalCellSimpleListViewRender<T : Parent>(
     
 }
 
-class MyGroupNode(val bindingClassTypeHashCode: Int, val binding: BaseView<*>) : Group() {
+class MyGroupNode(val bindingClassTypeHashCode: Int, val binding: BaseView<out Pane>) : Group() {
     init {
         addToBack(binding.root)
     }
 }
 
-open class RenderListCell<T : Parent>(val bindingCache: SimpleListViewBindingCache, listView: SimpleListView) : ListCell<InternalCellSimpleListViewRender<T>>() {
+open class RenderListCell<T : Pane>(val bindingCache: SimpleListViewBindingCache, listView: SimpleListView) : ListCell<InternalCellSimpleListViewRender<T>>() {
+    //TODO where the hell is this even coming from ?
+    private val innerPadding = 2
     init {
         contentDisplay = ContentDisplay.GRAPHIC_ONLY
         background = null
+        border = null
+        opaqueInsets = null
+        setPadding(0)
         //make the cells fill the width of the listview.
         if (listView.orientation == Orientation.HORIZONTAL) {
-            prefHeightProperty.bind(listView.heightProperty())
+            prefHeightProperty.bind(listView.heightProperty.subtract(innerPadding))
         } else {
-            prefWidthProperty.bind(listView.widthProperty())
+            prefWidthProperty.bind(listView.widthProperty.subtract(innerPadding))
         }
-        maxWidth = Control.USE_PREF_SIZE
-        maxHeight = Control.USE_PREF_SIZE
+//        maxWidth = Control.USE_PREF_SIZE
+//        maxHeight = Control.USE_PREF_SIZE
     }
     
     override fun updateItem(newRender: InternalCellSimpleListViewRender<T>?, empty: Boolean) {
+        text = null
         if (newRender == null || empty) {
             graphic = null
             return
         }
-        graphic = newRender.tryRenderTo(graphic, bindingCache, this).apply {
-//            prefWidthProperty().bind(listView.widthProperty())
-//            maxWidth = Control.USE_COMPUTED_SIZE
+        val myG = newRender.tryRenderTo(graphic, bindingCache, this)
+        graphic = myG
+        
+        if (listView.orientation == Orientation.HORIZONTAL) {
+            myG.binding.root.prefWidthProperty.bind(prefWidthProperty.subtract(innerPadding))
+            myG.binding.root.prefHeightProperty.bind(listView.heightProperty.subtract(innerPadding))
+        } else {
+            myG.binding.root.prefHeightProperty.bind(prefHeightProperty.subtract(innerPadding))
+            myG.binding.root.prefWidthProperty.bind(listView.widthProperty.subtract(innerPadding))
         }
-//        prefWidth = 0.0
     }
     
 }
@@ -310,11 +321,11 @@ class SimpleListViewAdapter {
     
     private fun updateListViewItems() = listview?.let {
         val keys = data.keys
-        val result = mutableListOf<InternalCellSimpleListViewRender<Parent>>()
+        val result = mutableListOf<InternalCellSimpleListViewRender<Pane>>()
         keys.forEach {
             data[it]?.let { list ->
                 result += list.map {
-                    InternalCellSimpleListViewRender(it as SimpleListViewRender<BaseView<Parent>>)
+                    InternalCellSimpleListViewRender(it as SimpleListViewRender<BaseView<Pane>>)
                 }
             }
         }
@@ -322,7 +333,7 @@ class SimpleListViewAdapter {
     }.toUnit()
     
     operator fun get(section: Int, index: Int): SimpleListViewAdapterItem? {
-        return data[section]?.getSafe(index)
+        return data[section]?.getOrNull(index)
     }
     
     fun addItem(section: Int, listOf: SimpleListViewAdapterItem) {
