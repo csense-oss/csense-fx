@@ -1,5 +1,6 @@
 package csense.javafx.widgets.list
 
+import csense.javafx.css.*
 import csense.javafx.extensions.parent.addToBack
 import csense.javafx.extensions.parent.addToFrontF
 import csense.javafx.extensions.scene.layout.*
@@ -23,6 +24,7 @@ import javafx.scene.control.*
 import javafx.scene.control.skin.ListViewSkin
 import javafx.scene.control.skin.VirtualFlow
 import javafx.scene.layout.*
+import javafx.scene.paint.*
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
@@ -53,6 +55,7 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
 //                println("is at last?: $isAtLast " + "position is at = ${flow.position}")
 //            }
 //        }
+        styleClass.clear()
         this.adapter = adapter
     }
     

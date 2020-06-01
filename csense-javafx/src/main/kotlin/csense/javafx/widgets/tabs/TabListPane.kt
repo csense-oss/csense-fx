@@ -5,11 +5,13 @@ import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.scene.*
 import csense.javafx.viewdsl.*
 import csense.javafx.views.base.*
+import csense.javafx.widgets.*
 import csense.javafx.widgets.list.*
 import csense.kotlin.*
 import csense.kotlin.annotations.numbers.*
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.collections.*
+import javafx.beans.InvalidationListener
 import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.control.*
@@ -54,6 +56,7 @@ class TabListPane(orientation: Orientation) : StackPane() {
         })
         children.setAll(rootPane)
     }
+    
     
     fun addTab(tab: TabListPaneTab<*>) {
         tabs += tab
@@ -131,6 +134,8 @@ class TabListPane(orientation: Orientation) : StackPane() {
     private inline fun findCellFromRenderRoot(root: Node?, crossinline changeAction: FunctionUnit<Cell<*>>) {
         (root?.parent?.parent as? Cell<*>)?.let(changeAction)
     }
+    
+    
 }
 
 class TabListPaneTab<HeaderUi : BaseView<*>>(
@@ -156,7 +161,7 @@ inline fun <HeaderUi : BaseView<*>> TabListPaneTabScrollableVbox(
         callsInPlace(configureNode, InvocationKind.EXACTLY_ONCE)
     }
     val box = VBox()
-    val scrollContent = ScrollPane(box).apply {
+    val scrollContent = ScrollPaneEmpty(box).apply {
         isFitToHeight = true
         isFitToWidth = true
     }
