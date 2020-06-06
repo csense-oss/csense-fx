@@ -42,6 +42,14 @@ abstract class BaseViewController<ViewBinding : BaseView<Parent>>
         val backgroundData = computeAction(this)
         inUiAsync(backgroundData, uiAction).await()
     }
+    
+    fun <DataType, DeferredData:Deferred<DataType>, OutputType> backgroundDeferredToUiAsync(
+            @InBackground computeAction: InBackgroundOutputScope<ViewBinding, DeferredData>,
+            @InUi uiAction: InUiUpdateInputOutputScope<ViewBinding, DataType, OutputType>
+    ): Deferred<OutputType> = inBackgroundAsync {
+        val backgroundData = computeAction(this).await()
+        inUiAsync(backgroundData, uiAction).await()
+    }
 
 
     fun <DataType> uiToBackground(

@@ -44,8 +44,8 @@ open class InUiUpdateEmpty<ViewBinding : BaseView<Parent>>(
 open class InUiUpdateInput<ViewBinding : BaseView<Parent>, Input>(
         currentWindow: Window?,
         currentStage: Stage?,
-        val input: Input,
         binding: ViewBinding,
+        val input: Input,
         toBackground: ToBackground<ViewBinding>
 ) : InUiUpdateEmpty<ViewBinding>(currentWindow, currentStage, binding, toBackground)
 
@@ -98,7 +98,7 @@ interface ToUi<ViewBinding : BaseView<Parent>> {
      * @return Job
      */
     fun inUi(@InUi action: InUiUpdateEmptyScope<ViewBinding>): Job
-
+    
     /**
      * When you want to do something with the ui with with input (display something)
      * @param input T
@@ -109,7 +109,7 @@ interface ToUi<ViewBinding : BaseView<Parent>> {
             input: Input,
             @InUi action: InUiUpdateInputScope<ViewBinding, Input>
     ): Job
-
+    
     /**
      * When you want to do something with the ui with with input (display something)
      * and return a result (like the text from a field or alike)
@@ -121,11 +121,12 @@ interface ToUi<ViewBinding : BaseView<Parent>> {
             input: Input,
             @InUi action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output>
-
+    
     fun <Output> inUiAsync(
             @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<Output>
-
+    
+    
     /**
      * Unlike the closely related functions this unpacks the "inner" await of a given deferred statement, such as the result of a BaseViewControllerOutput.createResult.
      * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.views.base.InScope] InUiUpdateEmpty<ViewBinding>, Output>
@@ -133,6 +134,17 @@ interface ToUi<ViewBinding : BaseView<Parent>> {
      */
     fun <T, Output : Deferred<T>> inUiDeferredAsync(
             @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
+    ): Deferred<T>
+    
+    /**
+     * Unlike the closely related functions this unpacks the "inner" await of a given deferred statement, such as the result of a BaseViewControllerOutput.createResult.
+     * @param input Input
+     * @param action [@kotlin.ExtensionFunctionType] Function1<[@csense.javafx.views.base.InScope] InUiUpdateInput<ViewBinding, Input>, Output>
+     * @return Deferred<T>
+     */
+    fun <Input, T, Output : Deferred<T>> inUiDeferredAsync(
+            input: Input,
+            @InUi action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<T>
 }
 
@@ -148,7 +160,7 @@ interface ToBackground<ViewBinding : BaseView<Parent>> {
      */
     fun inBackground(
             @InBackground action: InBackgroundEmptyScope<ViewBinding>): Job
-
+    
     /**
      *
      * @param action InBackgroundInput<ViewBinding, Input>
@@ -157,7 +169,7 @@ interface ToBackground<ViewBinding : BaseView<Parent>> {
     fun <Input> inBackground(
             input: Input,
             @InBackground action: InBackgroundInputScope<ViewBinding, Input>): Job
-
+    
     /**
      *
      * @param action InBackgroundOutput<ViewBinding, Output>
@@ -166,7 +178,7 @@ interface ToBackground<ViewBinding : BaseView<Parent>> {
     fun <Output> inBackgroundAsync(
             @InBackground action: InBackgroundOutputScope<ViewBinding, Output>
     ): Deferred<Output>
-
+    
     /**
      *
      * @param action InBackgroundInputOutput<ViewBinding, Input, Output>
@@ -176,5 +188,43 @@ interface ToBackground<ViewBinding : BaseView<Parent>> {
             input: Input,
             @InBackground action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output>
+    /**
+     *
+     * @param action InBackgroundOutput<ViewBinding, Output>
+     * @return Deferred<Output>
+     */
+    fun <T, Output : Deferred<T>> inBackgroundDeferredAsync(
+            @InBackground action: InBackgroundOutputScope<ViewBinding, Output>
+    ): Deferred<T>
+    
+    /**
+     *
+     * @param action InBackgroundInputOutput<ViewBinding, Input, Output>
+     * @return Job
+     */
+    fun <Input, T, Output : Deferred<T>> inBackgroundDeferredAsync(
+            input: Input,
+            @InBackground action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
+    ): Deferred<T>
 }
 //endregion
+//
+///**
+// *
+// * @receiver ToBackground<ViewBinding>
+// */
+//fun <ViewBinding : BaseView<Parent>, Output> ToBackground<ViewBinding>.inBackgroundAsync(
+//        @InBackground action: InBackgroundOutputScope<ViewBinding, Deferred<Output>>
+//): Deferred<Output> = inBackgroundAsync {
+//    action().await()
+//}
+///**
+// *
+// * @receiver ToBackground<ViewBinding>
+// */
+//fun <ViewBinding : BaseView<Parent>, Input, Output> ToBackground<ViewBinding>.inBackgroundAsync(
+//        input: Input,
+//        @InBackground action: InBackgroundInputOutputScope<ViewBinding, Input, Deferred<Output>>
+//): Deferred<Output> = inBackgroundAsync {
+//    action(InBackgroundInput(input, )).await()
+//}

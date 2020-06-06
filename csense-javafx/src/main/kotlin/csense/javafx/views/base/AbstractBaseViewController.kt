@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package csense.javafx.views.base
 
 import csense.javafx.extensions.parent.*
@@ -45,6 +47,19 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
     internal abstract val viewLoader: Deferred<ViewBinding>
     
     //region inUi state transfer
+    
+    private inline fun <Input> createInUiUpdate(view: ViewBinding, input: Input) =
+            InUiUpdateInput(
+                    currentWindow,
+                    currentStage,
+                    view,
+                    input,
+                    this
+            )
+    
+    private inline fun createInUiEmpty(view: ViewBinding) =
+            InUiUpdateEmpty(currentWindow, currentStage, view, this)
+    
     override fun inUi(@InUi action: InUiUpdateEmptyScope<ViewBinding>): Job = coroutineScope.launchMain {
         action(
                 InUiUpdateEmpty(
@@ -61,29 +76,15 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
             action: InUiUpdateInputScope<ViewBinding, T>
     ): Job = coroutineScope.launchMain {
         val view = viewLoader.await()
-        action(
-                InUiUpdateInput(
-                        currentWindow,
-                        currentStage,
-                        input,
-                        view,
-                        this@AbstractBaseViewController
-                )
-        )
+        action(createInUiUpdate(view, input))
     }
     
-    final override fun <T, Output : Deferred<T>> inUiDeferredAsync(
-            @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
-    ): Deferred<T> = coroutineScope.asyncMain {
-        val view = viewLoader.await()
-        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseViewController)).await()
-    }
     
     final override fun <Output> inUiAsync(
             @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
     ): Deferred<Output> = coroutineScope.asyncMain {
         val view = viewLoader.await()
-        action(InUiUpdateEmpty(currentWindow, currentStage, view, this@AbstractBaseViewController))
+        action(createInUiEmpty(view))
     }
     
     final override fun <Input, Output> inUiAsync(
@@ -91,32 +92,25 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
             @InUi action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
     ): Deferred<Output> = coroutineScope.asyncMain {
         val view = viewLoader.await()
-        action(
-                InUiUpdateInput(
-                        currentWindow,
-                        currentStage,
-                        input,
-                        view,
-                        this@AbstractBaseViewController
-                )
-        )
+        action(createInUiUpdate(view, input))
     }
     
-    fun <T> getAllFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, List<T>>): Deferred<List<T>> = inUiAsync {
-        getter(binding)
+    final override fun <T, Output : Deferred<T>> inUiDeferredAsync(
+            @InUi action: InUiUpdateOutputScope<ViewBinding, Output>
+    ): Deferred<T> = coroutineScope.asyncMain {
+        val view = viewLoader.await()
+        action(createInUiEmpty(view)).await()
     }
     
-    fun <T> getSingleFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, T>): Deferred<T> = inUiAsync {
-        getter(binding)
+    override fun <Input, T, Output : Deferred<T>> inUiDeferredAsync(
+            input: Input,
+            action: InUiUpdateInputOutputScope<ViewBinding, Input, Output>
+    ): Deferred<T> = coroutineScope.asyncMain {
+        val view = viewLoader.await()
+        action(createInUiUpdate(view, input)).await()
     }
-    
-    
-    fun <Dout, T : OutputViewAble<out Dout>> getResultFromControllerAsync(
-            @InUi getter: ReceiverFunction0<ViewBinding, T>
-    ): Deferred<Dout> = inUiDeferredAsync {
-        getter(binding).createResultAsync()
-    }
-    //endregion
+
+//endregion
     
     
     //region OnBackground
@@ -148,24 +142,38 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
         action(InBackgroundInput(input, this@AbstractBaseViewController))
     }
     
-    //    //TODO this is bad. maybe ?
-//    internal fun presentThisAsModalInternal(
-//            ownerWindow: Window? = null,
-//            configureStage: FunctionUnit<Stage>? = null
-//    ): Job = inUi(ownerWindow) {
-//        isInline = false
-//        val newStage = stageWith(binding.root) {
-//            //continue the same place as we left off.
-//            ownerWindow?.let { ownerWindow ->
-//                it.x = ownerWindow.x
-//                it.y = ownerWindow.y
-//            }
-//            configureStage?.invoke(it)
-//        }.showFluent()
-//        updateWindowAndStage(newStage, newStage)
-//        start()
-//    }
-//
+    override fun <T, Output : Deferred<T>> inBackgroundDeferredAsync(
+            action: InBackgroundOutputScope<ViewBinding, Output>
+    ): Deferred<T> = coroutineScope.asyncDefault {
+        action(InBackgroundEmpty(this@AbstractBaseViewController, coroutineScope)).await()
+    }
+    
+    override fun <Input, T, Output : Deferred<T>> inBackgroundDeferredAsync(
+            input: Input,
+            action: InBackgroundInputOutputScope<ViewBinding, Input, Output>
+    ): Deferred<T> = coroutineScope.asyncDefault {
+        action(InBackgroundInput(input, this@AbstractBaseViewController)).await()
+    }
+    
+    //endregion
+    
+    //region consider moving out ? eg extensions ?
+    fun <Dout, T : OutputViewAble<out Dout>> getResultFromControllerAsync(
+            @InUi getter: ReceiverFunction0<ViewBinding, T>
+    ): Deferred<Dout> = inUiDeferredAsync {
+        getter(binding).createResultAsync()
+    }
+    
+    
+    fun <T> getAllFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, List<T>>): Deferred<List<T>> = inUiAsync {
+        getter(binding)
+    }
+    
+    fun <T> getSingleFromUiAsync(@InUi getter: ReceiverFunction0<ViewBinding, T>): Deferred<T> = inUiAsync {
+        getter(binding)
+    }
+    //endregion
+    
     
     open fun transitionTo(
             view: AbstractBaseViewController<*>,

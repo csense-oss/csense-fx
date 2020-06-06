@@ -6,6 +6,7 @@ import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.control.SplitPane
 import javafx.scene.layout.*
+import java.util.function.*
 
 @InUi
 fun Node.fillParent() {
@@ -83,3 +84,9 @@ fun Node.fillTilePane() {
 
 val Node.isNotPressed: Boolean get() = !isPressed
 
+
+var Node.isEnable: Boolean
+    get() = !isDisable
+    set(newValue) {
+        isDisable = !newValue
+    }
