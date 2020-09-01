@@ -13,19 +13,19 @@ import javafx.stage.Window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
-
+import csense.kotlin.datastructures.values.getValue
 /**
  * Conceptualize a view with only input, no output
  * typical a view  / readonly view
  */
 abstract class BaseViewControllerInput<ViewBinding : BaseView<Parent>, Din>(
-        private val input: Din
+        val controllerInput: Din
 ) : BaseViewControllerInputNoStart<ViewBinding, Din>() {
     
     @InUi
     override fun start() {
         super.start()
-        inUi(input) {
+        inUi(controllerInput) {
             setupOnRender(isInline, binding)
             onStartData()
             tracker.logEvent(BaseViewTrackingEvents.Ready)

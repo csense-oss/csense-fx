@@ -3,8 +3,8 @@ package csense.example.app
 import csense.javafx.views.BaseEmptyViewController
 import csense.javafx.views.base.BaseViewParent
 import csense.javafx.views.base.InUiUpdateEmpty
+import csense.kotlin.datastructures.values.*
 import csense.kotlin.extensions.coroutines.asyncDefault
-import csense.kotlin.stdlib.LockableValue
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
@@ -13,7 +13,7 @@ import javafx.scene.control.Label
 import javafx.scene.layout.Pane
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
+
 import java.io.InputStream
 
 abstract class BaseEmptyFxmlViewController<T : BaseFXMLViewParent> : BaseEmptyViewController<T>() {

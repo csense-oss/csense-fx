@@ -39,7 +39,7 @@ inline fun scrollPaneVBox(
 }
 
 @InUi
-inline fun Pane.ScrollPaneEmptyVBox(
+inline fun Pane.scrollPaneEmptyVBox(
         @InUi crossinline action: ScopedViewDsl<VBox>
 ): ScrollPaneEmpty {
     contract {

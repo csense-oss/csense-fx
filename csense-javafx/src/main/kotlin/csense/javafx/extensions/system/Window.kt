@@ -1,5 +1,6 @@
 package csense.javafx.extensions.system
 
+import csense.javafx.extensions.*
 import csense.javafx.extensions.listener.*
 import csense.javafx.extensions.stage.*
 import csense.kotlin.*
@@ -25,4 +26,9 @@ fun Window.onWindowUnFocused(action: EmptyFunction): ChangeListener<Boolean> {
     }.also {
         focusedProperty.addListener(it)
     }
+}
+
+fun Window.setSize(size: WidthHeight) {
+    height = size.height
+    width = size.width
 }

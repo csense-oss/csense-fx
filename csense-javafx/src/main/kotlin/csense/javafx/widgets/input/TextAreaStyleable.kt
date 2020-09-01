@@ -1,16 +1,14 @@
 package csense.javafx.widgets.input
 
-import csense.javafx.css.*
+import csense.javafx.extensions.beans.property.*
+import csense.javafx.extensions.parent.*
+import csense.javafx.viewdsl.*
+import csense.kotlin.annotations.threading.*
 import javafx.beans.property.*
 import javafx.scene.control.*
 import javafx.scene.control.skin.*
-import javafx.scene.paint.*
-import csense.javafx.extensions.beans.property.*
-import csense.javafx.extensions.parent.*
-import csense.javafx.extensions.scene.paint.*
-import csense.javafx.viewdsl.*
-import csense.kotlin.annotations.threading.*
 import javafx.scene.layout.*
+import javafx.scene.paint.*
 import kotlin.contracts.*
 
 

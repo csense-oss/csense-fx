@@ -11,7 +11,6 @@ import csense.kotlin.*
 import csense.kotlin.annotations.numbers.*
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.collections.*
-import javafx.beans.InvalidationListener
 import javafx.geometry.*
 import javafx.scene.*
 import javafx.scene.control.*

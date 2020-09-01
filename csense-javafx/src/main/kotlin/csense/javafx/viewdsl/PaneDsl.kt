@@ -18,7 +18,7 @@ import kotlin.contracts.*
 
 @InUi
 inline fun Pane.accordion(
-        @InUi crossinline action: ScopedViewDsl<Accordion>
+        @InUi action: ScopedViewDsl<Accordion>
 ): Accordion {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -30,7 +30,7 @@ inline fun Pane.accordion(
 
 @InUi
 inline fun Pane.anchorPane(
-        @InUi crossinline action: ScopedViewDsl<AnchorPane>
+        @InUi action: ScopedViewDsl<AnchorPane>
 ): AnchorPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -41,7 +41,7 @@ inline fun Pane.anchorPane(
 
 @InUi
 inline fun Pane.borderPane(
-        @InUi crossinline action: ScopedViewDsl<BorderPane>
+        @InUi action: ScopedViewDsl<BorderPane>
 ): BorderPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -63,7 +63,7 @@ inline fun Pane.button(text: String): Button = addToFrontF(Button(text))
 @InUi
 inline fun Pane.button(
         text: String,
-        @InUi crossinline action: ScopedViewDsl<Button>
+        @InUi action: ScopedViewDsl<Button>
 ): Button {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -74,7 +74,7 @@ inline fun Pane.button(
 
 @InUi
 inline fun Pane.buttonBar(
-        @InUi crossinline action: ScopedViewDsl<ButtonBar>
+        @InUi action: ScopedViewDsl<ButtonBar>
 ): ButtonBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -85,7 +85,7 @@ inline fun Pane.buttonBar(
 
 @InUi
 inline fun Pane.checkBox(
-        @InUi crossinline action: ScopedViewDsl<CheckBox>
+        @InUi action: ScopedViewDsl<CheckBox>
 ): CheckBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -96,7 +96,7 @@ inline fun Pane.checkBox(
 
 @InUi
 inline fun <T> Pane.choiceBox(
-        @InUi crossinline action: ScopedViewDsl<ChoiceBox<T>>
+        @InUi action: ScopedViewDsl<ChoiceBox<T>>
 ): ChoiceBox<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -107,7 +107,7 @@ inline fun <T> Pane.choiceBox(
 
 @InUi
 inline fun Pane.colorPicker(
-        @InUi crossinline action: ScopedViewDsl<ColorPicker>
+        @InUi action: ScopedViewDsl<ColorPicker>
 ): ColorPicker {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -118,7 +118,7 @@ inline fun Pane.colorPicker(
 
 @InUi
 inline fun <T> Pane.comboBox(
-        @InUi crossinline action: ScopedViewDsl<ComboBox<T>>
+        @InUi action: ScopedViewDsl<ComboBox<T>>
 ): ComboBox<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -129,7 +129,7 @@ inline fun <T> Pane.comboBox(
 
 @InUi
 inline fun Pane.datePicker(
-        @InUi crossinline action: ScopedViewDsl<DatePicker>
+        @InUi action: ScopedViewDsl<DatePicker>
 ): DatePicker {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -140,7 +140,7 @@ inline fun Pane.datePicker(
 
 @InUi
 inline fun Pane.flowPane(
-        @InUi crossinline action: ScopedViewDsl<FlowPane>
+        @InUi action: ScopedViewDsl<FlowPane>
 ): FlowPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -151,7 +151,7 @@ inline fun Pane.flowPane(
 
 @InUi
 inline fun Pane.gridPane(
-        @InUi crossinline action: ScopedViewDsl<GridPane>
+        @InUi action: ScopedViewDsl<GridPane>
 ): GridPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -162,7 +162,7 @@ inline fun Pane.gridPane(
 
 @InUi
 inline fun Pane.group(
-        @InUi crossinline action: ScopedViewDsl<Group>
+        @InUi action: ScopedViewDsl<Group>
 ): Group {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -173,7 +173,7 @@ inline fun Pane.group(
 
 @InUi
 inline fun Pane.hBox(
-        @InUi crossinline action: ScopedViewDsl<HBox>
+        @InUi action: ScopedViewDsl<HBox>
 ): HBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -184,7 +184,7 @@ inline fun Pane.hBox(
 
 @InUi
 inline fun Pane.htmlEditor(
-        crossinline action: ScopedViewDsl<HTMLEditor>
+        action: ScopedViewDsl<HTMLEditor>
 ): HTMLEditor {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -195,7 +195,7 @@ inline fun Pane.htmlEditor(
 
 @InUi
 inline fun Pane.hyperlink(
-        crossinline action: ScopedViewDsl<Hyperlink>
+        action: ScopedViewDsl<Hyperlink>
 ): Hyperlink {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -206,7 +206,7 @@ inline fun Pane.hyperlink(
 
 @InUi
 inline fun Pane.imageView(
-        @InUi crossinline action: ScopedViewDsl<ImageView>
+        @InUi action: ScopedViewDsl<ImageView>
 ): ImageView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -217,7 +217,7 @@ inline fun Pane.imageView(
 
 @InUi
 inline fun Pane.label(
-        @InUi crossinline action: ScopedViewDsl<Label>
+        @InUi action: ScopedViewDsl<Label>
 ): Label {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -228,7 +228,7 @@ inline fun Pane.label(
 
 @InUi
 inline fun <T> Pane.listView(
-        @InUi crossinline action: ScopedViewDsl<ListView<T>>
+        @InUi action: ScopedViewDsl<ListView<T>>
 ): ListView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -239,7 +239,7 @@ inline fun <T> Pane.listView(
 
 @InUi
 inline fun Pane.mediaView(
-        @InUi crossinline action: ScopedViewDsl<MediaView>
+        @InUi action: ScopedViewDsl<MediaView>
 ): MediaView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -250,7 +250,7 @@ inline fun Pane.mediaView(
 
 @InUi
 inline fun Pane.menuBar(
-        @InUi crossinline action: ScopedViewDsl<MenuBar>
+        @InUi action: ScopedViewDsl<MenuBar>
 ): MenuBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -261,7 +261,7 @@ inline fun Pane.menuBar(
 
 @InUi
 inline fun Pane.meshView(
-        @InUi crossinline action: ScopedViewDsl<MeshView>
+        @InUi action: ScopedViewDsl<MeshView>
 ): MeshView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -272,7 +272,7 @@ inline fun Pane.meshView(
 
 @InUi
 inline fun Pane.pagination(
-        @InUi crossinline action: ScopedViewDsl<Pagination>
+        @InUi action: ScopedViewDsl<Pagination>
 ): Pagination {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -283,7 +283,7 @@ inline fun Pane.pagination(
 
 @InUi
 inline fun Pane.passwordField(
-        @InUi crossinline action: ScopedViewDsl<PasswordField>
+        @InUi action: ScopedViewDsl<PasswordField>
 ): PasswordField {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -294,7 +294,7 @@ inline fun Pane.passwordField(
 
 @InUi
 inline fun Pane.progressBar(
-        @InUi crossinline action: ScopedViewDsl<ProgressBar>
+        @InUi action: ScopedViewDsl<ProgressBar>
 ): ProgressBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -305,7 +305,7 @@ inline fun Pane.progressBar(
 
 @InUi
 inline fun Pane.progressIndicator(
-        @InUi crossinline action: ScopedViewDsl<ProgressIndicator>
+        @InUi action: ScopedViewDsl<ProgressIndicator>
 ): ProgressIndicator {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -316,7 +316,7 @@ inline fun Pane.progressIndicator(
 
 @InUi
 inline fun Pane.radioButton(
-        @InUi crossinline action: ScopedViewDsl<RadioButton>
+        @InUi action: ScopedViewDsl<RadioButton>
 ): RadioButton {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -327,7 +327,7 @@ inline fun Pane.radioButton(
 
 @InUi
 inline fun Pane.scrollPane(
-        @InUi crossinline action: ScopedViewDsl<ScrollPane>
+        @InUi action: ScopedViewDsl<ScrollPane>
 ): ScrollPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -338,7 +338,7 @@ inline fun Pane.scrollPane(
 
 @InUi
 inline fun Pane.separator(
-        @InUi crossinline action: ScopedViewDsl<Separator>
+        @InUi action: ScopedViewDsl<Separator>
 ): Separator {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -349,7 +349,7 @@ inline fun Pane.separator(
 
 @InUi
 inline fun Pane.slider(
-        @InUi crossinline action: ScopedViewDsl<Slider>
+        @InUi action: ScopedViewDsl<Slider>
 ): Slider {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -360,7 +360,7 @@ inline fun Pane.slider(
 
 @InUi
 inline fun <T> Pane.spinner(
-        @InUi crossinline action: ScopedViewDsl<Spinner<T>>
+        @InUi action: ScopedViewDsl<Spinner<T>>
 ): Spinner<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -371,7 +371,7 @@ inline fun <T> Pane.spinner(
 
 @InUi
 inline fun Pane.splitPane(
-        @InUi crossinline action: ScopedViewDsl<SplitPane>
+        @InUi action: ScopedViewDsl<SplitPane>
 ): SplitPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -382,7 +382,7 @@ inline fun Pane.splitPane(
 
 @InUi
 inline fun Pane.stackPane(
-        @InUi crossinline action: ScopedViewDsl<StackPane>
+        @InUi action: ScopedViewDsl<StackPane>
 ): StackPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -393,7 +393,7 @@ inline fun Pane.stackPane(
 
 @InUi
 inline fun <T> Pane.tableView(
-        @InUi crossinline action: ScopedViewDsl<TableView<T>>
+        @InUi action: ScopedViewDsl<TableView<T>>
 ): TableView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -404,7 +404,7 @@ inline fun <T> Pane.tableView(
 
 @InUi
 inline fun Pane.tabPane(
-        @InUi crossinline action: ScopedViewDsl<TabPane>
+        @InUi action: ScopedViewDsl<TabPane>
 ): TabPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -415,7 +415,7 @@ inline fun Pane.tabPane(
 
 @InUi
 inline fun Pane.text(
-        crossinline action: ScopedViewDsl<Text>
+        action: ScopedViewDsl<Text>
 ): Text {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -426,7 +426,7 @@ inline fun Pane.text(
 
 @InUi
 inline fun Pane.textArea(
-        crossinline action: ScopedViewDsl<TextArea>
+        action: ScopedViewDsl<TextArea>
 ): TextArea {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -437,7 +437,7 @@ inline fun Pane.textArea(
 
 @InUi
 inline fun Pane.textField(
-        crossinline action: ScopedViewDsl<TextField>
+        action: ScopedViewDsl<TextField>
 ): TextField {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -448,7 +448,7 @@ inline fun Pane.textField(
 
 @InUi
 inline fun Pane.textFlow(
-        crossinline action: ScopedViewDsl<TextFlow>
+        action: ScopedViewDsl<TextFlow>
 ): TextFlow {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -459,7 +459,7 @@ inline fun Pane.textFlow(
 
 @InUi
 inline fun Pane.tilePane(
-        crossinline action: ScopedViewDsl<TilePane>
+        action: ScopedViewDsl<TilePane>
 ): TilePane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -470,7 +470,7 @@ inline fun Pane.tilePane(
 
 @InUi
 inline fun Pane.titledPane(
-        crossinline action: ScopedViewDsl<TitledPane>
+        action: ScopedViewDsl<TitledPane>
 ): TitledPane {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -481,7 +481,7 @@ inline fun Pane.titledPane(
 
 @InUi
 inline fun Pane.toggleButton(
-        crossinline action: ScopedViewDsl<ToggleButton>
+        action: ScopedViewDsl<ToggleButton>
 ): ToggleButton {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -492,7 +492,7 @@ inline fun Pane.toggleButton(
 
 @InUi
 inline fun Pane.toolBar(
-        crossinline action: ScopedViewDsl<ToolBar>
+        action: ScopedViewDsl<ToolBar>
 ): ToolBar {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -503,7 +503,7 @@ inline fun Pane.toolBar(
 
 @InUi
 inline fun <T> Pane.treeTableView(
-        crossinline action: ScopedViewDsl<TreeTableView<T>>
+        action: ScopedViewDsl<TreeTableView<T>>
 ): TreeTableView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -514,7 +514,7 @@ inline fun <T> Pane.treeTableView(
 
 @InUi
 inline fun <T> Pane.treeView(
-        crossinline action: ScopedViewDsl<TreeView<T>>
+        action: ScopedViewDsl<TreeView<T>>
 ): TreeView<T> {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -525,7 +525,7 @@ inline fun <T> Pane.treeView(
 
 @InUi
 inline fun Pane.vBox(
-        crossinline action: ScopedViewDsl<VBox>
+        action: ScopedViewDsl<VBox>
 ): VBox {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)
@@ -536,7 +536,7 @@ inline fun Pane.vBox(
 
 @InUi
 inline fun Pane.webView(
-        crossinline action: ScopedViewDsl<WebView>
+        action: ScopedViewDsl<WebView>
 ): WebView {
     contract {
         callsInPlace(action, InvocationKind.EXACTLY_ONCE)

@@ -62,6 +62,7 @@ interface ProhibitedBinding<ViewBinding> {
             level = DeprecationLevel.ERROR,
             replaceWith = ReplaceWith("inUi{ binding }", "csense.javafx.views")
     )
+    @InUi
     val binding: ViewBinding
         @Throws(Exception::class)
         get() = throw Exception("Not allowed.")

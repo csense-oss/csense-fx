@@ -31,3 +31,4 @@ example-app/build/
 csense-javafx-tools/build/
 csense-javafx-material/build
 csense-javafx-diagram/build
+build/*

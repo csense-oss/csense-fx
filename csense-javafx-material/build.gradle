@@ -12,17 +12,15 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
-    implementation "csense.kotlin:csense-kotlin-annotations-jvm:$csenseKotlinAnnotationsVersion"
+    implementation "csense.kotlin:csense-kotlin:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-annotations:$csenseKotlinAnnotationsVersion"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     implementation project(":csense-javafx")
 
-    testImplementation "junit:junit:$junitVersion"
 
-    testImplementation "csense.kotlin:csense-kotlin-tests-jvm:$csenseTestsVersion"
+    testImplementation "csense.kotlin:csense-kotlin-tests:$csenseTestsVersion"
 }
 
 compileKotlin {

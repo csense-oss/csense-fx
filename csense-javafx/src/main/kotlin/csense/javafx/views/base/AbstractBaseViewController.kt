@@ -2,6 +2,7 @@
 
 package csense.javafx.views.base
 
+import csense.javafx.extensions.*
 import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.system.*
 import csense.javafx.extensions.system.StageExtensions.stageWith
@@ -15,10 +16,12 @@ import csense.kotlin.annotations.threading.*
 import csense.kotlin.extensions.*
 import csense.kotlin.extensions.coroutines.*
 import csense.kotlin.logger.*
+import csense.kotlin.datastructures.values.*
 import javafx.scene.*
 import javafx.scene.layout.*
 import javafx.stage.*
 import kotlinx.coroutines.*
+import kotlin.reflect.*
 
 
 /**
@@ -216,7 +219,6 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
         return inUi(window) {
             val bindingRoot = binding.root
             isInline = false
-            //TODO preload what ? a cache ?
             val newStage = stageWith(bindingRoot, window, modal, stageStyle) {
                 //continue the same place as we left off.
                 input?.let(it::updateXYFrom)
@@ -243,6 +245,10 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
     @SuperCallRequired
     internal open fun start() {
         tracker.onStart()
+    }
+    
+    open fun getInitialSize(): WidthHeight {
+        return WidthHeight.UseComputed
     }
     
     @InUi
@@ -287,7 +293,7 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
     /**
      * Is this view embedded or is it "the toplevel / standalone view" ?
      */
-    var isInline: Boolean = false
+    var isInline: Boolean by SetOnceBool(false)
         private set
     
     /**
@@ -301,4 +307,3 @@ abstract class AbstractBaseViewController<ViewBinding : BaseView<Parent>> :
         jobs.joinAll()
     }
 }
-

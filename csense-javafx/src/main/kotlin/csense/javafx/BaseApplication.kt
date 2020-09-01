@@ -3,7 +3,7 @@ package csense.javafx
 import csense.javafx.observable.addObserverF
 import csense.javafx.tracking.*
 import csense.javafx.views.base.BaseViewController
-import csense.kotlin.annotations.numbers.DoubleLimitFromMin
+import csense.kotlin.annotations.numbers.*
 import csense.kotlin.annotations.threading.InBackground
 import csense.kotlin.annotations.threading.InUi
 import csense.kotlin.extensions.coroutines.asyncDefault
@@ -36,10 +36,10 @@ abstract class BaseApplication<BackgroundData> : Application() {
     }
 
 
-    @DoubleLimitFromMin(from = 0.0)
+    @DoubleLimit(from = 0.0)
     abstract val startingHeight: Double
 
-    @DoubleLimitFromMin(from = 0.0)
+    @DoubleLimit(from = 0.0)
     abstract val startingWidth: Double
 
     @InUi

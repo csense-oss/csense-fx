@@ -6,9 +6,9 @@ plugins {
 
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
-    implementation "csense.kotlin:csense-kotlin-annotations-jvm:$csenseKotlinAnnotationsVersion"
+    implementation "csense.kotlin:csense-kotlin:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-annotations:$csenseKotlinAnnotationsVersion"
+    implementation "csense.kotlin:csense-kotlin-datastructures-algorithms:$csenseKotlinDatastructureAlgorithmsVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     implementation project(":csense-javafx")

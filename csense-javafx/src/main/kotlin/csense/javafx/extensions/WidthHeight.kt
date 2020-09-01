@@ -9,7 +9,7 @@ import javafx.scene.layout.Region
  * @property height Double
  * @constructor
  */
-class WidthHeight(val width: Double, val height: Double) {
+data class WidthHeight(val width: Double, val height: Double) {
     companion object {
         val Zero = WidthHeight(0.0, 0.0)
         val UseComputed = WidthHeight(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE)

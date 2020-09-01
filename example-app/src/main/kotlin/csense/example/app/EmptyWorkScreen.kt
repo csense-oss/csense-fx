@@ -42,16 +42,16 @@ class EmptyWorkScreen : BaseEmptyViewController<EmptyWorkScreenView>(
 
     override fun InUiUpdateEmpty<EmptyWorkScreenView>.onReady() {
         binding.showInputOutput.setOnAction {
-            InOutWorkScreen("123").presentThisAsModal {
-                it.width = 500.0
-                it.height = 600.0
-            }
+//            InOutWorkScreen("123").presentThisAsModal {
+//                it.width = 500.0
+//                it.height = 600.0
+//            }
             /*) {
                 binding.showInputOutput.text = "= \"$input\"))"
             }*/
         }
         binding.showInput.setOnAction {
-            InputWorkScreen("").presentThisAsModal(configureStage = { it.height = 500.0; it.width = 400.0 })
+//            InputWorkScreen("").presentThisAsModal(configureStage = { it.height = 500.0; it.width = 400.0 })
         }
         binding.showOutput.setOnAction {
             OutputWorkScreen().presentThisAsModal {

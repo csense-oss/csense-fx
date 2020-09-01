@@ -3,8 +3,6 @@ package csense.javafx.widgets.input
 import csense.javafx.extensions.parent.*
 import csense.javafx.viewdsl.*
 import csense.kotlin.annotations.threading.*
-import javafx.scene.control.*
-import javafx.scene.control.skin.*
 import javafx.scene.layout.*
 import kotlin.contracts.*
 

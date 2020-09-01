@@ -4,9 +4,8 @@ import csense.kotlin.annotations.threading.*
 import csense.kotlin.logger.*
 import javafx.geometry.*
 import javafx.scene.*
-import javafx.scene.control.SplitPane
+import javafx.scene.control.*
 import javafx.scene.layout.*
-import java.util.function.*
 
 @InUi
 fun Node.fillParent() {

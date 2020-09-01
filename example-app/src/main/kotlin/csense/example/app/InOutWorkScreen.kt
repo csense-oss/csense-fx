@@ -28,46 +28,46 @@ class InOutWorkScreenBinding() : BaseView<Parent> {
     }
 }
 
-
-/*
-* IO screen
-*/
-class InOutWorkScreen(input: String) : BaseViewControllerInOutput<InOutWorkScreenBinding, String, String, Int?>(
-        input
-), InOutWorkScreenCallbacks {
-
-
-//    private val view: Button = Button()
-//    override suspend fun loadView(onViewSetup: OnViewSetup): Button = view
-
-//    override suspend fun loadView() {}
-
-    override fun InUiUpdateInput<InOutWorkScreenBinding, String>.onStartData() {
-        println("---on start data--")
-//        binding.text = input
-//        binding.setOnAction {
-//            currentWindow?.hide()
-//        }
-        binding.mainButton.setOnAction { onEnd() }
-        binding.otherButton.setOnAction { onMagic() }
-    }
-
-    override suspend fun transformInput(input: String): String = "$input + 88"
-
-
-    override fun createResultAsync(): Deferred<Int?> = inUiAsync {
-        binding.mainButton.text.toIntOrNull()
-    }
-
-    override fun onEnd() {
-
-    }
-
-    override fun onMagic() {
-
-    }
-
-    override fun CoroutineScope.createNewUi(): Deferred<InOutWorkScreenBinding> = asyncDefault {
-        InOutWorkScreenBinding()
-    }
-}
+//
+///*
+//* IO screen
+//*/
+//class InOutWorkScreen(input: String) : BaseViewControllerInOutput<InOutWorkScreenBinding, String, String, Int?>(
+//        input
+//), InOutWorkScreenCallbacks {
+//
+//
+////    private val view: Button = Button()
+////    override suspend fun loadView(onViewSetup: OnViewSetup): Button = view
+//
+////    override suspend fun loadView() {}
+//
+//    override fun InUiUpdateInput<InOutWorkScreenBinding, String>.onStartData() {
+//        println("---on start data--")
+////        binding.text = input
+////        binding.setOnAction {
+////            currentWindow?.hide()
+////        }
+//        binding.mainButton.setOnAction { onEnd() }
+//        binding.otherButton.setOnAction { onMagic() }
+//    }
+//
+//    override suspend fun transformInput(input: String): String = "$input + 88"
+//
+//
+//    override fun createResultAsync(): Deferred<Int?> = inUiAsync {
+//        binding.mainButton.text.toIntOrNull()
+//    }
+//
+//    override fun onEnd() {
+//
+//    }
+//
+//    override fun onMagic() {
+//
+//    }
+//
+//    override fun CoroutineScope.createNewUi(): Deferred<InOutWorkScreenBinding> = asyncDefault {
+//        InOutWorkScreenBinding()
+//    }
+//}

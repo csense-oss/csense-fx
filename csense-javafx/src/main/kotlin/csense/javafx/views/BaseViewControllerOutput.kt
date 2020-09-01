@@ -2,9 +2,7 @@ package csense.javafx.views
 
 import csense.kotlin.annotations.threading.*
 import csense.javafx.tracking.*
-import csense.javafx.views.base.BaseViewController
-import csense.javafx.views.base.InUiUpdateEmpty
-import csense.javafx.views.base.BaseView
+import csense.javafx.views.base.*
 import csense.kotlin.*
 import csense.kotlin.exceptions.NoStackTraceException
 import javafx.scene.Parent
@@ -49,7 +47,7 @@ abstract class BaseViewControllerOutput<ViewBinding : BaseView<Parent>, Dout> :
     }
 
     private val result: CompletableDeferred<Dout> = CompletableDeferred()
-
+    
     @InAny
     fun closeWithResult(): Job = inBackground {
         result.complete(createResultAsync().await())

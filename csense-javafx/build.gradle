@@ -1,5 +1,5 @@
 plugins {
-    id "kotlin"
+    id  'org.jetbrains.kotlin.jvm'
     id 'org.openjfx.javafxplugin' version '0.0.8'
 //    id "me.champeau.gradle.jmh"
 }
@@ -7,15 +7,15 @@ plugins {
 group 'csense'
 version '0.0.1'
 
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
 
-    implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
-    implementation "csense.kotlin:csense-kotlin-annotations-jvm:$csenseKotlinAnnotationsVersion"
-    testImplementation "csense.kotlin:csense-kotlin-tests-jvm:$csenseTestsVersion"
+    implementation "csense.kotlin:csense-kotlin:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin-datastructures-algorithms:$csenseKotlinDatastructureAlgorithmsVersion"
+    implementation "csense.kotlin:csense-kotlin-annotations:$csenseKotlinAnnotationsVersion"
+    testImplementation "csense.kotlin:csense-kotlin-tests:$csenseTestsVersion"
 }
 
 compileKotlin {

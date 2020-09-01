@@ -44,7 +44,7 @@ object FontExtensions {
     }
 }
 
-fun Font.withSize(@DoubleLimitFromMin(from = 0.0) newSize: Double): Font {
+fun Font.withSize(@DoubleLimit(from = 0.0) newSize: Double): Font {
     //todo style... / full name here...
     return Font.font(name, newSize)
 }

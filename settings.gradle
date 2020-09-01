@@ -1,9 +1,13 @@
 pluginManagement {
     repositories {
-        mavenCentral()
+        maven { url "https://dl.bintray.com/csense-oss/maven" }
+        maven { url 'https://dl.bintray.com/kotlin/kotlinx' }
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-dev/' }
+        jcenter()
         gradlePluginPortal()
     }
 }
+
 include('example-app',
         'csense-javafx',
         'csense-javafx-tools',

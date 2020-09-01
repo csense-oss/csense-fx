@@ -11,8 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "csense.kotlin:csense-kotlin-jvm:$csenseKotlinVersion"
+    implementation "csense.kotlin:csense-kotlin:$csenseKotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-javafx:$coroutinesVersion"
     implementation project(":csense-javafx")

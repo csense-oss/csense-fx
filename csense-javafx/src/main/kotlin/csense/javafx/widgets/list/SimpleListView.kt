@@ -1,32 +1,43 @@
 package csense.javafx.widgets.list
 
-import csense.javafx.css.*
-import csense.javafx.extensions.parent.addToBack
-import csense.javafx.extensions.parent.addToFrontF
+import csense.javafx.extensions.parent.*
 import csense.javafx.extensions.scene.layout.*
 import csense.javafx.styling.*
-import csense.javafx.views.base.BaseView
-import csense.javafx.views.base.InScope
-import csense.kotlin.Function0
-import csense.kotlin.ReceiverFunctionUnit
+import csense.javafx.views.base.*
+import csense.kotlin.*
 import csense.kotlin.annotations.inheritance.*
-import csense.kotlin.extensions.collections.getSafe
-import csense.kotlin.extensions.collections.list.removeAtOr
-import csense.kotlin.extensions.collections.map.putSubList
+import csense.kotlin.extensions.collections.list.*
+import csense.kotlin.extensions.collections.map.*
 import csense.kotlin.extensions.collections.setAll
 import csense.kotlin.extensions.toUnit
-import javafx.beans.property.SimpleObjectProperty
-import javafx.geometry.Orientation
-import javafx.scene.Group
-import javafx.scene.Node
-import javafx.scene.Parent
+import javafx.beans.property.*
+import javafx.geometry.*
+import javafx.scene.*
 import javafx.scene.control.*
-import javafx.scene.control.skin.ListViewSkin
-import javafx.scene.control.skin.VirtualFlow
+import javafx.scene.control.skin.*
 import javafx.scene.layout.*
-import javafx.scene.paint.*
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+import kotlin.Boolean
+import kotlin.Int
+import kotlin.also
+import kotlin.apply
+import kotlin.collections.HashMap
+import kotlin.collections.List
+import kotlin.collections.MutableList
+import kotlin.collections.MutableMap
+import kotlin.collections.forEach
+import kotlin.collections.getOrNull
+import kotlin.collections.hashMapOf
+import kotlin.collections.lastIndex
+import kotlin.collections.map
+import kotlin.collections.minusAssign
+import kotlin.collections.mutableListOf
+import kotlin.collections.mutableMapOf
+import kotlin.collections.plusAssign
+import kotlin.collections.set
+import kotlin.contracts.*
+import kotlin.getValue
+import kotlin.lazy
+import kotlin.let
 
 //TODO make me
 abstract class BaseSimpleListView<RenderType : SimpleListViewRender<*>>(adapter: SimpleListViewAdapter) {
@@ -43,11 +54,11 @@ open class SimpleListView(adapter: SimpleListViewAdapter? = null) : ListView<Int
             value?.registerToListView(this)
         }
     
-    private val BindingCache = SimpleListViewBindingCache()
+    private val bindingCache = SimpleListViewBindingCache()
     
     init {
         setCellFactory {
-            RenderListCell(BindingCache, this)
+            RenderListCell(bindingCache, this)
         }
 //        setOnScroll { it ->
 //            mySkin.myVirtualFlow?.let { flow: VirtualFlow<ListCell<InternalCellSimpleListViewRender<Parent>>> ->
